@@ -1,0 +1,128 @@
+Reporte anual de estaciones: 
+
+AEROPARQUE AERO: Tmax anual = 36.3, Tmin anual = 1.5
+AZUL AERO: Tmax anual = 38.1, Tmin anual = -7.7
+BAHIA BLANCA AERO: Tmax anual = 39.3, Tmin anual = -6.6
+BARILOCHE AERO: Tmax anual = 33.4, Tmin anual = -13.9
+BASE BELGRANO II: Tmax anual = 5.9, Tmin anual = -36.1
+BASE CARLINI (EX JUBANY): Tmax anual = 10.0, Tmin anual = -12.4
+BASE ESPERANZA: Tmax anual = 14.7, Tmin anual = -22.5
+BASE MARAMBIO: Tmax anual = 14.1, Tmin anual = -27.7
+BASE ORCADAS: Tmax anual = 10.1, Tmin anual = -23.5
+BASE SAN MARTIN: Tmax anual = 8.7, Tmin anual = -23.3
+BENITO JUAREZ: Tmax anual = 37.0, Tmin anual = -7.3
+BERNARDO DE IRIGOYEN AERO: Tmax anual = 33.1, Tmin anual = -1.2
+BOLIVAR AERO: Tmax anual = 38.5, Tmin anual = -8.0
+BUENOS AIRES OBSERVATORIO: Tmax anual = 38.5, Tmin anual = -1.9
+CAMPO DE MAYO AERO: Tmax anual = 38.0, Tmin anual = -6.7
+CATAMARCA AERO: Tmax anual = 42.7, Tmin anual = -6.2
+CERES AERO: Tmax anual = 33.6, Tmin anual = -4.5
+CHAMICAL AERO: Tmax anual = 28.0, Tmin anual = -3.6
+CHAPELCO AERO: Tmax anual = 34.6, Tmin anual = -15.0
+CHEPES: Tmax anual = 41.5, Tmin anual = -6.6
+COMODORO RIVADAVIA AERO: Tmax anual = 37.1, Tmin anual = -6.3
+CONCORDIA AERO: Tmax anual = 41.8, Tmin anual = -5.2
+CORDOBA AERO: Tmax anual = 40.5, Tmin anual = -8.1
+CORDOBA OBSERVATORIO: Tmax anual = 42.2, Tmin anual = -3.4
+CORONEL SUAREZ AERO: Tmax anual = 36.4, Tmin anual = -10.3
+CORRIENTES AERO: Tmax anual = 41.4, Tmin anual = -0.5
+DOLORES AERO: Tmax anual = 28.8, Tmin anual = -3.9
+EL BOLSON AERO: Tmax anual = 36.1, Tmin anual = -10.5
+EL CALAFATE AERO: Tmax anual = 27.4, Tmin anual = -14.1
+EL PALOMAR AERO: Tmax anual = 38.0, Tmin anual = -7.4
+ESCUELA DE AVIACION MILITAR AERO: Tmax anual = N/A, Tmin anual = -7.0
+ESQUEL AERO: Tmax anual = 33.7, Tmin anual = -18.2
+EZEIZA AERO: Tmax anual = 38.5, Tmin anual = -4.6
+FORMOSA AERO: Tmax anual = 41.5, Tmin anual = 1.4
+GENERAL PICO AERO: Tmax anual = 39.6, Tmin anual = -8.0
+GOBERNADOR GREGORES AERO: Tmax anual = 34.5, Tmin anual = -14.0
+GUALEGUAYCHU AERO: Tmax anual = 39.3, Tmin anual = -6.4
+IGUAZU AERO: Tmax anual = 37.3, Tmin anual = -1.2
+ITUZAINGO: Tmax anual = 40.5, Tmin anual = 0.3
+JACHAL: Tmax anual = 39.6, Tmin anual = -8.1
+JUJUY AERO: Tmax anual = 38.7, Tmin anual = -2.8
+JUJUY U N: Tmax anual = 37.0, Tmin anual = -1.5
+JUNIN AERO: Tmax anual = 37.6, Tmin anual = -8.0
+LA PLATA AERO: Tmax anual = 38.1, Tmin anual = -5.2
+LA QUIACA OBSERVATORIO: Tmax anual = 27.1, Tmin anual = -10.2
+LA RIOJA AERO: Tmax anual = 45.0, Tmin anual = -5.0
+LABOULAYE AERO: Tmax anual = 38.5, Tmin anual = -7.1
+LAS FLORES: Tmax anual = 39.5, Tmin anual = -3.6
+LAS LOMITAS: Tmax anual = 42.8, Tmin anual = 0.0
+MALARGUE AERO: Tmax anual = 36.6, Tmin anual = -16.0
+MAQUINCHAO: Tmax anual = 39.0, Tmin anual = -19.2
+MAR DEL PLATA AERO: Tmax anual = 39.9, Tmin anual = -6.3
+MARCOS JUAREZ AERO: Tmax anual = 39.2, Tmin anual = -8.0
+MARIANO MORENO AERO: Tmax anual = N/A, Tmin anual = -5.5
+MENDOZA AERO: Tmax anual = 37.4, Tmin anual = -6.7
+MENDOZA OBSERVATORIO: Tmax anual = N/A, Tmin anual = -6.0
+MERCEDES AERO (CTES): Tmax anual = 41.0, Tmin anual = -1.8
+MERLO AERO: Tmax anual = 33.9, Tmin anual = -4.0
+METAN: Tmax anual = 40.0, Tmin anual = -0.4
+MONTE CASEROS AERO: Tmax anual = 40.6, Tmin anual = -1.9
+MORON AERO: Tmax anual = 38.0, Tmin anual = -4.9
+NEUQUEN AERO: Tmax anual = 42.1, Tmin anual = -11.0
+NUEVE DE JULIO: Tmax anual = 38.2, Tmin anual = -3.8
+OBERA: Tmax anual = 37.0, Tmin anual = -1.5
+OLAVARRIA AERO: Tmax anual = 37.7, Tmin anual = -6.7
+ORAN AERO: Tmax anual = 41.0, Tmin anual = 1.9
+PARANA AERO: Tmax anual = 38.7, Tmin anual = -3.5
+PASO DE INDIOS: Tmax anual = 37.7, Tmin anual = -12.4
+PASO DE LOS LIBRES AERO: Tmax anual = 41.7, Tmin anual = -0.6
+PEHUAJO AERO: Tmax anual = 38.7, Tmin anual = -5.1
+PERITO MORENO AERO: Tmax anual = 31.2, Tmin anual = -14.6
+PIGUE AERO: Tmax anual = 36.5, Tmin anual = -6.8
+PILAR OBSERVATORIO: Tmax anual = 41.2, Tmin anual = -4.0
+POSADAS AERO: Tmax anual = 39.0, Tmin anual = 1.2
+PRESIDENCIA ROQUE SAENZ PE�A AERO: Tmax anual = 42.6, Tmin anual = -4.5
+PUERTO DESEADO AERO: Tmax anual = 35.0, Tmin anual = -11.5
+PUERTO MADRYN AERO: Tmax anual = 42.3, Tmin anual = -11.6
+PUNTA INDIO B.A.: Tmax anual = 35.0, Tmin anual = -3.5
+RAFAELA AERO: Tmax anual = 42.0, Tmin anual = -4.2
+RECONQUISTA AERO: Tmax anual = 43.7, Tmin anual = -1.4
+RESISTENCIA AERO: Tmax anual = 43.3, Tmin anual = -2.2
+RIO CUARTO AERO: Tmax anual = 27.6, Tmin anual = -7.2
+RIO GALLEGOS AERO: Tmax anual = 27.6, Tmin anual = -13.6
+RIO GRANDE B.A.: Tmax anual = 22.6, Tmin anual = -8.8
+RIVADAVIA: Tmax anual = 46.5, Tmin anual = 1.3
+ROSARIO AERO: Tmax anual = 39.5, Tmin anual = -6.8
+SALTA AERO: Tmax anual = 37.5, Tmin anual = -5.3
+SAN ANTONIO OESTE AERO: Tmax anual = 24.6, Tmin anual = -10.4
+SAN FERNANDO AERO: Tmax anual = 37.9, Tmin anual = -5.1
+SAN JUAN AERO: Tmax anual = 44.0, Tmin anual = -8.0
+SAN JULIAN AERO: Tmax anual = 37.0, Tmin anual = -11.3
+SAN LUIS AERO: Tmax anual = 40.7, Tmin anual = -6.7
+SAN MARTIN (MZA): Tmax anual = 42.7, Tmin anual = -5.9
+SAN RAFAEL AERO: Tmax anual = 39.5, Tmin anual = -8.4
+SANTA CRUZ AERO: Tmax anual = 34.3, Tmin anual = -9.3
+SANTA ROSA AERO: Tmax anual = 41.4, Tmin anual = -7.3
+SANTA ROSA DE CONLARA AERO: Tmax anual = 40.6, Tmin anual = -11.8
+SANTIAGO DEL ESTERO AERO: Tmax anual = 44.2, Tmin anual = -3.5
+SAUCE VIEJO AERO: Tmax anual = 40.9, Tmin anual = -7.0
+SUNCHALES AERO: Tmax anual = 42.5, Tmin anual = -4.7
+TANDIL AERO: Tmax anual = 37.7, Tmin anual = -8.1
+TARTAGAL AERO: Tmax anual = 39.1, Tmin anual = -1.0
+TERMAS DE RIO HONDO AERO: Tmax anual = 42.7, Tmin anual = -3.0
+TINOGASTA: Tmax anual = 41.6, Tmin anual = -8.5
+TRELEW AERO: Tmax anual = 43.6, Tmin anual = -13.2
+TRENQUE LAUQUEN: Tmax anual = 38.5, Tmin anual = -5.1
+TRES ARROYOS: Tmax anual = 36.8, Tmin anual = -5.0
+TUCUMAN AERO: Tmax anual = 41.7, Tmin anual = -0.6
+USHUAIA AERO: Tmax anual = 19.1, Tmin anual = -4.8
+USPALLATA: Tmax anual = 36.7, Tmin anual = -11.2
+VENADO TUERTO AERO: Tmax anual = 37.2, Tmin anual = -8.0
+VICTORICA: Tmax anual = 41.1, Tmin anual = -11.0
+VIEDMA AERO: Tmax anual = 36.6, Tmin anual = -5.4
+VILLA DE MARIA DEL RIO SECO: Tmax anual = 42.2, Tmin anual = -8.4
+VILLA DOLORES AERO: Tmax anual = 40.8, Tmin anual = -8.4
+VILLA GESELL AERO: Tmax anual = 39.1, Tmin anual = -6.4
+VILLA REYNOLDS AERO: Tmax anual = 41.0, Tmin anual = -12.7
+CHILECITO AERO: Tmax anual = 38.2, Tmin anual = -5.0
+
+Amplitud termica: 
+Mayor amplitud: 35.6 en JACHAL el dia 331
+Menor amplitud: 0.7 en BASE CARLINI (EX JUBANY) el dia 263
+
+Diferencias entre estaciones: 
+Maxima diferencia: 66.8 entre BASE BELGRANO II(-24.0) y LAS LOMITAS(42.8) en el dia: 315 del a�o
+Minima diferencia: 0.0 entre AEROPARQUE AERO(14.2) y PASO DE INDIOS(14.2) en el dia: 1del a�o

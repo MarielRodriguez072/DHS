@@ -1,10 +1,10 @@
-
-for (y = 0; y < 3; ++y) {
-    x = 0;
+int y,z;
+for (y = 0; y < 3; y--) {
+    x=0
 }
 
 int x;
-int y,z;
+
 int a, b, c, d , e;
 
 if (a) {

@@ -16,6 +16,7 @@
             "input": "input/programa.c",
             // Simbolo inicial
             "startRule": "programa",
+            //"startRule": "exp",
             // Muestra Arbol Sintactico
             "printParseTree": true,
             "visualParseTree": true

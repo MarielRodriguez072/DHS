@@ -29,6 +29,11 @@ class compiladorVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by compiladorParser#ireturn.
+    def visitIreturn(self, ctx:compiladorParser.IreturnContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by compiladorParser#incremento.
     def visitIncremento(self, ctx:compiladorParser.IncrementoContext):
         return self.visitChildren(ctx)

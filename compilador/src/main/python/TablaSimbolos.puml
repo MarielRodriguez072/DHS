@@ -36,7 +36,7 @@ class Variable {
 
 class Funcion {
     - List<ID> args
-    listaArgs() : Lista<ID>
+    - getlistaArgs() : Lista<ID>
 }
 
 TS -right-> Contexto

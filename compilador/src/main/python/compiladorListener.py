@@ -44,6 +44,15 @@ class compiladorListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by compiladorParser#ireturn.
+    def enterIreturn(self, ctx:compiladorParser.IreturnContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#ireturn.
+    def exitIreturn(self, ctx:compiladorParser.IreturnContext):
+        pass
+
+
     # Enter a parse tree produced by compiladorParser#incremento.
     def enterIncremento(self, ctx:compiladorParser.IncrementoContext):
         pass

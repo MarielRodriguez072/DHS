@@ -96,9 +96,16 @@ argumentos : COMA ID argumentos
            | 
            ;
 
+argLlamada : ID argLlamada 
+           | COMA ID
+           ;
+
 funcion: tipo ID PA argumentos PC LLA instrucciones ireturn PYC LLC
        | tipo ID PA argumentos PC bloque PYC
        ;
+
+//llamada a las funciones
+llamada : ID PA argLlamada PC PYC ;
 
 declaracion : tipo ID listavar PYC 
             | tipo ID ASIG opal listavar PYC

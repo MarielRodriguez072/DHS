@@ -69,8 +69,18 @@ class compiladorVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by compiladorParser#argLlamada.
+    def visitArgLlamada(self, ctx:compiladorParser.ArgLlamadaContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by compiladorParser#funcion.
     def visitFuncion(self, ctx:compiladorParser.FuncionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladorParser#llamada.
+    def visitLlamada(self, ctx:compiladorParser.LlamadaContext):
         return self.visitChildren(ctx)
 
 

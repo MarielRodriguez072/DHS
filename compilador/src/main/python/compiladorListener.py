@@ -116,12 +116,30 @@ class compiladorListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by compiladorParser#argLlamada.
+    def enterArgLlamada(self, ctx:compiladorParser.ArgLlamadaContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#argLlamada.
+    def exitArgLlamada(self, ctx:compiladorParser.ArgLlamadaContext):
+        pass
+
+
     # Enter a parse tree produced by compiladorParser#funcion.
     def enterFuncion(self, ctx:compiladorParser.FuncionContext):
         pass
 
     # Exit a parse tree produced by compiladorParser#funcion.
     def exitFuncion(self, ctx:compiladorParser.FuncionContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladorParser#llamada.
+    def enterLlamada(self, ctx:compiladorParser.LlamadaContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#llamada.
+    def exitLlamada(self, ctx:compiladorParser.LlamadaContext):
         pass
 
 

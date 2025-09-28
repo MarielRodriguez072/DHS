@@ -86,7 +86,10 @@ ielse: ELSE instruccion //puede venir una instrucicion que es un bloque
      |
      ;
 
-ifor : FOR PA asignacion comp PYC incremento PC instruccion ;
+ifor : FOR PA asignacion comp PYC incremento PC instruccion 
+     | FOR PA asignacion comp PYC incremento PC bloque
+     | FOR PA PYC PYC PYC PC
+     ;
 
 //int suma(int a, int b);
 prototipo: tipo ID PA tipo ID argumentos PC PYC;

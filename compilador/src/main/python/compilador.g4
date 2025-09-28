@@ -77,6 +77,9 @@ iwhile : WHILE PA comp PC instruccion | bloque
 
 iif : IF PA opal PC instrucciones ielse
     | IF PA comp PC instrucciones ielse
+    | IF PA opal PC bloque ielse
+    | IF PA comp PC instrucciones //por si no viene un else
+    | IF PA opal PC instrucciones //por si no viene un else
     ;
 
 ielse: ELSE instruccion //puede venir una instrucicion que es un bloque 
@@ -84,6 +87,7 @@ ielse: ELSE instruccion //puede venir una instrucicion que es un bloque
      ;
 
 ifor : FOR PA asignacion comp PYC incremento PC instruccion ;
+
 //int suma(int a, int b);
 prototipo: tipo ID PA tipo ID listavar PC PYC;
 
@@ -94,11 +98,16 @@ funcion: tipo ID PA tipo ID listavar PC bloque PYC
 
 declaracion : tipo ID listavar PYC 
             | tipo ID ASIG opal listavar PYC
+            | tipo ID ASIG exp PYC 
+            | tipo ID ASIG exp listavar PYC
             ;
 
-listavar : COMA ID listavar
-         | COMA ID ASIG opal listavar
+listavar : COMA ID listavar 
+         | COMA ID ASIG opal listavar 
          | COMA ID inic 
+         | COMA ID ASIG exp listavar
+         | COMA ID ASIG opal 
+         | COMA ID ASIG exp
          ;
 
 inic : ASIG opal
@@ -109,10 +118,13 @@ tipo : INT
      | DOUBLE
      ;
 
-asignacion : ID ASIG opal PYC ;
+asignacion : ID ASIG opal PYC 
+           | ID ASIG exp PYC
+           ;
 
 opal : NUMERO
      | ID
+     | exp
      ;
      
 comp : ID OPERADORES opal;
@@ -123,6 +135,8 @@ e : SUMA term e
   | RESTA term e
   |
   ;
+
+expresion : exp PYC ; 
 
 term : factor t ;
 
@@ -137,4 +151,4 @@ factor : NUMERO
        | funcion
        | PA exp PC
        ;
-//cambio para subir al git 
+

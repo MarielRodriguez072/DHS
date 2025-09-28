@@ -114,6 +114,11 @@ class compiladorVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by compiladorParser#expresion.
+    def visitExpresion(self, ctx:compiladorParser.ExpresionContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by compiladorParser#term.
     def visitTerm(self, ctx:compiladorParser.TermContext):
         return self.visitChildren(ctx)

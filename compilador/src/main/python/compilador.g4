@@ -86,7 +86,7 @@ ielse: ELSE instruccion //puede venir una instrucicion que es un bloque
      |
      ;
 
-//preguntar en clases
+//agregar todas las opciones aceptadas por el for 
 ifor : FOR PA asignacion comp PYC incremento PC instruccion
      | FOR PA asignacion comp PYC incremento PC
      | FOR PA PYC PYC PC

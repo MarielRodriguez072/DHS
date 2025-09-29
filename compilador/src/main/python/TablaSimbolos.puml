@@ -1,5 +1,8 @@
 @startuml TablaSimbolos
 
+skinparam ClassAttributeIconSize 0
+hide circle
+
 class TS <<singleton>> {
     - List<Contexto> contexto
     + getTablaSimbolo() : TS

@@ -85,11 +85,13 @@ iif : IF PA opal PC instrucciones ielse
 ielse: ELSE instruccion //puede venir una instrucicion que es un bloque 
      |
      ;
-     
+
 //preguntar en clases
-ifor : FOR PA asignacion comp PYC incremento PC instruccion 
-     | FOR PA asignacion comp PYC incremento PC bloque
-     | FOR PA PYC PYC PYC PC
+ifor : FOR PA asignacion comp PYC incremento PC instruccion
+     | FOR PA asignacion comp PYC incremento PC
+     | FOR PA PYC PYC PC
+     | FOR PA tipo asignacion comp PYC incremento PC instruccion
+     | FOR PA tipo asignacion comp PYC incremento PC
      ;
 
 //int suma(int a, int b);

@@ -34,7 +34,7 @@ class ID <<abstract>> {
 }
 
 class Variable {
-
+    
 }
 
 class Funcion {

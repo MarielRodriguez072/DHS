@@ -34,24 +34,21 @@ class Escucha (compiladorListener) :
         print("  -- Cant. hijos = " + str(ctx.getChildCount()))
     
     def enterIif(self, ctx:compiladorParser.IifContext):
-        print(" "*self.indent + "comienza el baile del if")
+        print(" "*self.indent + "comienzo del if")
         self.indent +=1
         
     def exitIif(self, ctx:compiladorParser.IifContext):
         self.indent -= 1
-        print("  "*self.indent + "Fin del baile del if")
+        print("  "*self.indent + "Fin del if")
         
-    def enterIelse(self, ctx):
-        return super().enterIelse(ctx)
-    
         
     def enterFuncion(self, ctx:compiladorParser.FuncionContext):
-      print(" "*self.indent + "comienza el baile de la funcion")
+      print(" "*self.indent + "comienza la funcion")
       self.indent +=1
         
     def exitFuncion(self, ctx:compiladorParser.FuncionContext):
         self.indent -= 1
-        print("  "*self.indent + "Fin del baile de la funcion")
+        print("  "*self.indent + "Fin de la funcion")
     
     def enterListavar(self, ctx:compiladorParser.ListavarContext):
         self.profundidad += 1

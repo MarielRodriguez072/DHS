@@ -9,17 +9,35 @@ class Escucha (compiladorListener) :
     profundidad = 0
     numNodos = 0
 
+
     def enterPrograma(self, ctx:compiladorParser.ProgramaContext):
         print("Comienza el parsing")
 
     def exitPrograma(self, ctx:compiladorParser.ProgramaContext):
         print("Fin del parsing")
 
+    def enterInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
+        print("  "*self.indent + "Comienzan las instrucciones")
+        
+    def exitInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
+        print("  "*self.indent + "Terminan las instrucciones")
+        
+    def enterIif(self, ctx:compiladorParser.IifContext):
+        print("  "*self.indent + "Comienza if")
+        self.indent += 1
+        
+    def exitIif(self, ctx:compiladorParser.IifContext):
+        self.indent -= 1
+        print("  "*self.indent + "Fin if")
+        
+    def enterPrototipo(self, ctx:compiladorParser.PrototipoContext):
+        print("  "*self.indent + "Comienza prototipo")
+        self.indent += 1
+    
     def enterIwhile(self, ctx:compiladorParser.IwhileContext):
         print("  "*self.indent + "Comienza while")
         self.indent += 1
         
-
     def exitIwhile(self, ctx:compiladorParser.IwhileContext):
         self.indent -= 1
         print("  "*self.indent + "Fin while")
@@ -33,23 +51,7 @@ class Escucha (compiladorListener) :
         print("Declaracion EXIT  -> |" + ctx.getText() + "|")
         print("  -- Cant. hijos = " + str(ctx.getChildCount()))
     
-    def enterIif(self, ctx:compiladorParser.IifContext):
-        print(" "*self.indent + "comienzo del if")
-        self.indent +=1
-        
-    def exitIif(self, ctx:compiladorParser.IifContext):
-        self.indent -= 1
-        print("  "*self.indent + "Fin del if")
-        
-        
-    def enterFuncion(self, ctx:compiladorParser.FuncionContext):
-      print(" "*self.indent + "comienza la funcion")
-      self.indent +=1
-        
-    def exitFuncion(self, ctx:compiladorParser.FuncionContext):
-        self.indent -= 1
-        print("  "*self.indent + "Fin de la funcion")
-    
+   
     def enterListavar(self, ctx:compiladorParser.ListavarContext):
         self.profundidad += 1
 

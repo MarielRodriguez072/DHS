@@ -125,6 +125,7 @@ listavar : COMA ID listavar
          | COMA ID ASIG exp listavar
          | COMA ID ASIG opal 
          | COMA ID ASIG exp
+         |
          ;
 
 inic : ASIG opal

@@ -7,7 +7,7 @@ from Escucha import Escucha
 #Ir a la carpera donde esta el archivo .g4 y ejecutar antlr4 -Dlanguage=Python3 -visitor compilador.g4 -o .
 
 def main(argv):
-    archivo = "input/entrada.txt"
+    archivo = "input/prueba.txt"
     if len(argv) > 1 :
         archivo = argv[1]
     input = FileStream(archivo)
@@ -17,7 +17,8 @@ def main(argv):
     escucha = Escucha()
     parser.addParseListener(escucha)
     print(escucha)
-    #tree = Parser.programa()
+    tree = parser.declaracion()
+    # tree = Parser.programa()
     #print(tree.toStringTree(recog=parser))
 
 if __name__ == '__main__':

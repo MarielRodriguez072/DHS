@@ -2,13 +2,17 @@ from antlr4 import TerminalNode
 from antlr4 import ErrorNode
 from compiladorParser import compiladorParser
 from compiladorListener import compiladorListener
+from TablaSimbolos import *
 
 class Escucha (compiladorListener) :
     indent = 1
     declaracion = 0
     profundidad = 0
     numNodos = 0
-
+    
+    tabla = TablaSimbolos()
+    
+    prueba = open("input/prueba.txt","r")
 
     def enterPrograma(self, ctx:compiladorParser.ProgramaContext):
         print("Comienza el parsing")
@@ -51,6 +55,13 @@ class Escucha (compiladorListener) :
         print("Declaracion EXIT  -> |" + ctx.getText() + "|")
         print("  -- Cant. hijos = " + str(ctx.getChildCount()))
     
+    def enterBloque(self, ctx:compiladorParser.BloqueContext):
+        '''-> {'''
+        self.tabla.addContex()
+        
+    def exitBloque(self, ctx:compiladorParser.BloqueContext):
+        '''-> }'''
+        self.out.write(str(self.tabla.ts))+"\n"
    
     def enterListavar(self, ctx:compiladorParser.ListavarContext):
         self.profundidad += 1
@@ -72,5 +83,8 @@ class Escucha (compiladorListener) :
         self.numNodos += 1
     
     def __str__(self):
+    
         return "Se hicieron " + str(self.declaracion) + " declaraciones\n" + \
                 "Se visitaron " + str(self.numNodos) + " nodos"
+                
+    prueba.close()

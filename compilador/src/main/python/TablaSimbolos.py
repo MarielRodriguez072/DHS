@@ -68,7 +68,7 @@ class Function(Id):
     # Una fucion debe recibir un nombre, tipo y parametros
     # name -> nombre de la funcion
     # type -> tipo de funcion
-    # parameter -> ARREGLO con VARIABLES que acepta la funcion
+    # parameters -> ARREGLO con VARIABLES que acepta la funcion
     def __init__(self, name, type, parameters):
         super().__init__(name, type)
         self.parameters = parameters

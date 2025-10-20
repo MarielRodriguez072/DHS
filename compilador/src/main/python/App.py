@@ -17,8 +17,8 @@ def main(argv):
     escucha = Escucha()
     parser.addParseListener(escucha)
     print(escucha)
-    tree = parser.declaracion()
-    # tree = Parser.programa()
+    tree = parser.bloque()
+    # tree = parser.programa()
     #print(tree.toStringTree(recog=parser))
 
 if __name__ == '__main__':

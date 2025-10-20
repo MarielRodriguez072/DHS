@@ -47,9 +47,18 @@ class Escucha (compiladorListener) :
         print("  "*self.indent + "Fin while")
 
     def enterDeclaracion(self, ctx:compiladorParser.DeclaracionContext):
+        tipo = ctx.getChild(0).getText()
+        id_nombre = ctx.getChild(1).getText()
+        
+        if self.tabla.buscarPorKey(id_nombre) is not None:
+            print("  -- ERROR: La variable |%s| ya fue declarada anteriormente" % id_nombre)
+        else:
+            nueva_var = Variable(id_nombre, tipo)
+            self.tabla.addVariable(nueva_var)
+            print("  -- Se declaro la variable |%s| de tipo |%s|" % (id_nombre, tipo))
         self.declaracion += 1
-        print("Declaracion ENTER -> |" + ctx.getText() + "|")
-        print("  -- Cant. hijos = " + str(ctx.getChildCount()))
+        #print("Declaracion ENTER -> |" + ctx.getText() + "|")
+        #print("  -- Cant. hijos = " + str(ctx.getChildCount()))
     
     def exitDeclaracion(self, ctx:compiladorParser.DeclaracionContext):
         print("Declaracion EXIT  -> |" + ctx.getText() + "|")
@@ -62,6 +71,7 @@ class Escucha (compiladorListener) :
     def exitBloque(self, ctx:compiladorParser.BloqueContext):
         '''-> }'''
         self.out.write(str(self.tabla.ts))+"\n"
+        self.tabla.removeContex()
    
     def enterListavar(self, ctx:compiladorParser.ListavarContext):
         self.profundidad += 1

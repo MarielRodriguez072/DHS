@@ -60,7 +60,7 @@ class Escucha (compiladorListener) :
         print("buscar por key "+str(self.tabla.buscarPorKey(id_nombre)))
         
         if self.tabla.buscarPorKey(id_nombre) is not False:
-            print("  -- ERROR: La variable |%s| ya fue declarada anteriormente" % id_nombre)
+            print("  -- ERROR SEMANTICO: La variable |%s| ya fue declarada anteriormente" % id_nombre)
         else:
             nueva_var = Variable(id_nombre, tipo)
             self.tabla.addVariable(nueva_var)

@@ -47,7 +47,8 @@ class Escucha (compiladorListener) :
         print("  "*self.indent + "Fin while")
 
     def enterDeclaracion(self, ctx:compiladorParser.DeclaracionContext):
-        tipo = ctx.getChild(0).getText()
+        print(ctx)
+        #tipo = ctx.getChild(0).getText() +''
         id_nombre = ctx.getChild(1).getText()
         
         if self.tabla.buscarPorKey(id_nombre) is not None:

@@ -1,2 +1,4 @@
-{int facundo=0;
-int xxx = 1;}
+{
+        if(a == 1)
+                int x= 0;
+}

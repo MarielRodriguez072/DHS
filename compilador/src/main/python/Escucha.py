@@ -25,9 +25,10 @@ class Escucha (compiladorListener) :
         
     def exitInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
         print("  "*self.indent + "Terminan las instrucciones")
-        
+
     def enterIif(self, ctx:compiladorParser.IifContext):
         print("  "*self.indent + "Comienza if")
+        print("Entramos al if")
         self.indent += 1
         
     def exitIif(self, ctx:compiladorParser.IifContext):
@@ -72,11 +73,13 @@ class Escucha (compiladorListener) :
     def enterBloque(self, ctx:compiladorParser.BloqueContext):
         '''-> {'''
         self.tabla.addContex()
+        print("Nuevo bloque. Tabla de simbolos actual:\n"+ str(self.tabla.ts)+"\n")
         
     def exitBloque(self, ctx:compiladorParser.BloqueContext):
         '''-> }'''
         print(str(self.tabla.ts)+"\n")
         self.tabla.removeContex()
+        print("Fin de bloque. Tabla de simbolos actual:\n"+ str(self.tabla.ts)+"\n")
    
     def enterListavar(self, ctx:compiladorParser.ListavarContext):
         self.profundidad += 1

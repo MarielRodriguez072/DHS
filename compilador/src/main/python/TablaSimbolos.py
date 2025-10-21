@@ -44,7 +44,7 @@ class TablaSimbolos:
         return False
     
     #funcion para buscar y devolver un dato de diccionario
-    def verificarTipoAsignacion(self,nombre):
+    #def verificarTipoAsignacion(self,nombre):
         
 
 

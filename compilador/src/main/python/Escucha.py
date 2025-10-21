@@ -74,10 +74,17 @@ class Escucha (compiladorListener) :
         print("Asignacion ENTER -> |" + ctx.getText() + "|")
         
     def exitAsignacion(self, ctx:compiladorParser.AsignacionContext):
-        if(ctx.getChildCount() == 4): #caso de asignacion simple
+        print("asignacion")
+        if(ctx.getChildCount() == 4): #caso de asignacion con declaracion
+            if(ctx.getChild(0).getText() == 'int' or ctx.getChild(0).getText() == 'doble' and ctx.getChild(2).getText().isdigit()):
+                print("  -- Asignacion correcta")
+            else:
+                print("  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion")
         else:
+            #aca tengo que buscar en mi tabla de simbolos la variable id_nombre y ver su tipo para ver que la asignacion sea correcta
             id_nombre = ctx.getChild(0).getText()
-        if self.tabla.
+            print("viendo la asignacion nashe nashe"+str(self.tabla.returnKey(id_nombre)))
+        
             
 
     def enterBloque(self, ctx:compiladorParser.BloqueContext):

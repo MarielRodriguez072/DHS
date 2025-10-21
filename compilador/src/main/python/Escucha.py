@@ -66,10 +66,20 @@ class Escucha (compiladorListener) :
             self.tabla.addVariable(nueva_var)
             print("  -- Se declaro la variable |%s| de tipo |%s|" % (id_nombre, tipo))
         self.declaracion += 1
+        
+        #para una declaración y una asignacion debemos usar la misma logica en el caso de los errores 
+        # Dentro de la declaración puedo hacer asignaciones y es en la asignacion donde vamos a
+        #ver si el tipo de dato es incomptible int x=i;
+    def enterAsignacion(self, ctx:compiladorParser.AsignacionContext):
+        print("Asignacion ENTER -> |" + ctx.getText() + "|")
+        
+    def exitAsignacion(self, ctx:compiladorParser.AsignacionContext):
+        if(ctx.getChildCount() == 4): #caso de asignacion simple
+        else:
+            id_nombre = ctx.getChild(0).getText()
+        if self.tabla.
+            
 
-        #print("Declaracion EXIT  -> |" + ctx.getText() + "|")
-        #print("  -- Cant. hijos = " + str(ctx.getChildCount()))
-    
     def enterBloque(self, ctx:compiladorParser.BloqueContext):
         '''-> {'''
         self.tabla.addContex()

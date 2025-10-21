@@ -42,6 +42,10 @@ class TablaSimbolos:
             if key in context:
                 return context[key]
         return False
+    
+    #funcion para buscar y devolver un dato de diccionario
+    def verificarTipoAsignacion(self,nombre):
+        
 
 
 class Id:

@@ -18,13 +18,20 @@ class Escucha (compiladorListener) :
         print("Comienza el parsing")
 
     def exitPrograma(self, ctx:compiladorParser.ProgramaContext):
-        print("Fin del parsing")
+        print("Termina el parsing")
+        
 
     def enterInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
         print("  "*self.indent + "Comienzan las instrucciones")
         
     def exitInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
         print("  "*self.indent + "Terminan las instrucciones")
+        for context in self.tabla.ts:
+            for key, value in context.items():
+                print(f"  {key} : {value.type}, inicializado: {value.initialized}, usado: {value.used}, varFunc: {value.varFunc}")
+                if not value.used:
+                    print(f"  -- WARNING SEMANTICO: La variable |{key}| fue declarada pero nunca usada")
+
 
     def enterIif(self, ctx:compiladorParser.IifContext):
         print("  "*self.indent + "Comienza if")
@@ -57,13 +64,14 @@ class Escucha (compiladorListener) :
     
         id_nombre = ctx.getChild(1).getText()
 
+        variable = Id(id_nombre, tipo)
+
         print("buscar por key "+str(self.tabla.buscarPorKey(id_nombre)))
         
         if self.tabla.buscarPorKey(id_nombre) is not False:
             print("  -- ERROR SEMANTICO: La variable |%s| ya fue declarada anteriormente" % id_nombre)
         else:
-            nueva_var = Variable(id_nombre, tipo)
-            self.tabla.addVariable(nueva_var)
+            self.tabla.addVariable(variable)
             print("  -- Se declaro la variable |%s| de tipo |%s|" % (id_nombre, tipo))
         self.declaracion += 1
         
@@ -90,10 +98,9 @@ class Escucha (compiladorListener) :
         else:
             #aca tengo que buscar en mi tabla de simbolos la variable id_nombre y ver su tipo para ver que la asignacion sea correcta
             id_nombre = ctx.getChild(0).getText()
-            print("viendo la asignacion nashe nashe"+str(self.tabla.returnKey(id_nombre)))
+        
         
             
-
     def enterBloque(self, ctx:compiladorParser.BloqueContext):
         '''-> {'''
         self.tabla.addContex()

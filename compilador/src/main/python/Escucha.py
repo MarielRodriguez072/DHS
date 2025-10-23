@@ -74,7 +74,14 @@ class Escucha (compiladorListener) :
         print("Asignacion ENTER -> |" + ctx.getText() + "|")
         
     def exitAsignacion(self, ctx:compiladorParser.AsignacionContext):
+        
         print("asignacion")
+
+        id_nombre = ctx.getChild(0).getText()
+
+        if(self.tabla.buscarPorKey(id_nombre) is False):
+            print("  -- ERROR SEMANTICO: La variable |%s| no fue declarada anteriormente" % id_nombre)
+
         if(ctx.getChildCount() == 4): #caso de asignacion con declaracion
             if(ctx.getChild(0).getText() == 'int' or ctx.getChild(0).getText() == 'doble' and ctx.getChild(2).getText().isdigit()):
                 print("  -- Asignacion correcta")

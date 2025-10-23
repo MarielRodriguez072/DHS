@@ -93,12 +93,19 @@ class Escucha (compiladorListener) :
         if(ctx.getChildCount() == 4): #caso de asignacion con declaracion
             if(ctx.getChild(0).getText() == 'int' or ctx.getChild(0).getText() == 'doble' and ctx.getChild(2).getText().isdigit()):
                 print("  -- Asignacion correcta")
+                
             else:
                 print("  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion")
         else:
             #aca tengo que buscar en mi tabla de simbolos la variable id_nombre y ver su tipo para ver que la asignacion sea correcta
             id_nombre = ctx.getChild(0).getText()
-        
+
+        for context in self.tabla.ts:
+            for key, value in context.items():
+                if key == id_nombre:
+                    print(f"  -- Se asigna un valor a la variable |{key}|")
+                    value.used = True
+                    print(f"  -- La variable |{key}| ahora esta inicializada")
         
             
     def enterBloque(self, ctx:compiladorParser.BloqueContext):

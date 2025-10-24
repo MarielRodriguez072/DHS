@@ -65,7 +65,7 @@ instruccion : asignacion
             | ireturn
             ;
 
-bloque : LLA instrucciones LLC ; 
+bloque : LLA instrucciones LLC ;
 
 ireturn : RETURN opal PYC ;
 
@@ -96,6 +96,7 @@ ifor : FOR PA asignacion comp PYC incremento PC instruccion
 
 //int suma(int a, int b);
 prototipo: tipo ID PA tipo ID argumentos PC PYC;
+
 argumentos : COMA ID argumentos
            | COMA tipo ID
            | tipo ID argumentos

@@ -9,6 +9,8 @@ class Escucha (compiladorListener) :
     declaracion = 0
     profundidad = 0
     numNodos = 0
+
+    visita_a_instrucciones = 0
     
     tabla = TablaSimbolos()
     
@@ -19,19 +21,21 @@ class Escucha (compiladorListener) :
 
     def exitPrograma(self, ctx:compiladorParser.ProgramaContext):
         print("Termina el parsing")
-        
-
-    def enterInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
-        print("  "*self.indent + "Comienzan las instrucciones")
-        
-    def exitInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
-        print("  "*self.indent + "Terminan las instrucciones")
         for context in self.tabla.ts:
             for key, value in context.items():
                 print(f"  {key} : {value.type}, inicializado: {value.initialized}, usado: {value.used}, varFunc: {value.varFunc}")
                 if not value.used:
                     print(f"  -- WARNING SEMANTICO: La variable |{key}| fue declarada pero nunca usada")
 
+        
+
+    def enterInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
+        print("  "*self.indent + "Comienzan las instrucciones")
+        self.visita_a_instrucciones = self.visita_a_instrucciones + 1
+        
+    def exitInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
+        print("  "*self.indent + "Terminan las instrucciones")
+        
 
     def enterIif(self, ctx:compiladorParser.IifContext):
         print("  "*self.indent + "Comienza if")
@@ -57,7 +61,7 @@ class Escucha (compiladorListener) :
     def enterDeclaracion(self, ctx:compiladorParser.DeclaracionContext):
         
         print("Declaracion ENTER -> |" + ctx.getText() + "|")
-        print("  -- Cant. hijos = " + str(ctx.getChildCount()))
+        #print("  -- Cant. hijos = " + str(ctx.getChildCount()))
     
     def exitDeclaracion(self, ctx:compiladorParser.DeclaracionContext):
         tipo = ctx.getChild(0).getText()
@@ -66,7 +70,7 @@ class Escucha (compiladorListener) :
 
         variable = Id(id_nombre, tipo)
 
-        print("buscar por key "+str(self.tabla.buscarPorKey(id_nombre)))
+        #print("buscar por key "+str(self.tabla.buscarPorKey(id_nombre)))
         
         if self.tabla.buscarPorKey(id_nombre) is not False:
             print("  -- ERROR SEMANTICO: La variable |%s| ya fue declarada anteriormente" % id_nombre)
@@ -83,22 +87,27 @@ class Escucha (compiladorListener) :
         
     def exitAsignacion(self, ctx:compiladorParser.AsignacionContext):
         
-        print("asignacion")
+        #print("asignacion")
 
         id_nombre = ctx.getChild(0).getText()
+        dato = ctx.getChild(2).getText()
 
-        if(self.tabla.buscarPorKey(id_nombre) is False):
-            print("  -- ERROR SEMANTICO: La variable |%s| no fue declarada anteriormente" % id_nombre)
+        if not dato.isdigit():
+            print("  -- ERROR SEMANTICO: El valor asignado a la variable |%s| no es del tipo esperado" % id_nombre)
 
-        if(ctx.getChildCount() == 4): #caso de asignacion con declaracion
-            if(ctx.getChild(0).getText() == 'int' or ctx.getChild(0).getText() == 'doble' and ctx.getChild(2).getText().isdigit()):
-                print("  -- Asignacion correcta")
+
+        #if(self.tabla.buscarPorKey(id_nombre) is False):
+        #    print("  -- ERROR SEMANTICO: La variable |%s| no fue declarada anteriormente" % id_nombre)
+
+        #if(ctx.getChildCount() == 4): #caso de asignacion con declaracion
+         #   if(ctx.getChild(0).getText() == 'int' or ctx.getChild(0).getText() == 'doble' and ctx.getChild(2).getText().isdigit()):
+          #      print("  -- Asignacion correcta")
                 
-            else:
-                print("  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion")
-        else:
+           # else:
+            #    print("  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion")
+        #else:
             #aca tengo que buscar en mi tabla de simbolos la variable id_nombre y ver su tipo para ver que la asignacion sea correcta
-            id_nombre = ctx.getChild(0).getText()
+         #   id_nombre = ctx.getChild(0).getText()
 
         for context in self.tabla.ts:
             for key, value in context.items():
@@ -111,13 +120,13 @@ class Escucha (compiladorListener) :
     def enterBloque(self, ctx:compiladorParser.BloqueContext):
         '''-> {'''
         self.tabla.addContex()
-        print("Nuevo bloque. Tabla de simbolos actual:\n"+ str(self.tabla.ts)+"\n")
+        print("Nuevo bloque. \n")
         
     def exitBloque(self, ctx:compiladorParser.BloqueContext):
         '''-> }'''
-        print(str(self.tabla.ts)+"\n")
+        #print(str(self.tabla.ts)+"\n")
         self.tabla.removeContex()
-        print("Fin de bloque. Tabla de simbolos actual:\n"+ str(self.tabla.ts)+"\n")
+        print("Fin de bloque" +"\n")
    
     def enterListavar(self, ctx:compiladorParser.ListavarContext):
         self.profundidad += 1
@@ -139,6 +148,8 @@ class Escucha (compiladorListener) :
         self.numNodos += 1
     
     def __str__(self):
+
+        print("Visitas a instrucciones: " + str(self.visita_a_instrucciones))
     
         return "Se hicieron " + str(self.declaracion) + " declaraciones\n" + \
                 "Se visitaron " + str(self.numNodos) + " nodos"

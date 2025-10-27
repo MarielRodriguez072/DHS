@@ -16,9 +16,9 @@ def main(argv):
     parser = compiladorParser(stream)
     escucha = Escucha()
     parser.addParseListener(escucha)
+    #tree = parser.bloque()
+    tree = parser.programa()
     print(escucha)
-    tree = parser.bloque()
-    # tree = parser.programa()
     #print(tree.toStringTree(recog=parser))
 
 if __name__ == '__main__':

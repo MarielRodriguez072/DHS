@@ -9,6 +9,7 @@ class Escucha (compiladorListener) :
     declaracion = 0
     profundidad = 0
     numNodos = 0
+    asignacion =0
 
     visita_a_instrucciones = 0
     
@@ -26,7 +27,7 @@ class Escucha (compiladorListener) :
                 print(f"  {key} : {value.type}, inicializado: {value.initialized}, usado: {value.used}, varFunc: {value.varFunc}")
                 if not value.used:
                     print(f"  -- WARNING SEMANTICO: La variable |{key}| fue declarada pero nunca usada")
-
+        
         
 
     def enterInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
@@ -143,9 +144,8 @@ class Escucha (compiladorListener) :
         # self.numTokens += 1
     
     def visitErrorNode(self, node: ErrorNode):
-        #print(" ---> ERROR ")
-        print(super().visitErrorNode(node))
-        return 
+        print(" ---> ERROR ")
+        
         
     def enterEveryRule(self, ctx):
         self.numNodos += 1

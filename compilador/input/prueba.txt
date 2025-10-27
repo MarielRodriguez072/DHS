@@ -1,5 +1,4 @@
 {    int x;
-    if()}
     x=3;    
     int dato;
     int man=0;

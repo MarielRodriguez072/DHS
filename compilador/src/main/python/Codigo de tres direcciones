@@ -27,9 +27,20 @@ t2 = t1 - 2 //Se va respetando el orden de las operaciones aritméticas.
 x = t2 //el optimizador va a borrar lo que no sirve pero nosotros sí vamos a dejarlo por las dudas, que sea generico
 
 Ejemplo 2
-x = (y + 2) * (z -2)
+x = (y + 2) * (z -2);
 
 t0 = y + 2
 t1 = z-2
 t2 t0 * t1
 x = t2
+
+Ejemplo:
+if ((x>10) && (y<5) || (z==0)) <...>
+
+t0 = x>10
+t1 = y < 5
+t2 = t0 && t1
+t3 = z==0
+t4 = t2 || t3
+if t4 <...>
+Pensar en como desarmar las operaciones para siempre tratar de tener 3 direcciones

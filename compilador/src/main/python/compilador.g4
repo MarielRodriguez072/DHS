@@ -80,6 +80,7 @@ iif : IF PA opal PC instrucciones ielse
     | IF PA opal PC bloque ielse
     | IF PA comp PC instrucciones //por si no viene un else
     | IF PA opal PC instrucciones //por si no viene un else
+    | IF PA  PC bloque 
     ;
 
 ielse: ELSE instruccion //puede venir una instrucicion que es un bloque 

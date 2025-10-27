@@ -1,0 +1,35 @@
+Código de Tres Direcciones
+
+Operación Básica
+
+    x = y op z
+
+El generador de cod intermedio tiene que traducir el cod fuente al codigo de tres direcciones
+
+Alternativas:
+x = y 
+x = cte
+jmp L //salto a una etiqueta
+if x jmp L
+Para pasar argumentos tengo la pila:
+push x
+pop x
+
+Funciones auxiliares:
+a) Generador de nombres de variables temporales
+-------
+Ejemplo 1
+x = y + 2 * z -2; //transformar a cod de 3 direcciones. Voy a neecesitar usar variables temporales por la naturaleza de como está definido
+
+t0 = 2 * z
+t1 = y + t0 
+t2 = t1 - 2 //Se va respetando el orden de las operaciones aritméticas.
+x = t2 //el optimizador va a borrar lo que no sirve pero nosotros sí vamos a dejarlo por las dudas, que sea generico
+
+Ejemplo 2
+x = (y + 2) * (z -2)
+
+t0 = y + 2
+t1 = z-2
+t2 t0 * t1
+x = t2

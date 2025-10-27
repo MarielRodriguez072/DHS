@@ -35,6 +35,7 @@ class Escucha (compiladorListener) :
         
     def exitInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
         print("  "*self.indent + "Terminan las instrucciones")
+        print("instrucciones EXIT -> |" + ctx.getText() + "|")
         
 
     def enterIif(self, ctx:compiladorParser.IifContext):
@@ -142,7 +143,9 @@ class Escucha (compiladorListener) :
         # self.numTokens += 1
     
     def visitErrorNode(self, node: ErrorNode):
-        print(" ---> ERROR")
+        #print(" ---> ERROR ")
+        print(super().visitErrorNode(node))
+        return 
         
     def enterEveryRule(self, ctx):
         self.numNodos += 1

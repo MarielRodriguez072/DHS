@@ -71,8 +71,8 @@ ireturn : RETURN opal PYC ;
 
 incremento: INCDEC ID | ID INCDEC;
 
-iwhile : WHILE PA comp PC instruccion | bloque
-       | WHILE PA opal PC instruccion | bloque
+iwhile : WHILE PA comp PC (instruccion | bloque)
+       | WHILE PA opal PC (instruccion | bloque)
        ;
 
 iif : IF PA opal PC instrucciones ielse

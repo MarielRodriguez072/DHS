@@ -82,6 +82,30 @@ class Escucha (compiladorListener) :
             self.tabla.addVariable(variable)
             print("  -- Se declaro la variable |%s| de tipo |%s|" % (id_nombre, tipo))
         self.declaracion += 1
+
+        #Asignacion con declaracion
+        if(ctx.getChildCount() == 6):
+            dato = ctx.getChild(3).getText()
+
+            if not dato.isdigit():
+                if dato.count('.') > 1:
+                    print("  -- ERROR SEMANTICO: El valor asignado a la variable |%s| no es del tipo esperado" % id_nombre)
+                    return
+
+            for context in self.tabla.ts:
+                for key, value in context.items():
+                    if key == id_nombre:
+                        if value.type == 'double' and "." not in dato:
+                            print("  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion a la variable |%s|" % id_nombre)
+                            return
+                        elif value.type == 'int' and "." in dato:
+                            print("  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion a la variable |%s|" % id_nombre)
+                            return
+
+                        print(f"  -- Se asigna un valor a la variable |{key}|")
+                        value.used = True
+                        value.initialized = True
+                        print(f"  -- La variable |{key}| ahora esta inicializada")
         
         #para una declaración y una asignacion debemos usar la misma logica en el caso de los errores 
         # Dentro de la declaración puedo hacer asignaciones y es en la asignacion donde vamos a

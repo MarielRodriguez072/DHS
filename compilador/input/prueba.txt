@@ -1,1 +1,1 @@
-int man = 1.5;
+double man = 1.5;

@@ -11,8 +11,7 @@ class Escucha (compiladorListener) :
     numNodos = 0
     asignacion =0
 
-    visita_a_instrucciones = 0
-    
+       
     tabla = TablaSimbolos()
     
     prueba = open("input/prueba.txt","r")
@@ -32,7 +31,6 @@ class Escucha (compiladorListener) :
 
     def enterInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
         print("  "*self.indent + "Comienzan las instrucciones")
-        self.visita_a_instrucciones = self.visita_a_instrucciones + 1
         
     def exitInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
         print("  "*self.indent + "Terminan las instrucciones")
@@ -72,6 +70,10 @@ class Escucha (compiladorListener) :
 
         variable = Id(id_nombre, tipo)
 
+        if(tipo != 'int' and tipo != 'double'):
+            print("  -- ERROR SEMANTICO: Tipo de dato |%s| no reconocido" % tipo)
+            return
+
         #print("buscar por key "+str(self.tabla.buscarPorKey(id_nombre)))
         
         if self.tabla.buscarPorKey(id_nombre) is not False:
@@ -86,39 +88,51 @@ class Escucha (compiladorListener) :
         #ver si el tipo de dato es incomptible int x=i;
     def enterAsignacion(self, ctx:compiladorParser.AsignacionContext):
         print("Asignacion ENTER -> |" + ctx.getText() + "|")
-        
+    
     def exitAsignacion(self, ctx:compiladorParser.AsignacionContext):
         
-        #print("asignacion")
+        print("Estoy en asignacion viendo cosas...")
 
         id_nombre = ctx.getChild(0).getText()
         dato = ctx.getChild(2).getText()
 
         if not dato.isdigit():
-            print("  -- ERROR SEMANTICO: El valor asignado a la variable |%s| no es del tipo esperado" % id_nombre)
+            if dato.count('.') > 1:
+                print("  -- ERROR SEMANTICO: El valor asignado a la variable |%s| no es del tipo esperado" % id_nombre)
+        
 
+
+        #if(float(dato) - int(dato) == 0):
+         #   print("  -- El valor asignado es un entero")
 
         #if(self.tabla.buscarPorKey(id_nombre) is False):
         #    print("  -- ERROR SEMANTICO: La variable |%s| no fue declarada anteriormente" % id_nombre)
-
+#
         #if(ctx.getChildCount() == 4): #caso de asignacion con declaracion
-         #   if(ctx.getChild(0).getText() == 'int' or ctx.getChild(0).getText() == 'doble' and ctx.getChild(2).getText().isdigit()):
-          #      print("  -- Asignacion correcta")
-                
-           # else:
-            #    print("  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion")
+        #    if(ctx.getChild(0).getText() == 'int' and ctx.getChild(0).getText() == 'double' or ctx.getChild(2).getText().isdigit()):
+        #        print("  -- Asignacion correcta")  
+        #    else:
+        #        print("  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion")
         #else:
-            #aca tengo que buscar en mi tabla de simbolos la variable id_nombre y ver su tipo para ver que la asignacion sea correcta
-         #   id_nombre = ctx.getChild(0).getText()
+        #    #aca tengo que buscar en mi tabla de simbolos la variable id_nombre y ver su tipo para ver que la asignacion sea correcta
+        #    id_nombre = ctx.getChild(0).getText()
 
         for context in self.tabla.ts:
             for key, value in context.items():
                 if key == id_nombre:
+                    if value.type == 'double' and "." not in dato:
+                        print("  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion a la variable |%s|" % id_nombre)
+                        return
+                    elif value.type == 'int' and "." in dato:
+                        print("  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion a la variable |%s|" % id_nombre)
+                        return
+
                     print(f"  -- Se asigna un valor a la variable |{key}|")
                     value.used = True
+                    value.initialized = True
                     print(f"  -- La variable |{key}| ahora esta inicializada")
         
-            
+    
     def enterBloque(self, ctx:compiladorParser.BloqueContext):
         '''-> {'''
         self.tabla.addContex()
@@ -152,8 +166,6 @@ class Escucha (compiladorListener) :
     
     def __str__(self):
 
-        print("Visitas a instrucciones: " + str(self.visita_a_instrucciones))
-    
         return "Se hicieron " + str(self.declaracion) + " declaraciones\n" + \
                 "Se visitaron " + str(self.numNodos) + " nodos"
                 

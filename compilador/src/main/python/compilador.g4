@@ -18,6 +18,7 @@ MULT : '*' ;
 DIV : '/' ;
 MOD : '%' ;
 
+FLOTANTE : DIGITO+ '.' DIGITO+ ;
 NUMERO : DIGITO+ ;
 
 //funciones y tipos de datos
@@ -143,6 +144,7 @@ asignacion : ID ASIG opal PYC
            ;
 
 opal : NUMERO
+     | FLOTANTE
      | ID
      | exp
      ;
@@ -167,6 +169,7 @@ t : MULT factor t
   ;
 
 factor : NUMERO
+       | FLOTANTE
        | ID
        | funcion
        | PA exp PC

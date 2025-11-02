@@ -82,30 +82,43 @@ class Escucha (compiladorListener) :
             self.tabla.addVariable(variable)
             print("  -- Se declaro la variable |%s| de tipo |%s|" % (id_nombre, tipo))
         self.declaracion += 1
-
-        #Asignacion con declaracion
-        if(ctx.getChildCount() == 6):
+        
+        if ctx.listavar():
+            self.procesamientoListaVar(ctx.listavar(),tipo)
+        if ctx.getChildCount() == 6:
             dato = ctx.getChild(3).getText()
-
-            if not dato.isdigit():
-                if dato.count('.') > 1:
-                    print("  -- ERROR SEMANTICO: El valor asignado a la variable |%s| no es del tipo esperado" % id_nombre)
-                    return
-
-            for context in self.tabla.ts:
-                for key, value in context.items():
-                    if key == id_nombre:
-                        if value.type == 'double' and "." not in dato:
-                            print("  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion a la variable |%s|" % id_nombre)
-                            return
-                        elif value.type == 'int' and "." in dato:
-                            print("  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion a la variable |%s|" % id_nombre)
-                            return
-
-                        print(f"  -- Se asigna un valor a la variable |{key}|")
-                        value.used = True
-                        value.initialized = True
-                        print(f"  -- La variable |{key}| ahora esta inicializada")
+            #self.validar_asignacion(id_nombre, dato, tipo)
+    
+    def procesamientoListaVar(self, ctx, tipo):
+        if ctx is None:
+            return
+        #Esto en teoria debería tomar la parte que le sigue a la lista de variables
+        #osea ver los hijos ", y =  numero"
+        if ctx.getChildCount() >=2:
+            id_nombre = ctx.getChild(1).getText()
+            inicializado = False
+            dato = None
+            if ctx.getChildCount() > 2 and ctx.getChild(2).getText() == '=':
+                inicializado = True
+                dato = ctx.getChild(3).getText()
+                
+            variable = Id(id_nombre, tipo)
+            
+            if self.tabla.buscarPorKey(id_nombre) is not False:
+                print("  -- ERROR SEMANTICO: La variable |%s| ya fue declarada anteriormente" % id_nombre)
+            else:
+                self.tabla.addVariable(variable)
+                print("  -- Se declaro la variable |%s| de tipo |%s|" % (id_nombre, tipo))
+            
+            if inicializado:
+                print("  -- Se inicializa la variable |%s| con el valor |%s|" % (id_nombre, dato))
+                variable.initialized = True
+                variable.used = True
+                print(f"  -- La variable |{id_nombre}| ahora esta inicializada")
+                
+        #Recursividad para seguir procesando la lista
+        if ctx.listavar():
+            self.procesamientoListaVar(ctx.listavar(), tipo)
         
         #para una declaración y una asignacion debemos usar la misma logica en el caso de los errores 
         # Dentro de la declaración puedo hacer asignaciones y es en la asignacion donde vamos a

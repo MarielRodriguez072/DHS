@@ -159,9 +159,7 @@ class Escucha (compiladorListener) :
 
     def exitListavar(self, ctx:compiladorParser.ListavarContext):
         print("  -- ListaVar(%d) Cant. hijos  = %d" % (self.profundidad, ctx.getChildCount()))
-        self.profundidad -= 1
-        if ctx.getChildCount() == 4 :
-            print("      hoja ID --> |%s|" % ctx.getChild(1).getText())
+        self.profundidad -= 1 
 
     # def visitTerminal(self, node: TerminalNode):
     #     print(" ---> Token: " + node.getText())

@@ -123,23 +123,9 @@ class Escucha (compiladorListener) :
         if not dato.isdigit():
             if dato.count('.') > 1:
                 print("  -- ERROR SEMANTICO: El valor asignado a la variable |%s| no es del tipo esperado" % id_nombre)
-        
-
-
-        #if(float(dato) - int(dato) == 0):
-         #   print("  -- El valor asignado es un entero")
-
-        #if(self.tabla.buscarPorKey(id_nombre) is False):
-        #    print("  -- ERROR SEMANTICO: La variable |%s| no fue declarada anteriormente" % id_nombre)
-#
-        #if(ctx.getChildCount() == 4): #caso de asignacion con declaracion
-        #    if(ctx.getChild(0).getText() == 'int' and ctx.getChild(0).getText() == 'double' or ctx.getChild(2).getText().isdigit()):
-        #        print("  -- Asignacion correcta")  
-        #    else:
-        #        print("  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion")
-        #else:
-        #    #aca tengo que buscar en mi tabla de simbolos la variable id_nombre y ver su tipo para ver que la asignacion sea correcta
-        #    id_nombre = ctx.getChild(0).getText()
+         
+        if(self.tabla.buscarPorKey(id_nombre) is False):
+            print("  -- ERROR SEMANTICO: La variable |%s| no fue declarada anteriormente" % id_nombre)
 
         for context in self.tabla.ts:
             for key, value in context.items():

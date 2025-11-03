@@ -1,4 +1,4 @@
-Código de Tres Direcciones
+Etapa de código intermedio se hace con los visitors:Código de (hasta) Tres Direcciones
 
 Operación Básica
 
@@ -102,3 +102,34 @@ pop y
 t1 = y + z
 push t1
 jmp t0
+
+3-11-25 Optimización de código intermedio
+Muchas veces optimizar el codigo es mas costoso que comprar hw caro. (Las horas de ingeniería es más caro)
+Hay que evaluar los costos de ingeniería vs los beneficios de optimización. Poner acciones claras
+1)Propagación de constantes
+2)Eliminación de acciones repetidas
+Si el programa tiene muchos cálculos si conviene la optimización, porque es la matematica
+Ejemplo: bascara modificado
+x1 = (-b + b * b - 4 * a * c) / (2 * a)
+x2 = ()
+//primera parte
+t0 = b * b
+t1 = 4 * a
+t2 = t1 * c
+t3 = t0 - t2
+t4 = -1 * b
+t5 = t4 + t3
+t6 = 2 * a 
+t7 = t5 / t6
+x1 = t7
+t8 = b * b //repetida puedo cambiarla por t0 para optimizar como acceesos a memoria 
+t9 = 4 * a //repetida puedo cambiarla por t1 para optimizar
+
+Pasadas de optimización, las diferentes  pasadas no pueden romper el comportamiento original, entoneces
+tener cuidado con eso. La primera pasada del ejemplo te ahorras 4 operaciones, fue muys sencilla la primer pasada
+De los reemplazos en la segunda pasadas podes seguir remplazando, porque suergieron nuevas repeticiones
+
+    Propagación de constantes
+Los cambios que no se usan se pueden eliminar. 
+Si hay error sintáctico o semantico se tiene que detener el programa. SI no hay errores se arma el arbol
+Profe quiere que guardemos los pasos intermedios de la optimización.

@@ -28,7 +28,6 @@ class Escucha (compiladorListener) :
                     print(f"  -- WARNING SEMANTICO: La variable |{key}| fue declarada pero nunca usada")
         
         
-
     def enterInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
         print("  "*self.indent + "Comienzan las instrucciones")
         

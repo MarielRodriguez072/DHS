@@ -1,4 +1,4 @@
-# Generated from /home/hachi/Documents/DHS/compilador/src/main/python/compilador.g4 by ANTLR 4.13.1
+# Generated from /home/faq/Documentos/iua/dhs/DHS/compilador/src/main/python/compilador.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .compiladorParser import compiladorParser
@@ -29,6 +29,11 @@ class compiladorVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by compiladorParser#cuerpo.
+    def visitCuerpo(self, ctx:compiladorParser.CuerpoContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by compiladorParser#ireturn.
     def visitIreturn(self, ctx:compiladorParser.IreturnContext):
         return self.visitChildren(ctx)
@@ -51,6 +56,21 @@ class compiladorVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by compiladorParser#ielse.
     def visitIelse(self, ctx:compiladorParser.IelseContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladorParser#incioFor.
+    def visitIncioFor(self, ctx:compiladorParser.IncioForContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladorParser#condicionFor.
+    def visitCondicionFor(self, ctx:compiladorParser.CondicionForContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladorParser#incrementoFor.
+    def visitIncrementoFor(self, ctx:compiladorParser.IncrementoForContext):
         return self.visitChildren(ctx)
 
 
@@ -146,6 +166,11 @@ class compiladorVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by compiladorParser#factor.
     def visitFactor(self, ctx:compiladorParser.FactorContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladorParser#condicion.
+    def visitCondicion(self, ctx:compiladorParser.CondicionContext):
         return self.visitChildren(ctx)
 
 

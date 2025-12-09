@@ -68,32 +68,39 @@ instruccion : asignacion
 
 bloque : LLA instrucciones LLC ;
 
+cuerpo : instrucciones
+       | bloque
+       ;
+
 ireturn : RETURN opal PYC ;
 
 incremento: INCDEC ID | ID INCDEC;
 
-iwhile : WHILE PA comp PC (instruccion | bloque)
-       | WHILE PA opal PC (instruccion | bloque)
+iwhile : WHILE PA condicion PC cuerpo
        ;
 
-iif : IF PA opal PC instrucciones ielse
-    | IF PA comp PC instrucciones ielse
-    | IF PA opal PC bloque ielse
-    | IF PA comp PC instrucciones //por si no viene un else
-    | IF PA opal PC instrucciones //por si no viene un else
-    | IF PA  PC bloque 
+iif : IF PA condicion PC cuerpo ielse
     ;
 
-ielse: ELSE instruccion //puede venir una instrucicion que es un bloque 
+ielse: ELSE cuerpo //puede venir una instrucicion que es un bloque 
      |
      ;
 
+incioFor: asignacion
+         | declaracion
+         |
+         ;
+
+condicionFor: condicion
+            |
+            ;
+
+incrementoFor: incremento
+              |
+              ;
+
 //agregar todas las opciones aceptadas por el for 
-ifor : FOR PA asignacion comp PYC incremento PC instruccion
-     | FOR PA asignacion comp PYC incremento PC
-     | FOR PA PYC PYC PC
-     | FOR PA tipo asignacion comp PYC incremento PC instruccion
-     | FOR PA tipo asignacion comp PYC incremento PC
+ifor : FOR PA incioFor PYC condicionFor PYC incrementoFor PC cuerpo
      ;
 
 //int suma(int a, int b);
@@ -175,3 +182,7 @@ factor : NUMERO
        | PA exp PC
        ;
 
+condicion: opal
+           | comp
+           |
+           ;

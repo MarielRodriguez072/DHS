@@ -1,4 +1,4 @@
-# Generated from /home/hachi/Documents/DHS/compilador/src/main/python/compilador.g4 by ANTLR 4.13.1
+# Generated from /home/faq/Documentos/iua/dhs/DHS/compilador/src/main/python/compilador.g4 by ANTLR 4.13.1
 from antlr4 import *
 from io import StringIO
 import sys

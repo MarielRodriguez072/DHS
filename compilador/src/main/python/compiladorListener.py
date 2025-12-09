@@ -1,4 +1,4 @@
-# Generated from /home/hachi/Documents/DHS/compilador/src/main/python/compilador.g4 by ANTLR 4.13.1
+# Generated from /home/faq/Documentos/iua/dhs/DHS/compilador/src/main/python/compilador.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .compiladorParser import compiladorParser
@@ -44,6 +44,15 @@ class compiladorListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by compiladorParser#cuerpo.
+    def enterCuerpo(self, ctx:compiladorParser.CuerpoContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#cuerpo.
+    def exitCuerpo(self, ctx:compiladorParser.CuerpoContext):
+        pass
+
+
     # Enter a parse tree produced by compiladorParser#ireturn.
     def enterIreturn(self, ctx:compiladorParser.IreturnContext):
         pass
@@ -86,6 +95,33 @@ class compiladorListener(ParseTreeListener):
 
     # Exit a parse tree produced by compiladorParser#ielse.
     def exitIelse(self, ctx:compiladorParser.IelseContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladorParser#incioFor.
+    def enterIncioFor(self, ctx:compiladorParser.IncioForContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#incioFor.
+    def exitIncioFor(self, ctx:compiladorParser.IncioForContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladorParser#condicionFor.
+    def enterCondicionFor(self, ctx:compiladorParser.CondicionForContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#condicionFor.
+    def exitCondicionFor(self, ctx:compiladorParser.CondicionForContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladorParser#incrementoFor.
+    def enterIncrementoFor(self, ctx:compiladorParser.IncrementoForContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#incrementoFor.
+    def exitIncrementoFor(self, ctx:compiladorParser.IncrementoForContext):
         pass
 
 
@@ -257,6 +293,15 @@ class compiladorListener(ParseTreeListener):
 
     # Exit a parse tree produced by compiladorParser#factor.
     def exitFactor(self, ctx:compiladorParser.FactorContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladorParser#condicion.
+    def enterCondicion(self, ctx:compiladorParser.CondicionContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#condicion.
+    def exitCondicion(self, ctx:compiladorParser.CondicionContext):
         pass
 
 

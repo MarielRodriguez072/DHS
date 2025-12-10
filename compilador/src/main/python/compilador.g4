@@ -38,17 +38,6 @@ ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
 WS : [ \n\r\t] -> skip ;
 OTRO : . ;
 
-//lo dejo por las dudas
-// s : ID     {print("ID ->" + $ID.text + "<--") }         s
-//   | NUMERO {print("NUMERO ->" + $NUMERO.text + "<--") } s
-//   | OTRO   {print("Otro ->" + $OTRO.text + "<--") }     s
-//   | EOF
-//   ;
-
-// s : PA s PC s
-//   |
-//   ;
-
 programa : instrucciones EOF ;
 
 instrucciones : instruccion instrucciones
@@ -82,7 +71,7 @@ iwhile : WHILE PA condicion PC cuerpo
 iif : IF PA condicion PC cuerpo ielse
     ;
 
-ielse: ELSE cuerpo //puede venir una instrucicion que es un bloque 
+ielse: ELSE cuerpo
      |
      ;
 
@@ -99,11 +88,9 @@ incrementoFor: incremento
               |
               ;
 
-//agregar todas las opciones aceptadas por el for 
 ifor : FOR PA incioFor PYC condicionFor PYC incrementoFor PC cuerpo
      ;
 
-//int suma(int a, int b);
 prototipo: tipo ID PA tipo ID argumentos PC PYC;
 
 argumentos : COMA ID argumentos
@@ -120,7 +107,6 @@ funcion: tipo ID PA argumentos PC LLA instrucciones ireturn PYC LLC
        | tipo ID PA argumentos PC bloque PYC
        ;
 
-//llamada a las funciones
 llamada : ID PA argLlamada PC PYC ;
 
 declaracion : tipo ID listavar PYC 

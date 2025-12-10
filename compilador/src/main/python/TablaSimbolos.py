@@ -42,9 +42,6 @@ class TablaSimbolos:
             if key in context:
                 return context[key]
         return False
-    
-        
-
 
 class Id:
     # Una ID debe tener un nombre y un tipo
@@ -55,7 +52,7 @@ class Id:
         self.type = type
         self.initialized = False
         self.used = False
-        self.varFunc = "variable" 
+        self.varFunc = None 
         
     def toString(self):
         return f'(name->{self.name},type->{self.type},init->{self.initialized},used->{self.used},varFun->{self.varFunc})'

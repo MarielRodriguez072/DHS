@@ -60,7 +60,6 @@ class Escucha (compiladorListener) :
     def enterDeclaracion(self, ctx:compiladorParser.DeclaracionContext):
         
         print("Declaracion ENTER -> |" + ctx.getText() + "|")
-        #print("  -- Cant. hijos = " + str(ctx.getChildCount()))
     
     def exitDeclaracion(self, ctx:compiladorParser.DeclaracionContext):
         tipo = ctx.getChild(0).getText()

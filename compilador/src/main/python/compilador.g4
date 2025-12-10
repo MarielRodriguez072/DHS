@@ -17,6 +17,8 @@ RESTA : '-';
 MULT : '*' ;
 DIV : '/' ;
 MOD : '%' ;
+INC : '++';
+DEC : '--' ;
 
 FLOTANTE : DIGITO+ '.' DIGITO+ ;
 NUMERO : DIGITO+ ;
@@ -28,7 +30,6 @@ IF : 'if' ;
 ELSE : 'else' ;
 FOR : 'for' ;
 WHILE : 'while' ;
-INCDEC : ('++'| '--' );
 RETURN : 'return' ; 
 
 //para los nombres de las variables
@@ -63,7 +64,9 @@ cuerpo : instrucciones
 
 ireturn : RETURN opal PYC ;
 
-incremento: INCDEC ID | ID INCDEC;
+incdec: INC ID | ID INC
+          | DEC ID | ID DEC
+          ;
 
 iwhile : WHILE PA condicion PC cuerpo
        ;
@@ -84,7 +87,7 @@ condicionFor: condicion
             |
             ;
 
-incrementoFor: incremento
+incrementoFor: incdec
               |
               ;
 

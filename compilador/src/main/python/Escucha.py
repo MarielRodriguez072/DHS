@@ -74,7 +74,7 @@ class Escucha (compiladorListener) :
             return
 
         #print("buscar por key "+str(self.tabla.buscarPorKey(id_nombre)))
-        
+        # TODO revisar si la variable ya fue declarada en la tabla de simbolos
         if self.tabla.buscarPorKey(id_nombre) is not False:
             print("  -- ERROR SEMANTICO: La variable |%s| ya fue declarada anteriormente" % id_nombre)
         else:
@@ -169,6 +169,9 @@ class Escucha (compiladorListener) :
     def enterListavar(self, ctx:compiladorParser.ListavarContext):
         self.profundidad += 1
 
+    
+    # TODO revisar if y los ctx
+    
     def exitListavar(self, ctx:compiladorParser.ListavarContext):
         print("  -- ListaVar(%d) Cant. hijos  = %d" % (self.profundidad, ctx.getChildCount()))
         self.profundidad -= 1 

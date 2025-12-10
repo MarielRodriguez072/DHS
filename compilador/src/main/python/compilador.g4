@@ -38,17 +38,6 @@ ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
 WS : [ \n\r\t] -> skip ;
 OTRO : . ;
 
-//lo dejo por las dudas
-// s : ID     {print("ID ->" + $ID.text + "<--") }         s
-//   | NUMERO {print("NUMERO ->" + $NUMERO.text + "<--") } s
-//   | OTRO   {print("Otro ->" + $OTRO.text + "<--") }     s
-//   | EOF
-//   ;
-
-// s : PA s PC s
-//   |
-//   ;
-
 programa : instrucciones EOF ;
 
 instrucciones : instruccion instrucciones

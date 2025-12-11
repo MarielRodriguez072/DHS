@@ -2,7 +2,7 @@ from antlr4 import TerminalNode
 from antlr4 import ErrorNode
 from compiladorParser import compiladorParser
 from compiladorListener import compiladorListener
-from TablaSimbolos import *
+import TablaSimbolos
 
 class Escucha (compiladorListener) :
     indent = 1
@@ -10,17 +10,21 @@ class Escucha (compiladorListener) :
     profundidad = 0
     numNodos = 0
     asignacion =0
-
        
-    tabla = TablaSimbolos()
-    
-    prueba = open("input/prueba.txt","r")
+    tabla = TablaSimbolos.TablaSimbolos()
 
     def enterPrograma(self, ctx:compiladorParser.ProgramaContext):
         print("Comienza el parsing")
 
     def exitPrograma(self, ctx:compiladorParser.ProgramaContext):
         print("Termina el parsing")
+        tabla = TablaSimbolos.TablaSimbolos()
+        
+        with open("tabla.txt", "w", encoding='utf-8') as f:
+            print("Exportando tabla de simbolos a archivo tabla.txt")
+            f.write("TABLA DE SIMBOLOS COMPLETA:\n\n")
+            tabla.exportarTabla(f)
+
         for context in self.tabla.ts:
             for key, value in context.items():
                 print(f"  {key} : {value.type}, inicializado: {value.initialized}, usado: {value.used}, varFunc: {value.varFunc}")
@@ -48,6 +52,27 @@ class Escucha (compiladorListener) :
     def enterPrototipo(self, ctx:compiladorParser.PrototipoContext):
         print("  "*self.indent + "Comienza prototipo")
         self.indent += 1
+
+    def enterFuncion(self, ctx:compiladorParser.FuncionContext):
+        print("Entrando a funcion \n")
+    
+    def exitFuncion(self, ctx:compiladorParser.FuncionContext):
+        tipo = ctx.getChild(0).getText()
+    
+        id_nombre = ctx.getChild(1).getText()
+
+        funcion = TablaSimbolos.Id(id_nombre, tipo)
+
+        if(tipo != 'int' and tipo != 'double'):
+            print("  -- ERROR SEMANTICO: Tipo de dato |%s| no reconocido" % tipo)
+            return
+
+        if self.tabla.buscarPorKey(id_nombre) is not False:
+            print("  -- ERROR SEMANTICO: La funcion |%s| ya fue declarada anteriormente" % id_nombre)
+        else:
+            self.tabla.addFunction(funcion)
+            print("  -- Se declaro la funcion |%s| de tipo |%s|" % (id_nombre, tipo))
+        self.declaracion += 1
     
     def enterIwhile(self, ctx:compiladorParser.IwhileContext):
         print("  "*self.indent + "Comienza while")
@@ -66,7 +91,7 @@ class Escucha (compiladorListener) :
     
         id_nombre = ctx.getChild(1).getText()
 
-        variable = Id(id_nombre, tipo)
+        variable = TablaSimbolos.Id(id_nombre, tipo)
 
         if(tipo != 'int' and tipo != 'double'):
             print("  -- ERROR SEMANTICO: Tipo de dato |%s| no reconocido" % tipo)
@@ -100,7 +125,7 @@ class Escucha (compiladorListener) :
                 inicializado = True
                 dato = ctx.getChild(3).getText()
                 
-            variable = Id(id_nombre, tipo)
+            variable = TablaSimbolos.Id(id_nombre, tipo)
             
             if self.tabla.buscarPorKey(id_nombre) is not False:
                 print("  -- ERROR SEMANTICO: La variable |%s| ya fue declarada anteriormente" % id_nombre)
@@ -158,13 +183,20 @@ class Escucha (compiladorListener) :
         '''-> {'''
         self.tabla.addContex()
         print("Nuevo bloque. \n")
-        
+    '''
     def exitBloque(self, ctx:compiladorParser.BloqueContext):
-        '''-> }'''
+       
         #print(str(self.tabla.ts)+"\n")
         self.tabla.removeContex()
         print("Fin de bloque" +"\n")
-   
+   '''
+    
+    def exitBloque(self, ctx):
+        if len(self.tabla.ts) > 1:
+            self.tabla.removeContex()
+        print("Fin de bloque")
+
+
     def enterListavar(self, ctx:compiladorParser.ListavarContext):
         self.profundidad += 1
 
@@ -190,5 +222,3 @@ class Escucha (compiladorListener) :
 
         return "Se hicieron " + str(self.declaracion) + " declaraciones\n" + \
                 "Se visitaron " + str(self.numNodos) + " nodos"
-                
-    prueba.close()

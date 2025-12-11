@@ -3,6 +3,8 @@ from antlr4 import *
 from compiladorLexer  import compiladorLexer
 from compiladorParser import compiladorParser
 from Escucha import Escucha
+import TablaSimbolos
+
 
 #Ir a la carpera donde esta el archivo .g4 y ejecutar antlr4 -Dlanguage=Python3 -visitor compilador.g4 -o .
 
@@ -21,5 +23,9 @@ def main(argv):
     print(escucha)
     #print(tree.toStringTree(recog=parser))
 
+    tablefile = "tabla.txt"
+
+    
 if __name__ == '__main__':
+    TablaSimbolos.TablaSimbolos().ts = [dict()]
     main(sys.argv)

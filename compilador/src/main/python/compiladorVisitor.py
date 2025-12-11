@@ -39,8 +39,8 @@ class compiladorVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by compiladorParser#incremento.
-    def visitIncremento(self, ctx:compiladorParser.IncrementoContext):
+    # Visit a parse tree produced by compiladorParser#incdec.
+    def visitIncdec(self, ctx:compiladorParser.IncdecContext):
         return self.visitChildren(ctx)
 
 
@@ -86,6 +86,16 @@ class compiladorVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by compiladorParser#argumentos.
     def visitArgumentos(self, ctx:compiladorParser.ArgumentosContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladorParser#masParametros.
+    def visitMasParametros(self, ctx:compiladorParser.MasParametrosContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladorParser#parametro.
+    def visitParametro(self, ctx:compiladorParser.ParametroContext):
         return self.visitChildren(ctx)
 
 

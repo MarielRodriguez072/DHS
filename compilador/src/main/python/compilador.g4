@@ -62,7 +62,9 @@ cuerpo : instrucciones
        | bloque
        ;
 
-ireturn : RETURN opal PYC ;
+ireturn : RETURN opal PYC 
+        | RETURN llamada
+        ;
 
 incdec: INC ID | ID INC
           | DEC ID | ID DEC
@@ -94,21 +96,23 @@ incrementoFor: incdec
 ifor : FOR PA incioFor PYC condicionFor PYC incrementoFor PC cuerpo
      ;
 
-prototipo: tipo ID PA tipo ID argumentos PC PYC;
+prototipo: tipo ID PA argumentos PC PYC;
 
-argumentos : COMA ID argumentos
-           | COMA tipo ID
-           | tipo ID argumentos
-           | 
+argumentos : parametro masParametros
+           |
            ;
+
+masParametros : COMA parametro masParametros
+               |
+               ;
+
+parametro : tipo ID ;
 
 argLlamada : ID argLlamada 
            | COMA ID
            ;
 
-funcion: tipo ID PA argumentos PC LLA instrucciones ireturn PYC LLC
-       | tipo ID PA argumentos PC bloque PYC
-       ;
+funcion: tipo ID PA argumentos PC bloque;
 
 llamada : ID PA argLlamada PC PYC ;
 

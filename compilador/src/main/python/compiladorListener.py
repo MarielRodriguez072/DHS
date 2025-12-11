@@ -62,12 +62,12 @@ class compiladorListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by compiladorParser#incremento.
-    def enterIncremento(self, ctx:compiladorParser.IncrementoContext):
+    # Enter a parse tree produced by compiladorParser#incdec.
+    def enterIncdec(self, ctx:compiladorParser.IncdecContext):
         pass
 
-    # Exit a parse tree produced by compiladorParser#incremento.
-    def exitIncremento(self, ctx:compiladorParser.IncrementoContext):
+    # Exit a parse tree produced by compiladorParser#incdec.
+    def exitIncdec(self, ctx:compiladorParser.IncdecContext):
         pass
 
 
@@ -149,6 +149,24 @@ class compiladorListener(ParseTreeListener):
 
     # Exit a parse tree produced by compiladorParser#argumentos.
     def exitArgumentos(self, ctx:compiladorParser.ArgumentosContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladorParser#masParametros.
+    def enterMasParametros(self, ctx:compiladorParser.MasParametrosContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#masParametros.
+    def exitMasParametros(self, ctx:compiladorParser.MasParametrosContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladorParser#parametro.
+    def enterParametro(self, ctx:compiladorParser.ParametroContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#parametro.
+    def exitParametro(self, ctx:compiladorParser.ParametroContext):
         pass
 
 

@@ -1,7 +1,16 @@
-int x;
-int x=1;
+int suma(int a, int b);
 
-if(x==0){
-    int z= 1;
+int main() {
+    int x = 3;
+    {
+        int c = 10;
+        x = c - 2;
+    }
+    int y = x * 2;
+
+    return suma(x, y);
 }
-x = z;
+
+int suma(int a, int b) {
+    return a + b;
+}

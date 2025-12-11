@@ -5,6 +5,7 @@ class TablaSimbolos:
     def __new__(cls):
         if cls._instance is None:
            cls._instance = super(TablaSimbolos, cls).__new__(cls)
+           cls._instance.ts = [dict()]
         return cls._instance
     
     ts = [dict()]
@@ -22,6 +23,10 @@ class TablaSimbolos:
     # [... , {'nomID' : ID }]
     def addVariable(self, id):
         self.ts[-1][id.name] = id
+
+    def addFunction(self, id):
+        #self.ts[-1][id.name] = id
+        print (f'Agregando funcion {id.name} a la tabla de simbolos')
     
     # Buscar a partir de una Key si esta se encuentra en algun contexto
     # buscamos la key = 'a'
@@ -42,6 +47,34 @@ class TablaSimbolos:
             if key in context:
                 return context[key]
         return False
+    
+    def exportarTabla(self, archivo):
+        """
+        Exporta la tabla de símbolos completa a un archivo abierto en modo escritura.
+        Ejemplo: 
+            with open("ts.txt", "w") as f:
+                tabla.exportarTabla(f)
+        """
+        archivo.write("CONTEXTOS DE LA TABLA DE SIMBOLOS:\n\n")
+
+        for i, contexto in enumerate(self.ts):
+            archivo.write(f"CONTEXTO {i}:\n")
+
+            if contexto:
+                for nombre, item in contexto.items():
+                    try:
+                        # Si es función
+                        if getattr(item, 'varFunc', None) in ("funcion", "function"):
+                            archivo.write(f"  - {nombre}: función {item.type}\n")
+                        else:
+                            archivo.write(f"  - {nombre}: variable {item.type}\n")
+                    except Exception:
+                        archivo.write(f"  - {nombre}: {item.type}\n")
+            else:
+                archivo.write("  (vacío)\n")
+
+            archivo.write("\n")
+
 
 class Id:
     # Una ID debe tener un nombre y un tipo

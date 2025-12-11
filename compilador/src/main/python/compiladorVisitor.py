@@ -14,6 +14,11 @@ class compiladorVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by compiladorParser#instruccionesOpt.
+    def visitInstruccionesOpt(self, ctx:compiladorParser.InstruccionesOptContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by compiladorParser#instrucciones.
     def visitInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
         return self.visitChildren(ctx)
@@ -101,6 +106,11 @@ class compiladorVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by compiladorParser#argLlamada.
     def visitArgLlamada(self, ctx:compiladorParser.ArgLlamadaContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladorParser#masArgLlamada.
+    def visitMasArgLlamada(self, ctx:compiladorParser.MasArgLlamadaContext):
         return self.visitChildren(ctx)
 
 

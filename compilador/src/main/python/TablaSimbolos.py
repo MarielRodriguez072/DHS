@@ -1,109 +1,101 @@
+# TablaSimbolos.py
 class TablaSimbolos:
-    
     _instance = None
-    
+
     def __new__(cls):
         if cls._instance is None:
-           cls._instance = super(TablaSimbolos, cls).__new__(cls)
-           cls._instance.ts = [dict()]
+            cls._instance = super(TablaSimbolos, cls).__new__(cls)
+            cls._instance.ts = [dict()]  # contexto 0 = global
         return cls._instance
-    
-    ts = [dict()]
-    
-    # cada vez que se mete a un bloque se debe crear un contexto
-    def addContex(self):
+
+    # Context management
+    def push_context(self):
+        """Entramos a un nuevo bloque (nuevo contexto)."""
         self.ts.append(dict())
-    
-    # cada vez que se sale del bloque se debe borrar el ULTIMO un contexto
-    def removeContex(self):
-        self.ts.pop()
-        
-    # Mete la variable en el ultimo diccionario
-    # dict('key':'value')
-    # [... , {'nomID' : ID }]
-    def addVariable(self, id):
-        self.ts[-1][id.name] = id
 
-    def addFunction(self, id):
-        #self.ts[-1][id.name] = id
-        print (f'Agregando funcion {id.name} a la tabla de simbolos')
-    
-    # Buscar a partir de una Key si esta se encuentra en algun contexto
-    # buscamos la key = 'a'
-    # context [{'c':c},{ 'a':a , 'b':b },{}]
-    # la key 'a' esta en el la pos 1 ( ts[1])
-    # la funcion nos deberia retornar True 
-    def buscarPorKey(self,key):
-        #print(f'TS -> {self.ts}')
-        #print(f'TS -> key:{key}')
-        for context in self.ts:
-            if key in context:
-                return True
-        return False
-    
-    # Devolver la ID en base a una Key
-    def returnKey(self,key):
-        for context in self.ts:
-            if key in context:
-                return context[key]
-        return False
-    
+    def pop_context(self):
+        """Salimos del contexto actual; protegemos el global."""
+        if len(self.ts) > 1:
+            self.ts.pop()
+        else:
+            print("WARNING: intento de eliminar el contexto global; operación ignorada.")
+
+    # Declarar variable en contexto actual
+    def declare_variable(self, id_obj):
+        name = id_obj.name
+        if name in self.ts[-1]:
+            raise KeyError(f"Ya existe '{name}' en el contexto actual")
+        self.ts[-1][name] = id_obj
+
+    # Declarar función: se guarda en contexto GLOBAL (ts[0])
+    def declare_function(self, func_obj):
+        name = func_obj.name
+        if name in self.ts[0]:
+            raise KeyError(f"Ya existe la función '{name}' en el contexto global")
+        self.ts[0][name] = func_obj
+
+    # Buscar desde contexto más interno hacia afuera (shadowing respetado)
+    def lookup(self, name):
+        for context in reversed(self.ts):
+            if name in context:
+                return context[name]
+        return None
+
+    def exists(self, name):
+        return self.lookup(name) is not None
+
     def exportarTabla(self, archivo):
-        """
-        Exporta la tabla de símbolos completa a un archivo abierto en modo escritura.
-        Ejemplo: 
-            with open("ts.txt", "w") as f:
-                tabla.exportarTabla(f)
-        """
         archivo.write("CONTEXTOS DE LA TABLA DE SIMBOLOS:\n\n")
-
         for i, contexto in enumerate(self.ts):
             archivo.write(f"CONTEXTO {i}:\n")
-
             if contexto:
                 for nombre, item in contexto.items():
-                    try:
-                        # Si es función
-                        if getattr(item, 'varFunc', None) in ("funcion", "function"):
-                            archivo.write(f"  - {nombre}: función {item.type}\n")
-                        else:
-                            archivo.write(f"  - {nombre}: variable {item.type}\n")
-                    except Exception:
-                        archivo.write(f"  - {nombre}: {item.type}\n")
+                    tipo = getattr(item, 'type', 'desconocido')
+                    varfunc = getattr(item, 'varFunc', None)
+                    if varfunc == "function":
+                        archivo.write(f"  - {nombre}: función {tipo}\n")
+                        scope = getattr(item, 'scope', None)
+                        params = getattr(item, 'parameters', None)
+                        if params:
+                            # params may be list of tuples (tipo,nombre) or strings
+                            if params and isinstance(params[0], tuple):
+                                archivo.write(f"     parametros: {', '.join([f'{t} {n}' for t,n in params])}\n")
+                            else:
+                                archivo.write(f"     parametros: {', '.join(params)}\n")
+                        if scope:
+                            archivo.write(f"     scope local:\n")
+                            for lname, litem in scope.items():
+                                ltipo = getattr(litem, 'type', 'desconocido')
+                                archivo.write(f"       * {lname}: {ltipo}\n")
+                    else:
+                        archivo.write(f"  - {nombre}: variable {tipo}\n")
             else:
                 archivo.write("  (vacío)\n")
-
             archivo.write("\n")
 
 
 class Id:
-    # Una ID debe tener un nombre y un tipo
-    # name -> identificador
-    # type -> tipo de ID
-    def __init__(self,name, type):
+    def __init__(self, name, type_):
         self.name = name
-        self.type = type
+        self.type = type_
         self.initialized = False
         self.used = False
-        self.varFunc = None 
-        
-    def toString(self):
-        return f'(name->{self.name},type->{self.type},init->{self.initialized},used->{self.used},varFun->{self.varFunc})'
-    
+        self.varFunc = None
+
+    def __str__(self):
+        return f"(name->{self.name}, type->{self.type}, init->{self.initialized}, used->{self.used}, varFunc->{self.varFunc})"
+
+    __repr__ = __str__
 
 
 class Variable(Id):
-    pass
+    def __init__(self, name, type_):
+        super().__init__(name, type_)
+
 
 class Function(Id):
-    
-    # Una fucion debe recibir un nombre, tipo y parametros
-    # name -> nombre de la funcion
-    # type -> tipo de funcion
-    # parameters -> ARREGLO con VARIABLES que acepta la funcion
-    def __init__(self, name, type, parameters):
-        super().__init__(name, type)
-        self.parameters = parameters
+    def __init__(self, name, type_, parameters=None):
+        super().__init__(name, type_)
+        self.parameters = parameters or []   # list of (tipo,nombre) tuples or simple names
         self.varFunc = "function"
-    
-        
+        self.scope = None

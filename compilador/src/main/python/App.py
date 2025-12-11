@@ -1,3 +1,4 @@
+import os
 import sys
 from antlr4 import *
 from compiladorLexer  import compiladorLexer
@@ -23,9 +24,11 @@ def main(argv):
     print(escucha)
     #print(tree.toStringTree(recog=parser))
 
-    tablefile = "tabla.txt"
+    
+
+
+
 
     
 if __name__ == '__main__':
-    TablaSimbolos.TablaSimbolos().ts = [dict()]
     main(sys.argv)

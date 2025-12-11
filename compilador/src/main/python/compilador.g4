@@ -37,12 +37,15 @@ ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
 
 //simbolos de formato
 WS : [ \n\r\t] -> skip ;
-OTRO : . ;
 
-programa : instrucciones EOF ;
+programa : instruccionesOpt EOF ;
+
+instruccionesOpt : instrucciones
+                 |
+                 ;
 
 instrucciones : instruccion instrucciones
-              |
+              | instruccion
               ;
 
 instruccion : asignacion
@@ -54,11 +57,12 @@ instruccion : asignacion
             | prototipo
             | funcion
             | ireturn
+            | llamada PYC
             ;
 
 bloque : LLA instrucciones LLC ;
 
-cuerpo : instrucciones
+cuerpo : instruccionesOpt
        | bloque
        ;
 
@@ -66,8 +70,10 @@ ireturn : RETURN opal PYC
         | RETURN llamada
         ;
 
-incdec: INC ID | ID INC
-          | DEC ID | ID DEC
+incdec: INC ID 
+          | ID INC
+          | DEC ID 
+          | ID DEC
           ;
 
 iwhile : WHILE PA condicion PC cuerpo
@@ -108,13 +114,17 @@ masParametros : COMA parametro masParametros
 
 parametro : tipo ID ;
 
-argLlamada : ID argLlamada 
-           | COMA ID
+argLlamada : opal masArgLlamada 
+           | 
            ;
+
+masArgLlamada : COMA opal masArgLlamada 
+               |
+               ;
 
 funcion: tipo ID PA argumentos PC bloque;
 
-llamada : ID PA argLlamada PC PYC ;
+llamada : ID PA argLlamada PC ;
 
 declaracion : tipo ID listavar PYC 
             | tipo ID ASIG opal listavar PYC
@@ -171,7 +181,7 @@ t : MULT factor t
 factor : NUMERO
        | FLOTANTE
        | ID
-       | funcion
+       | llamada
        | PA exp PC
        ;
 

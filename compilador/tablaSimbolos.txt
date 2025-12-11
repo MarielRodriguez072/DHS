@@ -1,9 +1,16 @@
-
-# Tabla de simbolos generada el 2025-12-11 18:12:05
 CONTEXTOS DE LA TABLA DE SIMBOLOS:
 
-CONTEXTO 0:
-  - main: función int
-  - suma: función int
-     parametros: int a
+CONTEXTO 1:
+  - c: variable int
+
+CONTEXTOS DE LA TABLA DE SIMBOLOS:
+
+CONTEXTO 2:
+  - x: variable int
+  - y: variable int
+
+CONTEXTOS DE LA TABLA DE SIMBOLOS:
+
+CONTEXTO 3:
+  - m: variable int
 

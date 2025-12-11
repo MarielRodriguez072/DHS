@@ -44,34 +44,36 @@ class TablaSimbolos:
     def exists(self, name):
         return self.lookup(name) is not None
 
-    def exportarTabla(self, archivo):
+    def exportarTabla(self, archivo, ctx_num):
         archivo.write("CONTEXTOS DE LA TABLA DE SIMBOLOS:\n\n")
-        for i, contexto in enumerate(self.ts):
-            archivo.write(f"CONTEXTO {i}:\n")
-            if contexto:
-                for nombre, item in contexto.items():
-                    tipo = getattr(item, 'type', 'desconocido')
-                    varfunc = getattr(item, 'varFunc', None)
-                    if varfunc == "function":
-                        archivo.write(f"  - {nombre}: función {tipo}\n")
-                        scope = getattr(item, 'scope', None)
-                        params = getattr(item, 'parameters', None)
-                        if params:
-                            # params may be list of tuples (tipo,nombre) or strings
-                            if params and isinstance(params[0], tuple):
-                                archivo.write(f"     parametros: {', '.join([f'{t} {n}' for t,n in params])}\n")
-                            else:
-                                archivo.write(f"     parametros: {', '.join(params)}\n")
-                        if scope:
-                            archivo.write(f"     scope local:\n")
-                            for lname, litem in scope.items():
-                                ltipo = getattr(litem, 'type', 'desconocido')
-                                archivo.write(f"       * {lname}: {ltipo}\n")
-                    else:
-                        archivo.write(f"  - {nombre}: variable {tipo}\n")
-            else:
-                archivo.write("  (vacío)\n")
-            archivo.write("\n")
+        #for i, contexto in enumerate(self.ts):
+        contexto = self.ts[-1]
+        i = len(self.ts) - 1
+
+        archivo.write(f"CONTEXTO {ctx_num}:\n")
+        if contexto:
+            for nombre, item in contexto.items():
+                tipo = getattr(item, 'type', 'desconocido')
+                varfunc = getattr(item, 'varFunc', None)
+                if varfunc == "function":
+                    archivo.write(f"  - {nombre}: función {tipo}\n")
+                    scope = getattr(item, 'scope', None)
+                    params = getattr(item, 'parameters', None)
+                    if params:
+                        if params and isinstance(params[0], tuple):
+                            archivo.write(f"     parametros: {', '.join([f'{t} {n}' for t,n in params])}\n")
+                        else:
+                            archivo.write(f"     parametros: {', '.join(params)}\n")
+                    if scope:
+                        archivo.write(f"     scope local:\n")
+                        for lname, litem in scope.items():
+                            ltipo = getattr(litem, 'type', 'desconocido')
+                            archivo.write(f"       * {lname}: {ltipo}\n")
+                else:
+                    archivo.write(f"  - {nombre}: variable {tipo}\n")
+        else:
+            archivo.write("  (vacío)\n")
+        archivo.write("\n")
 
 
 class Id:

@@ -15,6 +15,7 @@ class Escucha(compiladorListener):
         self.numNodos = 0
         self.asignacion = 0
         self.tabla = None
+        self.ctx = 0
 
     def dbg_contexts(self, msg=""):
         print("\n--- CONTEXTOS", msg, "---")
@@ -29,11 +30,7 @@ class Escucha(compiladorListener):
 
     def exitPrograma(self, ctx:compiladorParser.ProgramaContext):
         print("Termina el parsing")
-        archivo = "prueba.txt"
-        tablaFile = os.path.join(os.path.dirname(archivo), "tablaSimbolos.txt")
-        with open(tablaFile, 'a', encoding='utf-8') as f:
-            f.write(f"\n# Tabla de simbolos generada el {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-            self.tabla.exportarTabla(f)
+        
 
         # mensajes semánticos
         for context in self.tabla.ts:
@@ -50,9 +47,17 @@ class Escucha(compiladorListener):
         self.tabla.push_context()
         print("Nuevo bloque.")
         self.indent += 1
+        
 
     def exitBloque(self, ctx:compiladorParser.BloqueContext):
         self.indent -= 1
+        self.ctx += 1
+        archivo = "prueba.txt"
+        tablaFile = os.path.join(os.path.dirname(archivo), "tablaSimbolos.txt")
+        with open(tablaFile, 'a', encoding='utf-8') as f:
+            #f.write(f"\n# Tabla de simbolos generada el {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            self.tabla.exportarTabla(f,self.ctx)
+
         self.tabla.pop_context()
         print("Fin de bloque")
 

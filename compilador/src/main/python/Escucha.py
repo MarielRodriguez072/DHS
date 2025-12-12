@@ -37,7 +37,7 @@ class Escucha(compiladorListener):
             for key, value in context.items():
                 if not value.used and getattr(value, 'varFunc', None) != "function":
                     print(f"  -- WARNING SEMANTICO: La variable |{key}| fue declarada pero nunca usada")
-
+        # TODO: imprimir la tabla de simbolos para el contexto global
         # resumen
         print(self)
 
@@ -46,8 +46,7 @@ class Escucha(compiladorListener):
         # siempre que entremos a un bloque con { ... } abrimos contexto
         self.tabla.push_context()
         print("Nuevo bloque.")
-        self.indent += 1
-        
+        self.indent += 1 
 
     def exitBloque(self, ctx:compiladorParser.BloqueContext):
         self.indent -= 1
@@ -55,7 +54,6 @@ class Escucha(compiladorListener):
         archivo = "prueba.txt"
         tablaFile = os.path.join(os.path.dirname(archivo), "tablaSimbolos.txt")
         with open(tablaFile, 'a', encoding='utf-8') as f:
-            #f.write(f"\n# Tabla de simbolos generada el {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
             self.tabla.exportarTabla(f,self.ctx)
 
         self.tabla.pop_context()
@@ -91,7 +89,6 @@ class Escucha(compiladorListener):
         self.indent -= 1
         print("  " * self.indent + "Fin while")
 
-    # ---------- prototipo ----------
     def enterPrototipo(self, ctx:compiladorParser.PrototipoContext):
         # prototipo: tipo ID PA argumentos PC PYC
         if ctx is None or ctx.getChildCount() < 6:
@@ -111,35 +108,34 @@ class Escucha(compiladorListener):
         except KeyError:
             print(f"  -- ERROR SEMANTICO: El prototipo |{id_nombre}| ya fue declarado anteriormente")
 
-    # ---------- util: obtener parametros de ParametroContext ----------
     def obtener_parametros(self, argumentos_ctx):
         params = []
         if argumentos_ctx is None:
             return params
         for i in range(argumentos_ctx.getChildCount()):
             hijo = argumentos_ctx.getChild(i)
-            # ParametroContext tiene dos hijos: tipo ID
+            #ParametroContext tiene dos hijos: tipo ID
             try:
                 if isinstance(hijo, compiladorParser.ParametroContext):
                     tipo = hijo.getChild(0).getText()
                     nombre = hijo.getChild(1).getText()
                     params.append((tipo, nombre))
             except Exception:
-                # si no es ParametroContext lo ignoramos
+                #si no es ParametroContext lo ignoramos
                 pass
         return params
 
     # ---------- funcion (definicion) ----------
     def enterFuncion(self, ctx:compiladorParser.FuncionContext):
-        # abrir contexto local para la función
+        #abrir contexto local para la función
         if self.tabla is None:
             self.tabla = TablaSimbolos()
         self.tabla.push_context()
         print("Entrando a funcion")
         self.indent += 1
 
-        # extraer parámetros y declararlos como variables en el contexto local
-        # argumentos está en child index 3 (tipo ID PA argumentos PC bloque)
+        #extraer parámetros y declararlos como variables en el contexto local
+        #argumentos está en child index 3 (tipo ID PA argumentos PC bloque)
         try:
             argumentos_ctx = ctx.getChild(3)
         except Exception:
@@ -154,12 +150,12 @@ class Escucha(compiladorListener):
                 print(f"  -- ERROR SEMANTICO: Parametro |{nombre}| ya declarado en la función")
 
     def exitFuncion(self, ctx:compiladorParser.FuncionContext):
-        # antes de cerrar contexto, copiamos el scope local para adjuntar a la Function
+        #antes de cerrar contexto, copiamos el scope local para adjuntar a la Function
         local_ctx = None
         if len(self.tabla.ts) >= 1:
             local_ctx = dict(self.tabla.ts[-1])  # copia del contexto local
 
-        # cerramos contexto local
+        #cerramos contexto local
         self.indent -= 1
         self.tabla.pop_context()
 
@@ -182,7 +178,7 @@ class Escucha(compiladorListener):
             self.tabla.declare_function(funcion)
             print(f"  -- Se declaro la funcion |{nombre}| de tipo |{tipo}|")
         except KeyError:
-            # si ya existía prototipo, actualizamos el objeto
+            #si ya existía prototipo, actualizamos el objeto
             existing = self.tabla.lookup(nombre)
             if existing and getattr(existing, 'varFunc', None) == "function":
                 existing.scope = local_ctx
@@ -252,7 +248,6 @@ class Escucha(compiladorListener):
         id_nombre = ctx.getChild(0).getText()
         dato = ctx.getChild(2).getText()
 
-        # validación básica
         if not dato.isdigit():
             if dato.count('.') > 1:
                 print(f"  -- ERROR SEMANTICO: El valor asignado a la variable |{id_nombre}| no es del tipo esperado")

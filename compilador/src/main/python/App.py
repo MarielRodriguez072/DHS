@@ -23,12 +23,6 @@ def main(argv):
     tree = parser.programa()
     print(escucha)
     #print(tree.toStringTree(recog=parser))
-
-    
-
-
-
-
-    
+  
 if __name__ == '__main__':
     main(sys.argv)

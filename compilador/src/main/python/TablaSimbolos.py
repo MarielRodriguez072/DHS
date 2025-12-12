@@ -5,36 +5,34 @@ class TablaSimbolos:
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super(TablaSimbolos, cls).__new__(cls)
-            cls._instance.ts = [dict()]  # contexto 0 = global
+            cls._instance.ts = [dict()] 
         return cls._instance
 
-    # Context management
+    #Context management
     def push_context(self):
-        """Entramos a un nuevo bloque (nuevo contexto)."""
         self.ts.append(dict())
 
     def pop_context(self):
-        """Salimos del contexto actual; protegemos el global."""
         if len(self.ts) > 1:
             self.ts.pop()
         else:
             print("WARNING: intento de eliminar el contexto global; operación ignorada.")
 
-    # Declarar variable en contexto actual
+    #Declarar variable en contexto actual
     def declare_variable(self, id_obj):
         name = id_obj.name
         if name in self.ts[-1]:
             raise KeyError(f"Ya existe '{name}' en el contexto actual")
         self.ts[-1][name] = id_obj
 
-    # Declarar función: se guarda en contexto GLOBAL (ts[0])
+    #Declarar función: se guarda en contexto GLOBAL (ts[0])
     def declare_function(self, func_obj):
         name = func_obj.name
         if name in self.ts[0]:
             raise KeyError(f"Ya existe la función '{name}' en el contexto global")
         self.ts[0][name] = func_obj
 
-    # Buscar desde contexto más interno hacia afuera (shadowing respetado)
+    #Buscar desde contexto más interno hacia afuera
     def lookup(self, name):
         for context in reversed(self.ts):
             if name in context:
@@ -46,9 +44,7 @@ class TablaSimbolos:
 
     def exportarTabla(self, archivo, ctx_num):
         archivo.write("CONTEXTOS DE LA TABLA DE SIMBOLOS:\n\n")
-        #for i, contexto in enumerate(self.ts):
         contexto = self.ts[-1]
-        i = len(self.ts) - 1
 
         archivo.write(f"CONTEXTO {ctx_num}:\n")
         if contexto:
@@ -93,11 +89,13 @@ class Id:
 class Variable(Id):
     def __init__(self, name, type_):
         super().__init__(name, type_)
+        self.varFunc = "variable"
+
 
 
 class Function(Id):
     def __init__(self, name, type_, parameters=None):
         super().__init__(name, type_)
-        self.parameters = parameters or []   # list of (tipo,nombre) tuples or simple names
+        self.parameters = parameters or []
         self.varFunc = "function"
         self.scope = None

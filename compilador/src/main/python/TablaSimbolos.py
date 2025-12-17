@@ -43,7 +43,6 @@ class TablaSimbolos:
         return self.lookup(name) is not None
 
     def exportarTabla(self, archivo, ctx_num):
-        archivo.write("CONTEXTOS DE LA TABLA DE SIMBOLOS:\n\n")
         contexto = self.ts[-1]
 
         archivo.write(f"CONTEXTO {ctx_num}:\n")

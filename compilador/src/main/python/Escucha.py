@@ -27,6 +27,11 @@ class Escucha(compiladorListener):
         if self.tabla is None:
             self.tabla = TablaSimbolos()
         print("Comienza el parsing")
+        archivo = "prueba.txt"
+        tablaFile = os.path.join(os.path.dirname(archivo), "tablaSimbolos.txt")
+        with open(tablaFile, 'a', encoding='utf-8') as f:
+            f.write(f"Tabla de Simbolos generada el {datetime.now()}\n\n")
+            f.write(f"CONTEXTO 0:\n")
 
     def exitPrograma(self, ctx:compiladorParser.ProgramaContext):
         print("Termina el parsing")

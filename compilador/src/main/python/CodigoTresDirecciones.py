@@ -21,6 +21,5 @@ class CodigoTresDirecciones:
         return "\n".join(self.codigo)
 
     def escribir_codigo(self):
-        tablaFile = os.path.join(os.path.dirname("prueba.txt"), "codigo.txt")
-        with open(tablaFile, 'w') as f:
+        with open("codigo_intermedio.txt", 'w', encoding='utf-8') as f:
             f.write(self.obtener_codigo()) 

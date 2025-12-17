@@ -23,9 +23,9 @@ def main(argv):
     #tree = parser.bloque()
     tree = parser.programa()
     caminante = Caminante()
-    parser.addParseListener(caminante)
+    caminante.visit(tree)
     #print(escucha)
-    print(caminante)
+    print("Codigo intermedio generado en codigo_intermedio.txt")
     #print(tree.toStringTree(recog=parser))
   
 if __name__ == '__main__':

@@ -1,14 +1,24 @@
 from compiladorVisitor import compiladorVisitor
 from compiladorParser import compiladorParser
-from CodigoTresDirecciones import CodigoTresDirecciones as c3d
+from CodigoTresDirecciones import CodigoTresDirecciones
 
 class Caminante (compiladorVisitor) :
     instr = 0
     hojas = 0
 
+    def __init__(self):
+        self.c3d = CodigoTresDirecciones()
+        self.temp = 0
+
+    def nuevo_temp(self):
+        t = f"t{self.temp}"
+        self.temp += 1
+        return t
+
     def visitPrograma (self, ctx:compiladorParser.ProgramaContext):
-        print("Programa procesado")
-        return self.visitChildren(ctx)
+        self.visitChildren(ctx)
+        self.c3d.escribir_codigo()
+        return None
     
     def visitInstruccion(self, ctx:compiladorParser.InstruccionContext):
         self.instr += 1
@@ -33,25 +43,37 @@ class Caminante (compiladorVisitor) :
 
 
     def visitIwhile(self, ctx:compiladorParser.IwhileContext):
-        # for i in list(range(ctx.getChildCount())) :
-        #     print(self.visitChildren(ctx).getText())
-        print("Entro a while")
-        return self.visitChildren(ctx.getChild(4))
-        # return self.visit(ctx.getChild(4))
-        # return self.visitInstruccion(ctx)
+        L1 = f"L{self.c3d.label_count}"
+        self.c3d.label_count += 1
+        L2 = f"L{self.c3d.label_count}"
+        self.c3d.label_count += 1
+
+        cond = ctx.getChild(2).getText()
+
+        self.c3d.agregar_instruccion(f"{L1}:")
+        self.c3d.agregar_instruccion(f"if not {cond} goto {L2}")
+        
+        self.visit(ctx.getChild(4))  # Visitar el bloque dentro del while
+        
+        self.c3d.agregar_instruccion(f"goto {L1}")
+        
+        self.c3d.agregar_instruccion(f"{L2}:")
+        return None
 
     def visitDeclaracion(self, ctx:compiladorParser.DeclaracionContext):
-        c3d.nueva_variable(self, ctx.getText())
-        return self.visitChildren(ctx)
+        nombre = ctx.getChild(1).getText()
+        self.c3d.agregar_instruccion(f"{nombre} = 0")
+        return None
 
     def visitListaVar (self, ctx:compiladorParser.ListavarContext):
         print("Listavar procesada")
         return self.visitChildren(ctx)
 
     def visitAsignacion (self, ctx:compiladorParser.AsignacionContext):
-        print("Asignacion " + str(self.instr))
-        print("\t" + ctx.getText())
-        return self.visitChildren(ctx)
+        var = ctx.getChild(0).getText()
+        valor = ctx.getChild(2).getText()
+        self.c3d.agregar_instruccion(f"{var} = {valor}")
+        return None
 
     def visitBloque (self, ctx:compiladorParser.BloqueContext):
         print("bloque procesado")
@@ -66,5 +88,5 @@ class Caminante (compiladorVisitor) :
         print("Hojas " + str(self.hojas))
 
     def visitEveryRule(self, ctx):
-        c3d.escribir_codigo(self)
+        
         return self.visitChildren(ctx)

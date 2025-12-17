@@ -32,6 +32,7 @@ class Escucha(compiladorListener):
         with open(tablaFile, 'a', encoding='utf-8') as f:
             f.write(f"Tabla de Simbolos generada el {datetime.now()}\n\n")
             f.write(f"CONTEXTO 0:\n")
+            f.write(f"\n")
 
     def exitPrograma(self, ctx:compiladorParser.ProgramaContext):
         print("Termina el parsing")
@@ -42,7 +43,6 @@ class Escucha(compiladorListener):
             for key, value in context.items():
                 if not value.used and getattr(value, 'varFunc', None) != "function":
                     print(f"  -- WARNING SEMANTICO: La variable |{key}| fue declarada pero nunca usada")
-        # TODO: imprimir la tabla de simbolos para el contexto global
         # resumen
         print(self)
 

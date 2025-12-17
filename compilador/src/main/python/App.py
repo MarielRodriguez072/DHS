@@ -4,6 +4,7 @@ from antlr4 import *
 from compiladorLexer  import compiladorLexer
 from compiladorParser import compiladorParser
 from Escucha import Escucha
+from Caminante import Caminante
 import TablaSimbolos
 
 
@@ -21,7 +22,10 @@ def main(argv):
     parser.addParseListener(escucha)
     #tree = parser.bloque()
     tree = parser.programa()
-    print(escucha)
+    caminante = Caminante()
+    parser.addParseListener(caminante)
+    #print(escucha)
+    print(caminante)
     #print(tree.toStringTree(recog=parser))
   
 if __name__ == '__main__':

@@ -1,5 +1,6 @@
 from compiladorVisitor import compiladorVisitor
 from compiladorParser import compiladorParser
+from CodigoTresDirecciones import CodigoTresDirecciones as c3d
 
 class Caminante (compiladorVisitor) :
     instr = 0
@@ -40,8 +41,7 @@ class Caminante (compiladorVisitor) :
         # return self.visitInstruccion(ctx)
 
     def visitDeclaracion(self, ctx:compiladorParser.DeclaracionContext):
-        print("Declaracion " + str(self.instr))
-        print("\t" + ctx.getText())
+        c3d.nueva_variable(self, ctx.getText())
         return self.visitChildren(ctx)
 
     def visitListaVar (self, ctx:compiladorParser.ListavarContext):
@@ -66,4 +66,5 @@ class Caminante (compiladorVisitor) :
         print("Hojas " + str(self.hojas))
 
     def visitEveryRule(self, ctx):
+        c3d.escribir_codigo(self)
         return self.visitChildren(ctx)

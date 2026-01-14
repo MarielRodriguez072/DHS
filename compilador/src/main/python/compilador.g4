@@ -71,10 +71,10 @@ ireturn : RETURN opal PYC
         ;
 
 incdec: INC ID 
-          | ID INC
-          | DEC ID 
-          | ID DEC
-          ;
+      | ID INC
+      | DEC ID 
+      | ID DEC
+      ;
 
 iwhile : WHILE PA condicion PC cuerpo
        ;
@@ -147,6 +147,7 @@ inic : ASIG opal
 
 tipo : INT
      | DOUBLE
+     | FLOTANTE
      ;
 
 asignacion : ID ASIG opal PYC 

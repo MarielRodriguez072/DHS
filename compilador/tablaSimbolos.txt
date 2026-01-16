@@ -110,3 +110,18 @@ CONTEXTO 2:
 CONTEXTO 3:
   - m: variable int
 
+Tabla de Simbolos generada el 2026-01-14 17:22:46.838801
+
+CONTEXTO 0:
+
+CONTEXTO 1:
+  - c: variable int
+
+CONTEXTO 2:
+  - x: variable int
+  - mariel: variable int
+  - y: variable int
+
+CONTEXTO 3:
+  - m: variable int
+

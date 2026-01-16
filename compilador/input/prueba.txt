@@ -2,6 +2,7 @@ int suma(int a, int b);
 
 int main() {
     int x = 3;
+    int mariel=6;
     {
         int c = 10;
         x = c - 2;

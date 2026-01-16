@@ -31,7 +31,6 @@ class Escucha(compiladorListener):
         tablaFile = os.path.join(os.path.dirname(archivo), "tablaSimbolos.txt")
         with open(tablaFile, 'a', encoding='utf-8') as f:
             f.write(f"Tabla de Simbolos generada el {datetime.now()}\n\n")
-            f.write(f"\n")
 
     def exitPrograma(self, ctx:compiladorParser.ProgramaContext):
         print("Termina el parsing")
@@ -67,6 +66,7 @@ class Escucha(compiladorListener):
         tablaFile = os.path.join(os.path.dirname(archivo), "tablaSimbolos.txt")
         with open(tablaFile, 'a', encoding='utf-8') as f:
             self.tabla.exportarTabla(f,self.ctx)
+            f.write(f"\n")
 
         self.tabla.pop_context()
         print("Fin de bloque")
@@ -124,10 +124,10 @@ class Escucha(compiladorListener):
         params = []
         if argumentos_ctx is None:
             return params
-    
+
         for i in range(argumentos_ctx.getChildCount()):
             hijo = argumentos_ctx.getChild(i)
-    
+
             if isinstance(hijo, compiladorParser.ParametroContext):
                 tipo = hijo.getChild(0).getText()
                 nombre = hijo.getChild(1).getText()
@@ -140,7 +140,7 @@ class Escucha(compiladorListener):
                         tipo = sub.getChild(0).getText()
                         nombre = sub.getChild(1).getText()
                         params.append((tipo, nombre))
-    
+
         return params
 
 

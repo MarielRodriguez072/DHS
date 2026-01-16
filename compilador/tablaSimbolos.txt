@@ -36,3 +36,25 @@ CONTEXTO 0:
   - suma: función int
      parametros: int a, int b
 
+Tabla de Simbolos generada el 2026-01-16 17:56:34.855285
+
+CONTEXTO 1:
+  - c: variable int
+
+
+CONTEXTO 2:
+  - x: variable int
+  - mariel: variable int
+  - y: variable int
+
+
+CONTEXTO 3:
+  - m: variable int
+
+
+CONTEXTO 0:
+  - main: función int
+     parametros: int k
+  - suma: función int
+     parametros: int a, int b
+

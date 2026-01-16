@@ -1,6 +1,6 @@
 int suma(int a, int b);
 
-int main() {
+int main(int k) {
     int x = 3;
     int mariel=6;
     {

@@ -31,12 +31,19 @@ class Escucha(compiladorListener):
         tablaFile = os.path.join(os.path.dirname(archivo), "tablaSimbolos.txt")
         with open(tablaFile, 'a', encoding='utf-8') as f:
             f.write(f"Tabla de Simbolos generada el {datetime.now()}\n\n")
-            f.write(f"CONTEXTO 0:\n")
             f.write(f"\n")
 
     def exitPrograma(self, ctx:compiladorParser.ProgramaContext):
         print("Termina el parsing")
         
+        archivo = "prueba.txt"
+        tablaFile = os.path.join(os.path.dirname(archivo), "tablaSimbolos.txt")
+
+        with open(tablaFile, 'a', encoding='utf-8') as f:
+            for i, contexto in enumerate(self.tabla.ts):
+                f.write(f"CONTEXTO {i}:\n")
+                self.tabla.exportar_contexto(f, contexto)
+
 
         # mensajes semánticos
         for context in self.tabla.ts:
@@ -117,18 +124,25 @@ class Escucha(compiladorListener):
         params = []
         if argumentos_ctx is None:
             return params
+    
         for i in range(argumentos_ctx.getChildCount()):
             hijo = argumentos_ctx.getChild(i)
-            #ParametroContext tiene dos hijos: tipo ID
-            try:
-                if isinstance(hijo, compiladorParser.ParametroContext):
-                    tipo = hijo.getChild(0).getText()
-                    nombre = hijo.getChild(1).getText()
-                    params.append((tipo, nombre))
-            except Exception:
-                #si no es ParametroContext lo ignoramos
-                pass
+    
+            if isinstance(hijo, compiladorParser.ParametroContext):
+                tipo = hijo.getChild(0).getText()
+                nombre = hijo.getChild(1).getText()
+                params.append((tipo, nombre))
+            else:
+                # recorrer hijos internos
+                for j in range(hijo.getChildCount()):
+                    sub = hijo.getChild(j)
+                    if isinstance(sub, compiladorParser.ParametroContext):
+                        tipo = sub.getChild(0).getText()
+                        nombre = sub.getChild(1).getText()
+                        params.append((tipo, nombre))
+    
         return params
+
 
     # ---------- funcion (definicion) ----------
     def enterFuncion(self, ctx:compiladorParser.FuncionContext):

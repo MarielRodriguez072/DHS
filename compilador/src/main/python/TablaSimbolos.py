@@ -70,6 +70,30 @@ class TablaSimbolos:
             archivo.write("  (vacío)\n")
         archivo.write("\n")
 
+    def exportar_contexto(self, archivo, contexto):
+        if contexto:
+            for nombre, item in contexto.items():
+                tipo = getattr(item, 'type', 'desconocido')
+                varfunc = getattr(item, 'varFunc', None)
+    
+                if varfunc == "function":
+                    archivo.write(f"  - {nombre}: función {tipo}\n")
+                    if item.parameters:
+                        archivo.write(
+                            "     parametros: " +
+                            ", ".join([f"{t} {n}" for t,n in item.parameters]) + "\n"
+                        )
+                    if item.scope:
+                        archivo.write("     scope local:\n")
+                        for lname, litem in item.scope.items():
+                            archivo.write(f"       * {lname}: {litem.type}\n")
+                else:
+                    archivo.write(f"  - {nombre}: variable {tipo}\n")
+        else:
+            archivo.write("  (vacío)\n")
+        archivo.write("\n")
+
+
 
 class Id:
     def __init__(self, name, type_):

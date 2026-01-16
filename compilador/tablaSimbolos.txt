@@ -1,118 +1,5 @@
-Tabla de Simbolos generada el 2025-12-17 12:39:18.091953
+Tabla de Simbolos generada el 2026-01-16 17:32:38.075090
 
-CONTEXTO 0:
-
-CONTEXTO 1:
-  - c: variable int
-
-CONTEXTO 2:
-  - x: variable int
-  - y: variable int
-
-CONTEXTO 3:
-  - m: variable int
-
-Tabla de Simbolos generada el 2025-12-17 16:58:54.628479
-
-CONTEXTO 0:
-
-CONTEXTO 1:
-  - c: variable int
-
-CONTEXTO 2:
-  - x: variable int
-  - y: variable int
-
-CONTEXTO 3:
-  - m: variable int
-
-Tabla de Simbolos generada el 2025-12-17 16:59:43.707329
-
-CONTEXTO 0:
-
-CONTEXTO 1:
-  - c: variable int
-
-CONTEXTO 2:
-  - x: variable int
-  - y: variable int
-
-CONTEXTO 3:
-  - m: variable int
-
-Tabla de Simbolos generada el 2025-12-17 17:27:43.791007
-
-CONTEXTO 0:
-
-CONTEXTO 1:
-  - c: variable int
-
-CONTEXTO 2:
-  - x: variable int
-  - y: variable int
-
-CONTEXTO 3:
-  - m: variable int
-
-Tabla de Simbolos generada el 2025-12-17 17:42:23.177135
-
-CONTEXTO 0:
-
-CONTEXTO 1:
-  - c: variable int
-
-CONTEXTO 2:
-  - x: variable int
-  - y: variable int
-
-CONTEXTO 3:
-  - m: variable int
-
-Tabla de Simbolos generada el 2025-12-17 17:42:41.290112
-
-CONTEXTO 0:
-
-CONTEXTO 1:
-  - c: variable int
-
-CONTEXTO 2:
-  - x: variable int
-  - y: variable int
-
-CONTEXTO 3:
-  - m: variable int
-
-Tabla de Simbolos generada el 2025-12-17 20:43:30.861124
-
-CONTEXTO 0:
-
-CONTEXTO 1:
-  - c: variable int
-
-CONTEXTO 2:
-  - x: variable int
-  - y: variable int
-
-CONTEXTO 3:
-  - m: variable int
-
-Tabla de Simbolos generada el 2026-01-14 16:29:28.945827
-
-CONTEXTO 0:
-
-CONTEXTO 1:
-  - c: variable int
-
-CONTEXTO 2:
-  - x: variable int
-  - y: variable int
-
-CONTEXTO 3:
-  - m: variable int
-
-Tabla de Simbolos generada el 2026-01-14 17:22:46.838801
-
-CONTEXTO 0:
 
 CONTEXTO 1:
   - c: variable int
@@ -124,4 +11,28 @@ CONTEXTO 2:
 
 CONTEXTO 3:
   - m: variable int
+
+CONTEXTO 0:
+  - main: función int
+  - suma: función int
+     parametros: int a, int b
+Tabla de Simbolos generada el 2026-01-16 17:35:06.611213
+
+
+CONTEXTO 1:
+  - c: variable int
+
+CONTEXTO 2:
+  - x: variable int
+  - mariel: variable int
+  - y: variable int
+
+CONTEXTO 3:
+  - m: variable int
+
+CONTEXTO 0:
+  - main: función int
+     parametros: int k
+  - suma: función int
+     parametros: int a, int b
 

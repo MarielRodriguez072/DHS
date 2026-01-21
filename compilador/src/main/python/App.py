@@ -12,21 +12,21 @@ import TablaSimbolos
 
 def main(argv):
     archivo = "input/prueba.txt"
-    if len(argv) > 1 :
+    if len(argv) > 1:
         archivo = argv[1]
-    input = FileStream(archivo)
-    lexer = compiladorLexer(input)
-    stream = CommonTokenStream(lexer)
-    parser = compiladorParser(stream)
+
+    input_stream = FileStream(archivo, encoding="utf-8")
+    lexer = compiladorLexer(input_stream)
+    tokens = CommonTokenStream(lexer)
+    parser = compiladorParser(tokens)
+
     escucha = Escucha()
     parser.addParseListener(escucha)
-    #tree = parser.bloque()
-    tree = parser.programa()
-    caminante = Caminante()
-    caminante.visit(tree)
-    #print(escucha)
+
+    parser.programa()
     print("Codigo intermedio generado en codigo_intermedio.txt")
-    #print(tree.toStringTree(recog=parser))
+
+
   
 if __name__ == '__main__':
     main(sys.argv)

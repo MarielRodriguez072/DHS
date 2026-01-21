@@ -26,6 +26,7 @@ class Escucha(compiladorListener):
         print("-------------------------\n")
 
     def procesar_expresion(self, ctx):
+        print(">> procesar_expresion:", type(ctx).__name__, ctx.getText())
         # NUMERO | FLOTANTE | ID
         if isinstance(ctx, compiladorParser.OpalContext):
             if ctx.getChildCount() == 1:
@@ -103,9 +104,10 @@ class Escucha(compiladorListener):
                     print(f"  -- WARNING SEMANTICO: La variable |{key}| fue declarada pero nunca usada")
         # resumen
         print(self)
-        self.c3d.escribir_codigo()
         print("\n--- CÓDIGO DE TRES DIRECCIONES ---")
+        print("Cantidad de instrucciones:", len(self.c3d.codigo))
         print(self.c3d.obtener_codigo())
+        self.c3d.escribir_codigo()
 
 
     # ---------- bloques ----------
@@ -320,7 +322,8 @@ class Escucha(compiladorListener):
         print("Asignacion ENTER -> |" + ctx.getText() + "|")
 
     def exitAsignacion(self, ctx:compiladorParser.AsignacionContext):
-        id_nombre = ctx.getChild(0).getText()
+        print(">>> EXIT ASIGNACION EJECUTADO <<<")
+        id_nombre = ctx.ID().getText()
         dato = ctx.getChild(2).getText()
 
         if not dato.isdigit():
@@ -344,7 +347,7 @@ class Escucha(compiladorListener):
         print(f"  -- Se asigna un valor a la variable |{id_nombre}|")
 
         # generar código 3 direcciones de la expresión        
-        expr_ctx = ctx.getChild(2)
+        expr_ctx = ctx.exp()
         resultado = self.procesar_expresion(expr_ctx)
 
         self.c3d.asignacion(id_nombre, resultado)

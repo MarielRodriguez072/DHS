@@ -150,14 +150,12 @@ tipo : INT
      | FLOTANTE
      ;
 
-asignacion : ID ASIG opal PYC 
-           | ID ASIG exp PYC
+asignacion : ID ASIG exp PYC
            ;
 
 opal : NUMERO
      | FLOTANTE
      | ID
-     | exp
      ;
      
 comp : ID OPERADORES opal;

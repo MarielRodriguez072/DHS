@@ -215,3 +215,56 @@ Tabla de Simbolos generada el 2026-01-21 18:05:36.683873
 CONTEXTO 0:
   (vacío)
 
+Tabla de Simbolos generada el 2026-01-21 19:11:41.990977
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-21 19:13:58.760393
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-21 19:16:43.675177
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-21 19:18:41.903910
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-21 19:18:56.786983
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-21 19:20:52.387652
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-21 19:25:30.867966
+
+Tabla de Simbolos generada el 2026-01-21 19:26:12.700803
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-21 19:27:29.549812
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - d: variable int
+
+Tabla de Simbolos generada el 2026-01-21 19:27:46.980730
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - d: variable int
+

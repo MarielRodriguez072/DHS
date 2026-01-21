@@ -58,3 +58,84 @@ CONTEXTO 0:
   - suma: función int
      parametros: int a, int b
 
+Tabla de Simbolos generada el 2026-01-20 22:15:56.345823
+
+Tabla de Simbolos generada el 2026-01-20 22:16:59.930905
+
+Tabla de Simbolos generada el 2026-01-20 22:20:53.485795
+
+CONTEXTO 1:
+  - c: variable int
+
+
+CONTEXTO 2:
+  - x: variable int
+  - mariel: variable int
+  - y: variable int
+
+
+CONTEXTO 3:
+  - m: variable int
+
+
+CONTEXTO 0:
+  - main: función int
+     parametros: int k
+  - suma: función int
+     parametros: int a, int b
+
+Tabla de Simbolos generada el 2026-01-20 22:22:01.763142
+
+CONTEXTO 1:
+  - c: variable int
+
+
+CONTEXTO 2:
+  - x: variable int
+  - mariel: variable int
+  - y: variable int
+
+
+CONTEXTO 3:
+  - m: variable int
+
+
+CONTEXTO 0:
+  - main: función int
+     parametros: int k
+  - suma: función int
+     parametros: int a, int b
+
+Tabla de Simbolos generada el 2026-01-20 22:22:19.464895
+
+CONTEXTO 1:
+  - c: variable int
+
+
+CONTEXTO 2:
+  - x: variable int
+  - mariel: variable int
+  - y: variable int
+
+
+CONTEXTO 3:
+  - m: variable int
+
+
+CONTEXTO 0:
+  - main: función int
+     parametros: int k
+  - suma: función int
+     parametros: int a, int b
+
+Tabla de Simbolos generada el 2026-01-20 22:22:53.805857
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-20 22:29:44.278182
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+

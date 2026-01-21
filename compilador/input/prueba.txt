@@ -1,18 +1,4 @@
-int suma(int a, int b);
-
-int main(int k) {
-    int x = 3;
-    int mariel=6;
-    {
-        int c = 10;
-        x = c - 2;
-    }
-    int y = x * 2;
-
-    return suma(x, y);
-}
-
-int suma(int a, int b) {
-    int m = 1;
-    return a + b;
-}
+int a;
+int b;
+a = 3;
+b = a + 2;

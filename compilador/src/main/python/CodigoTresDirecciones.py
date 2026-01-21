@@ -5,52 +5,47 @@ class CodigoTresDirecciones:
         self.temp_count = 0
         self.label_count = 0
 
-    # ---------- temporales ----------
+    # -------------------------
+    # utilidades básicas
+    # -------------------------
+    def agregar_instruccion(self, instruccion):
+        self.codigo.append(instruccion)
+
     def nuevo_temp(self):
         temp = f"t{self.temp_count}"
         self.temp_count += 1
         return temp
 
-    # ---------- etiquetas ----------
-    def nueva_label(self):
+    def nuevo_label(self):
         label = f"L{self.label_count}"
         self.label_count += 1
         return label
 
-    # ---------- instrucciones ----------
-    def emitir(self, instruccion):
-        self.codigo.append(instruccion)
-
-    # ---------- operaciones ----------
-    def asignacion(self, destino, fuente):
-        self.emitir(f"{destino} = {fuente}")
-
+    # -------------------------
+    # instrucciones 3D
+    # -------------------------
     def operacion(self, resultado, op1, operador, op2):
-        self.emitir(f"{resultado} = {op1} {operador} {op2}")
+        self.agregar_instruccion(f"{resultado} = {op1} {operador} {op2}")
 
-    def salto(self, label):
-        self.emitir(f"goto {label}")
-
-    def salto_condicional(self, op1, rel, op2, label):
-        self.emitir(f"if {op1} {rel} {op2} goto {label}")
-
-    def label(self, label):
-        self.emitir(f"{label}:")
+    def asignacion(self, variable, valor):
+        self.agregar_instruccion(f"{variable} = {valor}")
 
     def retorno(self, valor):
-        self.emitir(f"return {valor}")
+        self.agregar_instruccion(f"return {valor}")
 
-    # ---------- funciones ----------
-    def iniciar_funcion(self, nombre):
-        self.emitir(f"\nfunc {nombre}:")
+    def llamada_funcion(self, nombre, args):
+        for arg in args:
+            self.agregar_instruccion(f"param {arg}")
+        temp = self.nuevo_temp()
+        self.agregar_instruccion(f"{temp} = call {nombre}, {len(args)}")
+        return temp
 
-    def fin_funcion(self):
-        self.emitir("endfunc\n")
-
-    # ---------- salida ----------
+    # -------------------------
+    # salida
+    # -------------------------
     def obtener_codigo(self):
         return "\n".join(self.codigo)
 
     def escribir_codigo(self, archivo="codigo_intermedio.txt"):
-        with open(archivo, 'w', encoding='utf-8') as f:
+        with open(archivo, "w", encoding="utf-8") as f:
             f.write(self.obtener_codigo())

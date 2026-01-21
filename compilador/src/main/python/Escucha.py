@@ -5,6 +5,7 @@ from compiladorListener import compiladorListener
 from TablaSimbolos import TablaSimbolos, Id, Variable, Function
 import os
 from datetime import datetime
+from CodigoTresDirecciones import CodigoTresDirecciones as C3D
 
 class Escucha(compiladorListener):
     def __init__(self):
@@ -16,12 +17,70 @@ class Escucha(compiladorListener):
         self.asignacion = 0
         self.tabla = None
         self.ctx = 0
+        self.c3d = C3D()
 
     def dbg_contexts(self, msg=""):
         print("\n--- CONTEXTOS", msg, "---")
         for i, ctx in enumerate(self.tabla.ts):
             print(f"  [{i}] -> {list(ctx.keys())}")
         print("-------------------------\n")
+
+    def procesar_expresion(self, ctx):
+        """
+        Genera código de 3 direcciones recorriendo opal / exp / term / factor
+        Devuelve un identificador, literal o temporal
+        """
+    
+        # opal -> NUMERO | FLOTANTE | ID | exp
+        if isinstance(ctx, compiladorParser.OpalContext):
+            if ctx.getChildCount() == 1:
+                return ctx.getChild(0).getText()
+            return self.procesar_expresion(ctx.getChild(0))
+    
+        # exp -> term e
+        if isinstance(ctx, compiladorParser.ExpContext):
+            return self.procesar_expresion(ctx.getChild(0))
+    
+        # e -> + term e | - term e | ε
+        if isinstance(ctx, compiladorParser.EContext):
+            if ctx.getChildCount() == 0:
+                return None
+    
+            operador = ctx.getChild(0).getText()
+            der = self.procesar_expresion(ctx.getChild(1))
+            resto = self.procesar_expresion(ctx.getChild(2))
+    
+            temp = self.c3d.nuevo_temp()
+            self.c3d.operacion(temp, der, operador, resto)
+            return temp
+    
+        # term -> factor t
+        if isinstance(ctx, compiladorParser.TermContext):
+            return self.procesar_expresion(ctx.getChild(0))
+    
+        # t -> * factor t | / factor t | % factor t | ε
+        if isinstance(ctx, compiladorParser.TContext):
+            if ctx.getChildCount() == 0:
+                return None
+    
+            operador = ctx.getChild(0).getText()
+            der = self.procesar_expresion(ctx.getChild(1))
+            resto = self.procesar_expresion(ctx.getChild(2))
+    
+            temp = self.c3d.nuevo_temp()
+            self.c3d.operacion(temp, der, operador, resto)
+            return temp
+    
+        # factor
+        if isinstance(ctx, compiladorParser.FactorContext):
+            if ctx.getChildCount() == 1:
+                return ctx.getChild(0).getText()
+            # ( exp )
+            return self.procesar_expresion(ctx.getChild(1))
+    
+        # fallback
+        return ctx.getText()
+
 
     def enterPrograma(self, ctx:compiladorParser.ProgramaContext):
         if self.tabla is None:
@@ -51,6 +110,10 @@ class Escucha(compiladorListener):
                     print(f"  -- WARNING SEMANTICO: La variable |{key}| fue declarada pero nunca usada")
         # resumen
         print(self)
+        self.c3d.escribir_codigo()
+        print("\n--- CÓDIGO DE TRES DIRECCIONES ---")
+        print(self.c3d.obtener_codigo())
+
 
     # ---------- bloques ----------
     def enterBloque(self, ctx:compiladorParser.BloqueContext):
@@ -286,6 +349,12 @@ class Escucha(compiladorListener):
         symbol.used = True
         symbol.initialized = True
         print(f"  -- Se asigna un valor a la variable |{id_nombre}|")
+
+        # generar código 3 direcciones de la expresión
+        expr_ctx = ctx.getChild(2)
+        resultado = self.procesar_expresion(expr_ctx)
+
+        self.c3d.asignacion(id_nombre, resultado)
 
     # ---------- listavar ----------
     def enterListavar(self, ctx:compiladorParser.ListavarContext):

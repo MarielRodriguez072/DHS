@@ -139,3 +139,79 @@ CONTEXTO 0:
   - a: variable int
   - b: variable int
 
+Tabla de Simbolos generada el 2026-01-21 16:49:47.555455
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+
+Tabla de Simbolos generada el 2026-01-21 16:50:11.592300
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+
+Tabla de Simbolos generada el 2026-01-21 16:51:02.173651
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+
+Tabla de Simbolos generada el 2026-01-21 16:53:28.027984
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - d: variable int
+
+Tabla de Simbolos generada el 2026-01-21 17:35:11.644561
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - d: variable int
+
+Tabla de Simbolos generada el 2026-01-21 17:35:21.729631
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - d: variable int
+
+Tabla de Simbolos generada el 2026-01-21 17:58:26.235499
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - d: variable int
+
+Tabla de Simbolos generada el 2026-01-21 17:58:33.729095
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - d: variable int
+
+Tabla de Simbolos generada el 2026-01-21 17:58:51.073077
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-21 18:05:30.283302
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-21 18:05:36.683873
+
+CONTEXTO 0:
+  (vacío)
+

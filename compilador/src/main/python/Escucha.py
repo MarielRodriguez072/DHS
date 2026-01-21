@@ -26,60 +26,53 @@ class Escucha(compiladorListener):
         print("-------------------------\n")
 
     def procesar_expresion(self, ctx):
-        """
-        Genera código de 3 direcciones recorriendo opal / exp / term / factor
-        Devuelve un identificador, literal o temporal
-        """
-    
-        # opal -> NUMERO | FLOTANTE | ID | exp
+        # NUMERO | FLOTANTE | ID
         if isinstance(ctx, compiladorParser.OpalContext):
             if ctx.getChildCount() == 1:
                 return ctx.getChild(0).getText()
             return self.procesar_expresion(ctx.getChild(0))
-    
-        # exp -> term e
+
+        # exp : term e
         if isinstance(ctx, compiladorParser.ExpContext):
-            return self.procesar_expresion(ctx.getChild(0))
-    
-        # e -> + term e | - term e | ε
-        if isinstance(ctx, compiladorParser.EContext):
-            if ctx.getChildCount() == 0:
-                return None
-    
-            operador = ctx.getChild(0).getText()
-            der = self.procesar_expresion(ctx.getChild(1))
-            resto = self.procesar_expresion(ctx.getChild(2))
-    
-            temp = self.c3d.nuevo_temp()
-            self.c3d.operacion(temp, der, operador, resto)
-            return temp
-    
-        # term -> factor t
+            izq = self.procesar_expresion(ctx.getChild(0))
+            return self.procesar_e(ctx.getChild(1), izq)
+
+        # term : factor t
         if isinstance(ctx, compiladorParser.TermContext):
-            return self.procesar_expresion(ctx.getChild(0))
-    
-        # t -> * factor t | / factor t | % factor t | ε
-        if isinstance(ctx, compiladorParser.TContext):
-            if ctx.getChildCount() == 0:
-                return None
-    
-            operador = ctx.getChild(0).getText()
-            der = self.procesar_expresion(ctx.getChild(1))
-            resto = self.procesar_expresion(ctx.getChild(2))
-    
-            temp = self.c3d.nuevo_temp()
-            self.c3d.operacion(temp, der, operador, resto)
-            return temp
-    
+            izq = self.procesar_expresion(ctx.getChild(0))
+            return self.procesar_t(ctx.getChild(1), izq)
+
         # factor
         if isinstance(ctx, compiladorParser.FactorContext):
             if ctx.getChildCount() == 1:
                 return ctx.getChild(0).getText()
-            # ( exp )
-            return self.procesar_expresion(ctx.getChild(1))
-    
-        # fallback
+            return self.procesar_expresion(ctx.getChild(1))  # ( exp )
+
         return ctx.getText()
+    
+    def procesar_e(self, ctx, izq):
+        if ctx.getChildCount() == 0:
+            return izq
+
+        operador = ctx.getChild(0).getText()
+        der = self.procesar_expresion(ctx.getChild(1))
+
+        temp = self.c3d.nuevo_temp()
+        self.c3d.operacion(temp, izq, operador, der)
+
+        return self.procesar_e(ctx.getChild(2), temp)
+
+    def procesar_t(self, ctx, izq):
+        if ctx.getChildCount() == 0:
+            return izq
+
+        operador = ctx.getChild(0).getText()
+        der = self.procesar_expresion(ctx.getChild(1))
+
+        temp = self.c3d.nuevo_temp()
+        self.c3d.operacion(temp, izq, operador, der)
+
+        return self.procesar_t(ctx.getChild(2), temp)
 
 
     def enterPrograma(self, ctx:compiladorParser.ProgramaContext):
@@ -350,7 +343,7 @@ class Escucha(compiladorListener):
         symbol.initialized = True
         print(f"  -- Se asigna un valor a la variable |{id_nombre}|")
 
-        # generar código 3 direcciones de la expresión
+        # generar código 3 direcciones de la expresión        
         expr_ctx = ctx.getChild(2)
         resultado = self.procesar_expresion(expr_ctx)
 

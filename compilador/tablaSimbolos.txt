@@ -375,3 +375,50 @@ Tabla de Simbolos generada el 2026-01-22 17:29:44.706100
 
 Tabla de Simbolos generada el 2026-01-22 17:30:01.172417
 
+Tabla de Simbolos generada el 2026-01-22 19:50:05.912361
+
+Tabla de Simbolos generada el 2026-01-22 19:54:04.282397
+
+Tabla de Simbolos generada el 2026-01-22 19:56:12.826807
+
+Tabla de Simbolos generada el 2026-01-22 20:04:04.758107
+
+Tabla de Simbolos generada el 2026-01-22 20:07:32.378570
+
+Tabla de Simbolos generada el 2026-01-22 20:07:48.948376
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+
+Tabla de Simbolos generada el 2026-01-22 20:17:10.324995
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+
+Tabla de Simbolos generada el 2026-01-22 20:18:29.825615
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-22 20:20:44.481940
+
+Tabla de Simbolos generada el 2026-01-22 20:23:49.505390
+
+Tabla de Simbolos generada el 2026-01-22 20:26:07.983646
+
+Tabla de Simbolos generada el 2026-01-22 20:26:38.240406
+
+Tabla de Simbolos generada el 2026-01-22 20:29:45.858720
+

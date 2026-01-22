@@ -148,7 +148,12 @@ class Escucha(compiladorListener):
 
         self.label_fin = self.c3d.nuevo_label()
 
-        cond_temp = self.procesar_expresion(ctx)
+        cond_ctx = ctx.condicion()
+
+        if cond_ctx is None or cond_ctx.getChildCount() == 0:
+            raise Exception("ERROR: condición vacía en if")
+
+        cond_temp = self.procesar_expresion(cond_ctx)
         self.c3d.agregar_instruccion(f"ifFalse{cond_temp} goto {self.label_fin}")
 
 
@@ -163,8 +168,14 @@ class Escucha(compiladorListener):
 
         self.label_inicio = self.c3d.nuevo_label()
         self.label_fin = self.c3d.nuevo_label()
+
         self.c3d.agregar_instruccion(f"{self.label_inicio}:")
-        cond_temp = self.procesar_expresion(ctx)
+
+        cond_ctx = ctx.condicion()
+        if cond_ctx is None or cond_ctx.getChildCount() == 0:
+            raise Exception("ERROR: condición vacía en while")
+        
+        cond_temp = self.procesar_expresion(cond_ctx)
         self.c3d.agregar_instruccion(f"ifFalse {cond_temp} goto {self.label_fin}")
 
     def exitIwhile(self, ctx:compiladorParser.IwhileContext):
@@ -174,27 +185,123 @@ class Escucha(compiladorListener):
         self.c3d.agregar_instruccion(f"goto {self.label_inicio}")
         self.c3d.agregar_instruccion(f"{self.label_fin}:")
 
-    def enterIfor(self, ctx:compiladorParser.IforContext):
+    def enterIfor(self, ctx: compiladorParser.IforContext):
         self.label_inicio = self.c3d.nuevo_label()
         self.label_fin = self.c3d.nuevo_label()
 
-        cond_ctx = ctx.condicionFor()
-
-        if cond_ctx is None or cond_ctx.getChildCount() == 0:
-            raise Exception("ERROR: condición vacía en for/while")
-
+        # inicialización
+        if ctx.incioFor():
+            self.procesar_inicializacion_for(ctx.incioFor())
 
         self.c3d.agregar_instruccion(f"{self.label_inicio}:")
 
         # condición
-        cond = self.procesar_expresion(ctx)
-        self.c3d.agregar_instruccion(
-            f"ifFalse {cond} goto {self.label_fin}"
-        )
+        cond_for = ctx.condicionFor()
+        if cond_for is None or cond_for.getChildCount() == 0:
+            raise Exception("ERROR: condición vacía en for")
+        
+        cond_ctx = cond_for.getChild(0)
 
-    def exitIfor(self, ctx:compiladorParser.IforContext):
+        cond_temp = self.procesar_expresion(cond_ctx)
+
+        self.c3d.agregar_instruccion(
+            f"ifFalse {cond_temp} goto {self.label_fin}"
+        )
+    
+    def procesar_inicializacion_for(self, ctx):
+        if ctx is None or ctx.getChildCount() == 0:
+            return
+
+        # declaracionFor: tipo ID ASIG exp | tipo ID ASIG opal
+        if isinstance(ctx.getChild(0), compiladorParser.DeclaracionForContext):
+            decl = ctx.getChild(0)
+            nombre = decl.getChild(1).getText()
+
+            # expresión a la derecha
+            if decl.exp():
+                valor = self.procesar_expresion(decl.exp())
+            else:
+                valor = decl.opal().getText()
+
+            self.c3d.asignacion(nombre, valor)
+            return
+
+        # asignacionFor: ID ASIG exp
+        if isinstance(ctx.getChild(0), compiladorParser.AsignacionForContext):
+            asign = ctx.getChild(0)
+            nombre = asign.ID().getText()
+            valor = self.procesar_expresion(asign.exp())
+
+            self.c3d.asignacion(nombre, valor)
+
+    def procesar_incremento_for(self, ctx):
+        if ctx is None or ctx.getChildCount() == 0:
+            return
+
+        hijo = ctx.getChild(0)
+
+        # incdec
+        if isinstance(hijo, compiladorParser.IncdecContext):
+            texto = hijo.getText()
+
+            # a++
+            if texto.endswith("++"):
+                var = texto[:-2]
+                temp = self.c3d.nuevo_temp()
+                self.c3d.operacion(temp, var, "+", "1")
+                self.c3d.asignacion(var, temp)
+                return
+
+            # ++a
+            if texto.startswith("++"):
+                var = texto[2:]
+                temp = self.c3d.nuevo_temp()
+                self.c3d.operacion(temp, var, "+", "1")
+                self.c3d.asignacion(var, temp)
+                return
+
+            # a--
+            if texto.endswith("--"):
+                var = texto[:-2]
+                temp = self.c3d.nuevo_temp()
+                self.c3d.operacion(temp, var, "-", "1")
+                self.c3d.asignacion(var, temp)
+                return
+
+            # --a
+            if texto.startswith("--"):
+                var = texto[2:]
+                temp = self.c3d.nuevo_temp()
+                self.c3d.operacion(temp, var, "-", "1")
+                self.c3d.asignacion(var, temp)
+                return
+
+        # asignacionFor: ID ASIG exp
+        if isinstance(hijo, compiladorParser.AsignacionForContext):
+            nombre = hijo.ID().getText()
+            valor = self.procesar_expresion(hijo.exp())
+            self.c3d.asignacion(nombre, valor)
+            return
+
+        # declaracionFor (poco común, pero permitido)
+        if isinstance(hijo, compiladorParser.DeclaracionForContext):
+            nombre = hijo.getChild(1).getText()
+
+            if hijo.exp():
+                valor = self.procesar_expresion(hijo.exp())
+            else:
+                valor = hijo.opal().getText()
+
+            self.c3d.asignacion(nombre, valor)
+
+    def exitIfor(self, ctx: compiladorParser.IforContext):
+        # incremento (DESPUÉS del cuerpo)
+        if ctx.incrementoFor():
+            self.procesar_incremento_for(ctx.incrementoFor())
+
         self.c3d.agregar_instruccion(f"goto {self.label_inicio}")
         self.c3d.agregar_instruccion(f"{self.label_fin}:")
+
 
 
     def enterPrototipo(self, ctx:compiladorParser.PrototipoContext):

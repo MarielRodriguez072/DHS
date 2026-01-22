@@ -314,15 +314,6 @@ class compiladorListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by compiladorParser#expresion.
-    def enterExpresion(self, ctx:compiladorParser.ExpresionContext):
-        pass
-
-    # Exit a parse tree produced by compiladorParser#expresion.
-    def exitExpresion(self, ctx:compiladorParser.ExpresionContext):
-        pass
-
-
     # Enter a parse tree produced by compiladorParser#term.
     def enterTerm(self, ctx:compiladorParser.TermContext):
         pass

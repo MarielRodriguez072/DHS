@@ -158,7 +158,7 @@ tipo : INT
      | FLOTANTE
      ;
 
-asignacion : ID ASIG expresion PYC
+asignacion : ID ASIG exp PYC
            ;
 
 opal : NUMERO
@@ -174,8 +174,6 @@ e : SUMA term e
   | RESTA term e
   |
   ;
-
-expresion : exp PYC ; 
 
 term : factor t ;
 

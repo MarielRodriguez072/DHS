@@ -1,5 +1,5 @@
 int a;
-int b;
-int c;
-int d;
-a = b + c + d;
+
+for (int a = 0; a < 10; a = a + 1) {
+    b = b + a;
+}

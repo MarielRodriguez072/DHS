@@ -116,6 +116,24 @@ class compiladorListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by compiladorParser#declaracionFor.
+    def enterDeclaracionFor(self, ctx:compiladorParser.DeclaracionForContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#declaracionFor.
+    def exitDeclaracionFor(self, ctx:compiladorParser.DeclaracionForContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladorParser#asignacionFor.
+    def enterAsignacionFor(self, ctx:compiladorParser.AsignacionForContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#asignacionFor.
+    def exitAsignacionFor(self, ctx:compiladorParser.AsignacionForContext):
+        pass
+
+
     # Enter a parse tree produced by compiladorParser#condicionFor.
     def enterCondicionFor(self, ctx:compiladorParser.CondicionForContext):
         pass

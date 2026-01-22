@@ -86,18 +86,26 @@ ielse: ELSE cuerpo
      |
      ;
 
-incioFor: asignacion
-         | declaracion
+incioFor: asignacionFor
+         | declaracionFor
          |
          ;
 
+declaracionFor: tipo ID ASIG opal
+               | tipo ID ASIG exp
+               ;
+
+asignacionFor: ID ASIG exp
+               ;
+
 condicionFor: condicion
-            |
             ;
 
 incrementoFor: incdec
-              |
-              ;
+               | asignacionFor
+               | declaracionFor
+               |
+               ;
 
 ifor : FOR PA incioFor PYC condicionFor PYC incrementoFor PC cuerpo
      ;
@@ -150,7 +158,7 @@ tipo : INT
      | FLOTANTE
      ;
 
-asignacion : ID ASIG exp PYC
+asignacion : ID ASIG expresion PYC
            ;
 
 opal : NUMERO
@@ -186,5 +194,4 @@ factor : NUMERO
 
 condicion: opal
            | comp
-           |
            ;

@@ -142,22 +142,60 @@ class Escucha(compiladorListener):
             txt = ''
         print("instrucciones EXIT -> |" + txt + "|")
 
-    # ---------- if / while / for ----------
     def enterIif(self, ctx:compiladorParser.IifContext):
         print("  " * self.indent + "Comienza if")
         self.indent += 1
 
+        self.label_fin = self.c3d.nuevo_label()
+
+        cond_temp = self.procesar_expresion(ctx)
+        self.c3d.agregar_instruccion(f"ifFalse{cond_temp} goto {self.label_fin}")
+
+
     def exitIif(self, ctx:compiladorParser.IifContext):
         self.indent -= 1
         print("  " * self.indent + "Fin if")
+        self.c3d.agregar_instruccion(f"{self.label_fin}:")
 
     def enterIwhile(self, ctx:compiladorParser.IwhileContext):
         print("  " * self.indent + "Comienza while")
         self.indent += 1
 
+        self.label_inicio = self.c3d.nuevo_label()
+        self.label_fin = self.c3d.nuevo_label()
+        self.c3d.agregar_instruccion(f"{self.label_inicio}:")
+        cond_temp = self.procesar_expresion(ctx)
+        self.c3d.agregar_instruccion(f"ifFalse {cond_temp} goto {self.label_fin}")
+
     def exitIwhile(self, ctx:compiladorParser.IwhileContext):
         self.indent -= 1
         print("  " * self.indent + "Fin while")
+
+        self.c3d.agregar_instruccion(f"goto {self.label_inicio}")
+        self.c3d.agregar_instruccion(f"{self.label_fin}:")
+
+    def enterIfor(self, ctx:compiladorParser.IforContext):
+        self.label_inicio = self.c3d.nuevo_label()
+        self.label_fin = self.c3d.nuevo_label()
+
+        cond_ctx = ctx.condicionFor()
+
+        if cond_ctx is None or cond_ctx.getChildCount() == 0:
+            raise Exception("ERROR: condición vacía en for/while")
+
+
+        self.c3d.agregar_instruccion(f"{self.label_inicio}:")
+
+        # condición
+        cond = self.procesar_expresion(ctx)
+        self.c3d.agregar_instruccion(
+            f"ifFalse {cond} goto {self.label_fin}"
+        )
+
+    def exitIfor(self, ctx:compiladorParser.IforContext):
+        self.c3d.agregar_instruccion(f"goto {self.label_inicio}")
+        self.c3d.agregar_instruccion(f"{self.label_fin}:")
+
 
     def enterPrototipo(self, ctx:compiladorParser.PrototipoContext):
         # prototipo: tipo ID PA argumentos PC PYC
@@ -347,8 +385,7 @@ class Escucha(compiladorListener):
         print(f"  -- Se asigna un valor a la variable |{id_nombre}|")
 
         # generar código 3 direcciones de la expresión        
-        expr_ctx = ctx.exp()
-        resultado = self.procesar_expresion(expr_ctx)
+        resultado = self.procesar_expresion(ctx.exp())
 
         self.c3d.asignacion(id_nombre, resultado)
 
@@ -370,3 +407,4 @@ class Escucha(compiladorListener):
     def __str__(self):
         return "Se hicieron " + str(self.declaracion) + " declaraciones\n" + \
                "Se visitaron " + str(self.numNodos) + " nodos"
+

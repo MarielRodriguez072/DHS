@@ -1,6 +1,5 @@
 L0:
 t0 = a + 1
 a = t0
-ifFalse a<10 goto L1
 goto L0
 L1:

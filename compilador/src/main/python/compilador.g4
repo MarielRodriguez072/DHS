@@ -190,6 +190,6 @@ factor : NUMERO
        | PA exp PC
        ;
 
-condicion: opal
-           | comp
+condicion: comp
+           | opal
            ;

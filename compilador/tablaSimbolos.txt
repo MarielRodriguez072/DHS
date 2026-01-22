@@ -422,3 +422,43 @@ Tabla de Simbolos generada el 2026-01-22 20:26:38.240406
 
 Tabla de Simbolos generada el 2026-01-22 20:29:45.858720
 
+Tabla de Simbolos generada el 2026-01-22 20:41:47.627787
+
+Tabla de Simbolos generada el 2026-01-22 20:48:51.750378
+
+Tabla de Simbolos generada el 2026-01-22 20:50:30.562907
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-22 20:54:29.387899
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-22 20:57:10.245784
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-22 20:57:24.029543
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+

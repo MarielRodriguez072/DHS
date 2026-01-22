@@ -195,18 +195,39 @@ class Escucha(compiladorListener):
 
         self.c3d.agregar_instruccion(f"{self.label_inicio}:")
 
-        # condición
+        # condición (PUEDE SER OPCIONAL)
         cond_for = ctx.condicionFor()
-        if cond_for is None or cond_for.getChildCount() == 0:
-            raise Exception("ERROR: condición vacía en for")
-        
-        cond_ctx = cond_for.getChild(0)
 
-        cond_temp = self.procesar_expresion(cond_ctx)
+        if cond_for and cond_for.condicion():
+            cond_ctx = cond_for.condicion()
+            cond_temp = self.procesar_condicion(cond_ctx)
+            self.c3d.agregar_instruccion(
+                f"ifFalse {cond_temp} goto {self.label_fin}"
+            )
+        else:
+            # for sin condición → loop infinito
+            print("INFO: for sin condición (loop infinito)")
 
-        self.c3d.agregar_instruccion(
-            f"ifFalse {cond_temp} goto {self.label_fin}"
-        )
+    def procesar_condicion(self, ctx):
+        # condicion: opal | comp
+
+        # caso simple: opal (ej: while(a))
+        if isinstance(ctx, compiladorParser.OpalContext):
+            return ctx.getText()
+
+        # caso comparacion: ID OPERADORES opal
+        if isinstance(ctx, compiladorParser.CompContext):
+            izq = ctx.ID().getText()
+            operador = ctx.OPERADORES().getText()
+            der = ctx.opal().getText()
+
+            temp = self.c3d.nuevo_temp()
+            self.c3d.operacion(temp, izq, operador, der)
+            return temp
+
+        raise Exception("Condición no reconocida")
+
+
     
     def procesar_inicializacion_for(self, ctx):
         if ctx is None or ctx.getChildCount() == 0:

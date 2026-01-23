@@ -462,3 +462,92 @@ CONTEXTO 1:
 CONTEXTO 0:
   (vacío)
 
+Tabla de Simbolos generada el 2026-01-23 16:51:24.340742
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 16:51:50.242162
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 16:53:14.562757
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 16:55:35.379777
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 16:59:10.934655
+
+Tabla de Simbolos generada el 2026-01-23 17:02:21.821770
+
+Tabla de Simbolos generada el 2026-01-23 17:02:57.120043
+
+Tabla de Simbolos generada el 2026-01-23 17:04:01.332613
+
+Tabla de Simbolos generada el 2026-01-23 17:07:06.804361
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 17:15:39.151275
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 17:21:02.385578
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 17:57:31.490933
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 17:59:33.880228
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+

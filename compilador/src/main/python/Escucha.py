@@ -115,7 +115,7 @@ class Escucha(compiladorListener):
         # siempre que entremos a un bloque con { ... } abrimos contexto
         self.tabla.push_context()
         print("Nuevo bloque.")
-        self.indent += 1 
+        self.indent += 1
 
     def exitBloque(self, ctx:compiladorParser.BloqueContext):
         self.indent -= 1
@@ -195,27 +195,15 @@ class Escucha(compiladorListener):
 
         self.c3d.agregar_instruccion(f"{self.label_inicio}:")
 
-        # condición (PUEDE SER OPCIONAL)
-        cond_for = ctx.condicionFor()
-
-        if cond_for and cond_for.condicion():
-            cond_ctx = cond_for.condicion()
-            cond_temp = self.procesar_condicion(cond_ctx)
-            self.c3d.agregar_instruccion(
-                f"ifFalse {cond_temp} goto {self.label_fin}"
-            )
-        else:
-            # for sin condición → loop infinito
-            print("INFO: for sin condición (loop infinito)")
-
     def procesar_condicion(self, ctx):
-        # condicion: opal | comp
 
-        # caso simple: opal (ej: while(a))
+        # si llega un CondicionContext, bajamos un nivel
+        if isinstance(ctx, compiladorParser.CondicionContext):
+            return self.procesar_condicion(ctx.getChild(0))
+
         if isinstance(ctx, compiladorParser.OpalContext):
             return ctx.getText()
 
-        # caso comparacion: ID OPERADORES opal
         if isinstance(ctx, compiladorParser.CompContext):
             izq = ctx.ID().getText()
             operador = ctx.OPERADORES().getText()
@@ -225,9 +213,7 @@ class Escucha(compiladorListener):
             self.c3d.operacion(temp, izq, operador, der)
             return temp
 
-        raise Exception("Condición no reconocida")
-
-
+        raise Exception(f"Condición no reconocida: {type(ctx).__name__}")
     
     def procesar_inicializacion_for(self, ctx):
         if ctx is None or ctx.getChildCount() == 0:
@@ -316,13 +302,30 @@ class Escucha(compiladorListener):
             self.c3d.asignacion(nombre, valor)
 
     def exitIfor(self, ctx: compiladorParser.IforContext):
+
+        # condición
+        cond_for = ctx.condicionFor()
+
+        if cond_for and cond_for.condicion():
+            cond_real = cond_for.condicion().getChild(0)
+
+            print(">>>>>>>>>>>>>>>>>>>estamos probando cosas del for<<<<<<<<<<<<<<<<<<")
+            print(cond_real.getText())
+            print(cond_for.getText())
+
+            cond_temp = self.procesar_condicion(cond_real)
+            self.c3d.agregar_instruccion(
+                f"ifFalse {cond_temp} goto {self.label_fin}"
+            )
+        else:
+            print("INFO: for sin condición (loop infinito)")
+
         # incremento (DESPUÉS del cuerpo)
         if ctx.incrementoFor():
             self.procesar_incremento_for(ctx.incrementoFor())
 
         self.c3d.agregar_instruccion(f"goto {self.label_inicio}")
         self.c3d.agregar_instruccion(f"{self.label_fin}:")
-
 
 
     def enterPrototipo(self, ctx:compiladorParser.PrototipoContext):

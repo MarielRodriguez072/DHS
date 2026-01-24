@@ -5,7 +5,6 @@ from compiladorListener import compiladorListener
 from TablaSimbolos import TablaSimbolos, Id, Variable, Function
 import os
 from datetime import datetime
-from CodigoTresDirecciones import CodigoTresDirecciones as C3D
 
 class Escucha(compiladorListener):
     def __init__(self):
@@ -17,64 +16,12 @@ class Escucha(compiladorListener):
         self.asignacion = 0
         self.tabla = None
         self.ctx = 0
-        self.c3d = C3D()
 
     def dbg_contexts(self, msg=""):
         print("\n--- CONTEXTOS", msg, "---")
         for i, ctx in enumerate(self.tabla.ts):
             print(f"  [{i}] -> {list(ctx.keys())}")
         print("-------------------------\n")
-
-    def procesar_expresion(self, ctx):
-        print(">> procesar_expresion:", type(ctx).__name__, ctx.getText())
-        # NUMERO | FLOTANTE | ID
-        if isinstance(ctx, compiladorParser.OpalContext):
-            if ctx.getChildCount() == 1:
-                return ctx.getChild(0).getText()
-            return self.procesar_expresion(ctx.getChild(0))
-
-        # exp : term e
-        if isinstance(ctx, compiladorParser.ExpContext):
-            izq = self.procesar_expresion(ctx.getChild(0))
-            return self.procesar_e(ctx.getChild(1), izq)
-
-        # term : factor t
-        if isinstance(ctx, compiladorParser.TermContext):
-            izq = self.procesar_expresion(ctx.getChild(0))
-            return self.procesar_t(ctx.getChild(1), izq)
-
-        # factor
-        if isinstance(ctx, compiladorParser.FactorContext):
-            if ctx.getChildCount() == 1:
-                return ctx.getChild(0).getText()
-            return self.procesar_expresion(ctx.getChild(1))  # ( exp )
-
-        return ctx.getText()
-    
-    def procesar_e(self, ctx, izq):
-        if ctx.getChildCount() == 0:
-            return izq
-
-        operador = ctx.getChild(0).getText()
-        der = self.procesar_expresion(ctx.getChild(1))
-
-        temp = self.c3d.nuevo_temp()
-        self.c3d.operacion(temp, izq, operador, der)
-
-        return self.procesar_e(ctx.getChild(2), temp)
-
-    def procesar_t(self, ctx, izq):
-        if ctx.getChildCount() == 0:
-            return izq
-
-        operador = ctx.getChild(0).getText()
-        der = self.procesar_expresion(ctx.getChild(1))
-
-        temp = self.c3d.nuevo_temp()
-        self.c3d.operacion(temp, izq, operador, der)
-
-        return self.procesar_t(ctx.getChild(2), temp)
-
 
     def enterPrograma(self, ctx:compiladorParser.ProgramaContext):
         if self.tabla is None:
@@ -96,19 +43,13 @@ class Escucha(compiladorListener):
                 f.write(f"CONTEXTO {i}:\n")
                 self.tabla.exportar_contexto(f, contexto)
 
-
         # mensajes semánticos
         for context in self.tabla.ts:
             for key, value in context.items():
                 if not value.used and getattr(value, 'varFunc', None) != "function":
                     print(f"  -- WARNING SEMANTICO: La variable |{key}| fue declarada pero nunca usada")
-        # resumen
-        print(self)
-        print("\n--- CÓDIGO DE TRES DIRECCIONES ---")
-        print("Cantidad de instrucciones:", len(self.c3d.codigo))
-        print(self.c3d.obtener_codigo())
-        self.c3d.escribir_codigo()
 
+        print(self)
 
     # ---------- bloques ----------
     def enterBloque(self, ctx:compiladorParser.BloqueContext):
@@ -146,187 +87,25 @@ class Escucha(compiladorListener):
         print("  " * self.indent + "Comienza if")
         self.indent += 1
 
-        self.label_fin = self.c3d.nuevo_label()
-
-        cond_ctx = ctx.condicion()
-
-        if cond_ctx is None or cond_ctx.getChildCount() == 0:
-            raise Exception("ERROR: condición vacía en if")
-
-        cond_temp = self.procesar_expresion(cond_ctx)
-        self.c3d.agregar_instruccion(f"ifFalse{cond_temp} goto {self.label_fin}")
-
-
     def exitIif(self, ctx:compiladorParser.IifContext):
         self.indent -= 1
         print("  " * self.indent + "Fin if")
-        self.c3d.agregar_instruccion(f"{self.label_fin}:")
 
     def enterIwhile(self, ctx:compiladorParser.IwhileContext):
         print("  " * self.indent + "Comienza while")
         self.indent += 1
 
-        self.label_inicio = self.c3d.nuevo_label()
-        self.label_fin = self.c3d.nuevo_label()
-
-        self.c3d.agregar_instruccion(f"{self.label_inicio}:")
-
-        cond_ctx = ctx.condicion()
-        if cond_ctx is None or cond_ctx.getChildCount() == 0:
-            raise Exception("ERROR: condición vacía en while")
-        
-        cond_temp = self.procesar_expresion(cond_ctx)
-        self.c3d.agregar_instruccion(f"ifFalse {cond_temp} goto {self.label_fin}")
-
     def exitIwhile(self, ctx:compiladorParser.IwhileContext):
         self.indent -= 1
         print("  " * self.indent + "Fin while")
 
-        self.c3d.agregar_instruccion(f"goto {self.label_inicio}")
-        self.c3d.agregar_instruccion(f"{self.label_fin}:")
-
     def enterIfor(self, ctx: compiladorParser.IforContext):
-        self.label_inicio = self.c3d.nuevo_label()
-        self.label_fin = self.c3d.nuevo_label()
-
-        # inicialización
-        if ctx.incioFor():
-            self.procesar_inicializacion_for(ctx.incioFor())
-
-        self.c3d.agregar_instruccion(f"{self.label_inicio}:")
-
-    def procesar_condicion(self, ctx):
-
-        # si llega un CondicionContext, bajamos un nivel
-        if isinstance(ctx, compiladorParser.CondicionContext):
-            return self.procesar_condicion(ctx.getChild(0))
-
-        if isinstance(ctx, compiladorParser.OpalContext):
-            return ctx.getText()
-
-        if isinstance(ctx, compiladorParser.CompContext):
-            izq = ctx.ID().getText()
-            operador = ctx.OPERADORES().getText()
-            der = ctx.opal().getText()
-
-            temp = self.c3d.nuevo_temp()
-            self.c3d.operacion(temp, izq, operador, der)
-            return temp
-
-        raise Exception(f"Condición no reconocida: {type(ctx).__name__}")
-    
-    def procesar_inicializacion_for(self, ctx):
-        if ctx is None or ctx.getChildCount() == 0:
-            return
-
-        # declaracionFor: tipo ID ASIG exp | tipo ID ASIG opal
-        if isinstance(ctx.getChild(0), compiladorParser.DeclaracionForContext):
-            decl = ctx.getChild(0)
-            nombre = decl.getChild(1).getText()
-
-            # expresión a la derecha
-            if decl.exp():
-                valor = self.procesar_expresion(decl.exp())
-            else:
-                valor = decl.opal().getText()
-
-            self.c3d.asignacion(nombre, valor)
-            return
-
-        # asignacionFor: ID ASIG exp
-        if isinstance(ctx.getChild(0), compiladorParser.AsignacionForContext):
-            asign = ctx.getChild(0)
-            nombre = asign.ID().getText()
-            valor = self.procesar_expresion(asign.exp())
-
-            self.c3d.asignacion(nombre, valor)
-
-    def procesar_incremento_for(self, ctx):
-        if ctx is None or ctx.getChildCount() == 0:
-            return
-
-        hijo = ctx.getChild(0)
-
-        # incdec
-        if isinstance(hijo, compiladorParser.IncdecContext):
-            texto = hijo.getText()
-
-            # a++
-            if texto.endswith("++"):
-                var = texto[:-2]
-                temp = self.c3d.nuevo_temp()
-                self.c3d.operacion(temp, var, "+", "1")
-                self.c3d.asignacion(var, temp)
-                return
-
-            # ++a
-            if texto.startswith("++"):
-                var = texto[2:]
-                temp = self.c3d.nuevo_temp()
-                self.c3d.operacion(temp, var, "+", "1")
-                self.c3d.asignacion(var, temp)
-                return
-
-            # a--
-            if texto.endswith("--"):
-                var = texto[:-2]
-                temp = self.c3d.nuevo_temp()
-                self.c3d.operacion(temp, var, "-", "1")
-                self.c3d.asignacion(var, temp)
-                return
-
-            # --a
-            if texto.startswith("--"):
-                var = texto[2:]
-                temp = self.c3d.nuevo_temp()
-                self.c3d.operacion(temp, var, "-", "1")
-                self.c3d.asignacion(var, temp)
-                return
-
-        # asignacionFor: ID ASIG exp
-        if isinstance(hijo, compiladorParser.AsignacionForContext):
-            nombre = hijo.ID().getText()
-            valor = self.procesar_expresion(hijo.exp())
-            self.c3d.asignacion(nombre, valor)
-            return
-
-        # declaracionFor (poco común, pero permitido)
-        if isinstance(hijo, compiladorParser.DeclaracionForContext):
-            nombre = hijo.getChild(1).getText()
-
-            if hijo.exp():
-                valor = self.procesar_expresion(hijo.exp())
-            else:
-                valor = hijo.opal().getText()
-
-            self.c3d.asignacion(nombre, valor)
+        self.indent += 1
+        print("  " * self.indent + "Comienza for")
 
     def exitIfor(self, ctx: compiladorParser.IforContext):
-
-        # condición
-        cond_for = ctx.condicionFor()
-
-        if cond_for and cond_for.condicion():
-            cond_real = cond_for.condicion().getChild(0)
-
-            print(">>>>>>>>>>>>>>>>>>>estamos probando cosas del for<<<<<<<<<<<<<<<<<<")
-            print(cond_real.getText())
-            print(cond_for.getText())
-
-            cond_temp = self.procesar_condicion(cond_real)
-            self.c3d.agregar_instruccion(
-                f"ifFalse {cond_temp} goto {self.label_fin}"
-            )
-        else:
-            print("INFO: for sin condición (loop infinito)")
-
-        # incremento (DESPUÉS del cuerpo)
-        if ctx.incrementoFor():
-            self.procesar_incremento_for(ctx.incrementoFor())
-
-        self.c3d.agregar_instruccion(f"goto {self.label_inicio}")
-        self.c3d.agregar_instruccion(f"{self.label_fin}:")
-
+        self.indent -= 1
+        print("  " * self.indent + "Fin for")
 
     def enterPrototipo(self, ctx:compiladorParser.PrototipoContext):
         # prototipo: tipo ID PA argumentos PC PYC
@@ -370,7 +149,6 @@ class Escucha(compiladorListener):
 
         return params
 
-
     # ---------- funcion (definicion) ----------
     def enterFuncion(self, ctx:compiladorParser.FuncionContext):
         #abrir contexto local para la función
@@ -405,7 +183,7 @@ class Escucha(compiladorListener):
         self.indent -= 1
         self.tabla.pop_context()
 
-        # ahora registramos la función en el global (o actualizamos prototipo exist.)
+        # ahora registramos la función en el global (o actualizamos prototipo exist)
         # verificamos que ctx tenga hijos válidos
         if ctx is None or ctx.getChildCount() < 6:
             print("WARNING: FuncionContext inválido (se ignora)")

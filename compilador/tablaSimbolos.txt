@@ -551,3 +551,120 @@ CONTEXTO 1:
 CONTEXTO 0:
   (vacío)
 
+Tabla de Simbolos generada el 2026-01-23 19:49:34.801517
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 20:14:14.566225
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 20:14:37.925045
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 20:15:52.373170
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 20:17:17.841772
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 20:18:42.500306
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 20:20:08.198050
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 20:24:34.443642
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 20:24:46.346968
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 20:26:32.586085
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 20:26:38.527731
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 20:27:42.499228
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-01-23 20:27:48.013313
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  (vacío)
+

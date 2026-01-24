@@ -3,7 +3,7 @@ import sys
 from antlr4 import *
 from compiladorLexer  import compiladorLexer
 from compiladorParser import compiladorParser
-from Escucha import Escucha
+#from Escucha import Escucha
 from Caminante import Caminante
 import TablaSimbolos
 
@@ -20,13 +20,13 @@ def main(argv):
     tokens = CommonTokenStream(lexer)
     parser = compiladorParser(tokens)
 
-    escucha = Escucha()
-    parser.addParseListener(escucha)
+    tree = parser.programa()   # ⚠️ guardar el árbol
 
-    parser.programa()
+    caminante = Caminante()
+    caminante.visit(tree)
+
     print("Codigo intermedio generado en codigo_intermedio.txt")
 
 
-  
 if __name__ == '__main__':
     main(sys.argv)

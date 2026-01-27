@@ -20,7 +20,7 @@ def main(argv):
     tokens = CommonTokenStream(lexer)
     parser = compiladorParser(tokens)
 
-    tree = parser.programa()   # ⚠️ guardar el árbol
+    tree = parser.programa()
 
     caminante = Caminante()
     caminante.visit(tree)

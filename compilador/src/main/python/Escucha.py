@@ -293,10 +293,6 @@ class Escucha(compiladorListener):
         symbol.initialized = True
         print(f"  -- Se asigna un valor a la variable |{id_nombre}|")
 
-        # generar código 3 direcciones de la expresión        
-        resultado = self.procesar_expresion(ctx.exp())
-
-        self.c3d.asignacion(id_nombre, resultado)
 
     # ---------- listavar ----------
     def enterListavar(self, ctx:compiladorParser.ListavarContext):

@@ -32,9 +32,33 @@ class Caminante (compiladorVisitor) :
         return self.visitChildren(ctx)
     
 
-    def visitIif (self, ctx:compiladorParser.IifContext):
-        print("If procesado")
-        return self.visitChildren(ctx)
+    def visitIif(self, ctx: compiladorParser.IifContext):
+
+        L_else = self.c3d.nuevo_label()
+        L_fin  = self.c3d.nuevo_label()
+
+        # condición
+        cond_ctx = ctx.condicion().getChild(0)
+        cond_temp = self.procesar_condicion(cond_ctx)
+
+        # ifFalse cond goto L_else
+        self.c3d.agregar_instruccion(f"ifFalse {cond_temp} goto {L_else}")
+
+        # THEN
+        self.visit(ctx.cuerpo())
+
+        # si hay else, salto al final
+        if ctx.ielse().getChildCount() > 0:
+            self.c3d.agregar_instruccion(f"goto {L_fin}")
+
+        # ELSE
+        self.c3d.agregar_instruccion(f"{L_else}:")
+        if ctx.ielse().getChildCount() > 0:
+            self.visit(ctx.ielse().cuerpo())
+
+        # FIN
+        self.c3d.agregar_instruccion(f"{L_fin}:")
+
     
 
     def visitPrototipo (self, ctx:compiladorParser.PrototipoContext):
@@ -42,23 +66,23 @@ class Caminante (compiladorVisitor) :
         return self.visitChildren(ctx)
 
 
-    def visitIwhile(self, ctx:compiladorParser.IwhileContext):
-        L1 = f"L{self.c3d.label_count}"
-        self.c3d.label_count += 1
-        L2 = f"L{self.c3d.label_count}"
-        self.c3d.label_count += 1
+    def visitIwhile(self, ctx):
 
-        cond = ctx.getChild(2).getText()
+        L0 = self.c3d.nuevo_label()
+        L1 = self.c3d.nuevo_label()
 
+        self.c3d.agregar_instruccion(f"{L0}:")
+
+        cond_ctx = ctx.condicion().getChild(0)
+        cond_temp = self.procesar_condicion(cond_ctx)
+
+        self.c3d.agregar_instruccion(f"ifFalse {cond_temp} goto {L1}")
+
+        self.visit(ctx.cuerpo())
+
+        self.c3d.agregar_instruccion(f"goto {L0}")
         self.c3d.agregar_instruccion(f"{L1}:")
-        self.c3d.agregar_instruccion(f"if not {cond} goto {L2}")
-        
-        self.visit(ctx.getChild(4))
-        
-        self.c3d.agregar_instruccion(f"goto {L1}")
-        
-        self.c3d.agregar_instruccion(f"{L2}:")
-        return None
+
     
     def visitIfor(self, ctx: compiladorParser.IforContext):
 
@@ -69,6 +93,7 @@ class Caminante (compiladorVisitor) :
         L0 = self.c3d.nuevo_label()
         L1 = self.c3d.nuevo_label()
 
+        # etiqueta inicio
         self.c3d.agregar_instruccion(f"{L0}:")
 
         # 2. condición
@@ -77,7 +102,7 @@ class Caminante (compiladorVisitor) :
             cond_temp = self.procesar_condicion(cond_ctx)
             self.c3d.agregar_instruccion(f"ifFalse {cond_temp} goto {L1}")
 
-        # 3. CUERPO
+        # 3. cuerpo
         cuerpo = ctx.cuerpo()
         if cuerpo:
             self.visit(cuerpo)
@@ -86,10 +111,28 @@ class Caminante (compiladorVisitor) :
         if ctx.incrementoFor():
             self.visit(ctx.incrementoFor())
 
-        # 5. loop
+        # 5. volver al inicio
         self.c3d.agregar_instruccion(f"goto {L0}")
+
+        # 6. fin
         self.c3d.agregar_instruccion(f"{L1}:")
 
+    def visitIncdec(self, ctx):
+        # ++a o a++
+        if ctx.INC():
+            nombre = ctx.ID().getText()
+            t = self.c3d.nuevo_temp()
+            self.c3d.operacion(t, nombre, '+', '1')
+            self.c3d.asignacion(nombre, t)
+            return None
+
+        # --a o a--
+        if ctx.DEC():
+            nombre = ctx.ID().getText()
+            t = self.c3d.nuevo_temp()
+            self.c3d.operacion(t, nombre, '-', '1')
+            self.c3d.asignacion(nombre, t)
+            return None
 
 
     def visitIncrementoFor(self, ctx):
@@ -126,6 +169,55 @@ class Caminante (compiladorVisitor) :
         self.hojas += 1
         return super().visitTerminal(node)
     
+
+    def visitFuncion(self, ctx: compiladorParser.FuncionContext):
+        nombre = ctx.ID().getText()
+
+        # etiqueta de la función
+        self.c3d.agregar_instruccion(f"{nombre}:")
+
+        # cuerpo de la función
+        self.visit(ctx.bloque())
+
+        # return implícito
+        self.c3d.agregar_instruccion("return")
+        return None
+    
+    def visitIreturn(self, ctx):
+        if ctx.opal():
+            valor = ctx.opal().getText()
+            self.c3d.retorno(valor)
+        else:
+            temp = self.visit(ctx.llamada())
+            self.c3d.retorno(temp)
+        return None
+
+    def visitLlamada(self, ctx):
+        nombre = ctx.ID().getText()
+
+        args = []
+        if ctx.argLlamada():
+            args = self.obtener_argumentos(ctx.argLlamada())
+
+        return self.c3d.llamada_funcion(nombre, args)
+
+    def obtener_argumentos(self, ctx):
+        args = []
+
+        # primer argumento
+        if ctx.opal():
+            args.append(ctx.opal().getText())
+
+        # siguientes
+        mas = ctx.masArgLlamada()
+        while mas and mas.getChildCount() > 0:
+            args.append(mas.opal().getText())
+            mas = mas.masArgLlamada()
+
+        return args
+
+
+
     def printNumeroHojas (self) :
         print("Hojas " + str(self.hojas))
 
@@ -136,6 +228,17 @@ class Caminante (compiladorVisitor) :
 
     def procesar_expresion(self, ctx):
         print(">> procesar_expresion:", type(ctx).__name__, ctx.getText())
+
+        if isinstance(ctx, compiladorParser.FactorContext):
+            # llamada a función
+            if isinstance(ctx.getChild(0), compiladorParser.LlamadaContext):
+                return self.visit(ctx.getChild(0))
+
+            if ctx.getChildCount() == 1:
+                return ctx.getChild(0).getText()
+
+            return self.procesar_expresion(ctx.getChild(1))
+
         if isinstance(ctx, compiladorParser.OpalContext):
             if ctx.getChildCount() == 1:
                 return ctx.getChild(0).getText()

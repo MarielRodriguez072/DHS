@@ -1,1 +1,5 @@
-a = suma(b, c);
+int y;
+int z =0;
+int a,b=1,c;
+f (y, z) ; 
+float u = 1.5;

@@ -1,4 +1,6 @@
-param b
-param c
-t0 = call suma, 2
-a = t0
+y = 0
+z = 0
+a = 0
+param y
+param z
+t0 = call f, 2

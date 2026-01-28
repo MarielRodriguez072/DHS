@@ -1,7 +1,13 @@
-int x = 3;
-int y;
-int a,b=1,c;
-y = 1; 
-a = a +5;
-y = (x + 2) * 3;
-x = (a + b) *(c-d); 
+for(i=0;i<10;i++)
+x=x+1;
+if(x<10)x=10;
+
+if(x<10){
+    x=10;
+}else{
+    x=20;
+}
+x=0;
+while(x<5){
+    x=x+1;
+}

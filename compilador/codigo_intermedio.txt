@@ -1,6 +1,13 @@
+x = 0
 y = 0
-z = 0
 a = 0
-param y
-param z
-t0 = call f, 2
+y = 1
+t0 = a + 5
+a = t0
+t1 = x + 2
+t2 = t1 * 3
+y = t2
+t3 = a + b
+t4 = c - d
+t5 = t3 * t4
+x = t5

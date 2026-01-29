@@ -1,13 +1,2 @@
-for(i=0;i<10;i++)
-x=x+1;
-if(x<10)x=10;
-
-if(x<10){
-    x=10;
-}else{
-    x=20;
-}
-x=0;
-while(x<5){
-    x=x+1;
-}
+int a, b;
+int x = a + 3, y = b * 2, z = (a + b) * 4;

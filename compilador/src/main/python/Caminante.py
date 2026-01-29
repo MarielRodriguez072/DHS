@@ -1,3 +1,4 @@
+from antlr4 import TerminalNode
 from compiladorVisitor import compiladorVisitor
 from compiladorParser import compiladorParser
 from CodigoTresDirecciones import CodigoTresDirecciones
@@ -144,15 +145,62 @@ class Caminante (compiladorVisitor) :
         self.c3d.asignacion(nombre, temp)
         return None
 
+    def visitDeclaracion(self, ctx):
+        nombre = ctx.ID().getText()
 
-    def visitDeclaracion(self, ctx:compiladorParser.DeclaracionContext):
-        nombre = ctx.getChild(1).getText()
+        # inicialización
         self.c3d.agregar_instruccion(f"{nombre} = 0")
+
+        # asignación si existe
+        if ctx.ASIG():
+            valor_ctx = ctx.opal() or ctx.exp()
+            temp = self.procesar_expresion(valor_ctx)
+            self.c3d.asignacion(nombre, temp)
+
+        # procesar lista inmediatamente
+        if ctx.listavar():
+            self.procesar_listavar(ctx.listavar())
+
         return None
 
-    def visitListaVar (self, ctx:compiladorParser.ListavarContext):
-        print("Listavar procesada")
-        return self.visitChildren(ctx)
+
+
+    def procesar_listavar(self, ctx):
+        if ctx is None or ctx.getChildCount() == 0:
+            return
+    
+        nombre = ctx.ID().getText()
+    
+        self.c3d.agregar_instruccion(f"{nombre} = 0")
+    
+        if ctx.ASIG():
+            valor_ctx = ctx.opal() or ctx.exp()
+            temp = self.procesar_expresion(valor_ctx)
+            self.c3d.asignacion(nombre, temp)
+    
+        if ctx.listavar():
+            self.procesar_listavar(ctx.listavar())
+    
+
+
+    def visitListaVar(self, ctx: compiladorParser.ListavarContext):
+        for i in range(ctx.getChildCount()):
+            hijo = ctx.getChild(i)
+
+            # buscamos IDs explícitos
+            if isinstance(hijo, TerminalNode) and hijo.getSymbol().type == compiladorParser.ID:
+                nombre = hijo.getText()
+                self.c3d.agregar_instruccion(f"{nombre} = 0")
+
+            # asignaciones explícitas
+            if isinstance(hijo, compiladorParser.ExpContext) or isinstance(hijo, compiladorParser.OpalContext):
+                nombre = ctx.getChild(i - 2).getText()
+                temp = self.procesar_expresion(hijo)
+                self.c3d.asignacion(nombre, temp)
+
+        return None
+
+
 
     def visitAsignacion(self, ctx):
         nombre = ctx.ID().getText()

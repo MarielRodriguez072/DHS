@@ -58,6 +58,7 @@ instruccion : asignacion
             | funcion
             | ireturn
             | llamada PYC
+            | incdec PYC
             ;
 
 bloque : LLA instrucciones LLC ;

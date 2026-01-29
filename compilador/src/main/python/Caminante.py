@@ -33,24 +33,21 @@ class Caminante (compiladorVisitor) :
         return self.visitChildren(ctx)
     
 
-    def visitIif(self, ctx: compiladorParser.IifContext):
-
+    def visitIif(self, ctx):
         L_else = self.c3d.nuevo_label()
         L_fin  = self.c3d.nuevo_label()
 
-        # condición
         cond_ctx = ctx.condicion().getChild(0)
         cond_temp = self.procesar_condicion(cond_ctx)
 
-        # ifFalse cond goto L_else
+        # salto si es falso
         self.c3d.agregar_instruccion(f"ifFalse {cond_temp} goto {L_else}")
 
-        # THEN
+        # THEN (ACÁ va el while)
         self.visit(ctx.cuerpo())
 
-        # si hay else, salto al final
-        if ctx.ielse().getChildCount() > 0:
-            self.c3d.agregar_instruccion(f"goto {L_fin}")
+        # salir del if
+        self.c3d.agregar_instruccion(f"goto {L_fin}")
 
         # ELSE
         self.c3d.agregar_instruccion(f"{L_else}:")
@@ -60,29 +57,32 @@ class Caminante (compiladorVisitor) :
         # FIN
         self.c3d.agregar_instruccion(f"{L_fin}:")
 
+
     
 
     def visitPrototipo (self, ctx:compiladorParser.PrototipoContext):
         print("Prototipo procesado")
         return self.visitChildren(ctx)
 
-
     def visitIwhile(self, ctx):
-
-        L0 = self.c3d.nuevo_label()
-        L1 = self.c3d.nuevo_label()
-
-        self.c3d.agregar_instruccion(f"{L0}:")
-
+        L_inicio = self.c3d.nuevo_label()
+        L_fin = self.c3d.nuevo_label()
+    
+        self.c3d.agregar_instruccion(f"{L_inicio}:")
+    
         cond_ctx = ctx.condicion().getChild(0)
         cond_temp = self.procesar_condicion(cond_ctx)
-
-        self.c3d.agregar_instruccion(f"ifFalse {cond_temp} goto {L1}")
-
+    
+        self.c3d.agregar_instruccion(f"ifFalse {cond_temp} goto {L_fin}")
+    
+        # CUERPO primero
         self.visit(ctx.cuerpo())
+    
+        # volver al inicio
+        self.c3d.agregar_instruccion(f"goto {L_inicio}")
+    
+        self.c3d.agregar_instruccion(f"{L_fin}:")
 
-        self.c3d.agregar_instruccion(f"goto {L0}")
-        self.c3d.agregar_instruccion(f"{L1}:")
 
     
     def visitIfor(self, ctx: compiladorParser.IforContext):
@@ -168,19 +168,19 @@ class Caminante (compiladorVisitor) :
     def procesar_listavar(self, ctx):
         if ctx is None or ctx.getChildCount() == 0:
             return
-    
+
         nombre = ctx.ID().getText()
-    
+
         self.c3d.agregar_instruccion(f"{nombre} = 0")
-    
+
         if ctx.ASIG():
             valor_ctx = ctx.opal() or ctx.exp()
             temp = self.procesar_expresion(valor_ctx)
             self.c3d.asignacion(nombre, temp)
-    
+
         if ctx.listavar():
             self.procesar_listavar(ctx.listavar())
-    
+
 
 
     def visitListaVar(self, ctx: compiladorParser.ListavarContext):

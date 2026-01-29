@@ -1,2 +1,5 @@
-int a, b;
-int x = a + 3, y = b * 2, z = (a + b) * 4;
+if(a > 0) {
+    while (b < 10) {
+        b++;
+    }
+}

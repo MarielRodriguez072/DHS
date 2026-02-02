@@ -1,15 +1,12 @@
-a = 0
 a = a
-b = a
 b = 5
-c = a
 c = 3
 L0:
 t0 = a < 10
 ifFalse t0 goto L1
-t1 = b > 0
+t1 = 5 > 0
 ifFalse t1 goto L2
-b = b - 1
+b = 5 - 1
 c = 7
 goto L3
 L2:

@@ -10,10 +10,7 @@ class Optimizacion:
         self.optimizar()
         self.escribir_codigo()
 
-    # =============================
-    # IO
-    # =============================
-
+    # Entrada/salida
     def leer_codigo(self):
         with open(self.archivo_entrada, "r", encoding="utf-8") as f:
             self.codigo = [l.strip() for l in f if l.strip()]
@@ -23,10 +20,7 @@ class Optimizacion:
             for l in self.codigo:
                 f.write(l + "\n")
 
-    # =============================
     # Helpers
-    # =============================
-
     def es_label(self, l):
         return l.endswith(":")
 
@@ -42,9 +36,67 @@ class Optimizacion:
                     mods.add(var)
         return mods
 
-    # =============================
     # Optimizaciones
-    # =============================
+    def eliminar_asignaciones_sobrescritas(self):
+        cambio = False
+        ultimo_valor = {}
+
+        nueva = []
+
+        for l in self.codigo:
+            if self.es_label(l) or self.es_salto(l):
+                ultimo_valor.clear()
+                nueva.append(l)
+                continue
+
+            if "=" in l and not l.startswith("if"):
+                var, expr = map(str.strip, l.split("=", 1))
+
+                # si ya había una asignación previa sin uso
+                if var in ultimo_valor:
+                    idx = ultimo_valor[var]
+                    nueva[idx] = None
+                    cambio = True
+
+                ultimo_valor[var] = len(nueva)
+                nueva.append(l)
+            else:
+                nueva.append(l)
+
+        self.codigo = [l for l in nueva if l is not None]
+        return cambio
+
+
+    def propagacion_constantes(self):
+        const = {}
+        cambio = False
+
+        for i, l in enumerate(self.codigo):
+            l = l.strip()
+
+            if l.endswith(":") or l.startswith("if") or l.startswith("goto"):
+                continue
+
+            if "=" in l:
+                var, expr = map(str.strip, l.split("=", 1))
+
+                if expr.isdigit():
+                    const[var] = expr
+                    continue
+
+                if var in const:
+                    del const[var]
+
+                nueva_expr = expr
+                for k, v in const.items():
+                    nueva_expr = re.sub(rf"\b{k}\b", v, nueva_expr)
+
+                if nueva_expr != expr:
+                    self.codigo[i] = f"{var} = {nueva_expr}"
+                    cambio = True
+
+        return cambio
+
 
     def constant_folding(self):
         cambio = False
@@ -102,19 +154,20 @@ class Optimizacion:
         usados = set()
 
         for l in self.codigo:
+            l = l.strip()
             if "=" in l:
-                rhs = l.split("=", 1)[1]
-                for tok in rhs.split():
-                    if tok.startswith("t"):
-                        usados.add(tok)
-            if "if" in l or "goto" in l:
-                for tok in l.split():
-                    if tok.startswith("t"):
-                        usados.add(tok)
+                _, rhs = l.split("=", 1)
+                for tok in re.findall(r"\bt\d+\b", rhs):
+                    usados.add(tok)
+            elif l.startswith("if"):
+                for tok in re.findall(r"\bt\d+\b", l):
+                    usados.add(tok)
 
         nueva = []
         cambio = False
+
         for l in self.codigo:
+            l = l.strip()
             if l.startswith("t") and "=" in l:
                 t = l.split("=")[0].strip()
                 if t not in usados:
@@ -124,6 +177,7 @@ class Optimizacion:
 
         self.codigo = nueva
         return cambio
+
 
     def eliminar_labels_vacias(self):
         cambio = False
@@ -136,10 +190,7 @@ class Optimizacion:
                 i += 1
         return cambio
 
-    # =============================
     # Pipeline
-    # =============================
-
     def optimizar(self):
         MAX_ITER = 10
         iteraciones = 0
@@ -149,9 +200,12 @@ class Optimizacion:
             cambio = False
             iteraciones += 1
 
-            cambio |= self.constant_folding()
-            cambio |= self.peephole()
             cambio |= self.cse_local()
+            cambio |= self.constant_folding()
+            cambio |= self.propagacion_constantes()
+            cambio |= self.peephole()
             cambio |= self.eliminar_codigo_muerto()
+            cambio |= self.eliminar_asignaciones_sobrescritas()
             cambio |= self.eliminar_labels_vacias()
+
 

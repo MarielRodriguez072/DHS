@@ -1,5 +1,14 @@
-if (a > 0)
-    if (b < 10)
-        b++;
-    else
-        b--;
+int a = 0;
+int b = 5;
+int c = 3;
+
+while (a < 10) {
+    if (b > 0) {
+        b = b - 1;
+        c = 3 + 4;
+    } else {
+        c = 3 + 4;
+    }
+
+    a = a + 1;
+}

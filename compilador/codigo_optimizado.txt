@@ -1,24 +1,20 @@
 a = 0
-a = 0
-b = 0
+a = a
+b = a
 b = 5
-c = 0
+c = a
 c = 3
 L0:
 t0 = a < 10
 ifFalse t0 goto L1
 t1 = b > 0
 ifFalse t1 goto L2
-t2 = b - 1
-b = t2
-t3 = 3 + 4
-c = t3
+b = b - 1
+c = 7
 goto L3
 L2:
-t4 = 3 + 4
-c = t4
+c = 7
 L3:
-t5 = a + 1
-a = t5
+a = a + 1
 goto L0
 L1:

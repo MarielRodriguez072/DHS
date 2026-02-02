@@ -1,12 +1,14 @@
 t0 = a > 0
 ifFalse t0 goto L0
+t1 = b < 10
+ifFalse t1 goto L2
+t2 = b + 1
+b = t2
+goto L3
+L2:
+t3 = b - 1
+b = t3
+L3:
 goto L1
 L0:
 L1:
-L2:
-t1 = b < 10
-ifFalse t1 goto L3
-goto L2
-L3:
-t2 = b + 1
-b = t2

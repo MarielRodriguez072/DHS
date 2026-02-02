@@ -22,43 +22,38 @@ class Caminante (compiladorVisitor) :
         return None
     
     def visitInstruccion(self, ctx:compiladorParser.InstruccionContext):
-        self.instr += 1
-        print("Instruccion " + str(self.instr))
-        print("\t" + ctx.getText())
-        return self.visitChildren(ctx)
+        return self.visit(ctx.getChild(0))
 
 
     def visitInstrucciones (self, ctx:compiladorParser.InstruccionesContext):
-        print("Instruccion procesada")
         return self.visitChildren(ctx)
     
-
     def visitIif(self, ctx):
+        cond_temp = self.procesar_condicion(ctx.condicion())
+    
         L_else = self.c3d.nuevo_label()
         L_fin  = self.c3d.nuevo_label()
-
-        cond_ctx = ctx.condicion().getChild(0)
-        cond_temp = self.procesar_condicion(cond_ctx)
-
-        # salto si es falso
-        self.c3d.agregar_instruccion(f"ifFalse {cond_temp} goto {L_else}")
-
-        # THEN (ACÁ va el while)
-        self.visit(ctx.cuerpo())
-
-        # salir del if
+    
+        # ifFalse → else
+        self.c3d.agregar_instruccion(
+            f"ifFalse {cond_temp} goto {L_else}"
+        )
+    
+        # cuerpo del IF
+        self.visit(ctx.instruccion())
         self.c3d.agregar_instruccion(f"goto {L_fin}")
-
+    
         # ELSE
         self.c3d.agregar_instruccion(f"{L_else}:")
-        if ctx.ielse().getChildCount() > 0:
-            self.visit(ctx.ielse().cuerpo())
-
+        if ctx.ielse():
+            self.visit(ctx.ielse().instruccion())
+    
         # FIN
         self.c3d.agregar_instruccion(f"{L_fin}:")
 
 
-    
+
+
 
     def visitPrototipo (self, ctx:compiladorParser.PrototipoContext):
         print("Prototipo procesado")
@@ -67,21 +62,19 @@ class Caminante (compiladorVisitor) :
     def visitIwhile(self, ctx):
         L_inicio = self.c3d.nuevo_label()
         L_fin = self.c3d.nuevo_label()
-    
+
         self.c3d.agregar_instruccion(f"{L_inicio}:")
-    
-        cond_ctx = ctx.condicion().getChild(0)
-        cond_temp = self.procesar_condicion(cond_ctx)
-    
-        self.c3d.agregar_instruccion(f"ifFalse {cond_temp} goto {L_fin}")
-    
-        # CUERPO primero
-        self.visit(ctx.cuerpo())
-    
-        # volver al inicio
+
+        cond_temp = self.procesar_condicion(ctx.condicion())
+        self.c3d.agregar_instruccion(
+            f"ifFalse {cond_temp} goto {L_fin}"
+        )
+
+        self.visit(ctx.instruccion())
+
         self.c3d.agregar_instruccion(f"goto {L_inicio}")
-    
         self.c3d.agregar_instruccion(f"{L_fin}:")
+
 
 
     
@@ -208,10 +201,9 @@ class Caminante (compiladorVisitor) :
         self.c3d.asignacion(nombre, temp)
         return None
 
-    def visitBloque (self, ctx:compiladorParser.BloqueContext):
-        print("bloque procesado")
+    def visitBloque(self, ctx):
         return self.visitChildren(ctx)
-    
+
     def visitTerminal(self, node):
         # print(node.getText())
         self.hojas += 1

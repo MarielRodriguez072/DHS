@@ -77,14 +77,14 @@ incdec: INC ID
       | ID DEC
       ;
 
-iwhile : WHILE PA condicion PC cuerpo
+iwhile : WHILE PA condicion PC instruccion
        ;
 
-iif : IF PA condicion PC cuerpo ielse
+iif : IF PA condicion PC instruccion
+    | IF PA condicion PC instruccion ielse
     ;
 
-ielse: ELSE cuerpo
-     |
+ielse: ELSE instruccion
      ;
 
 incioFor: asignacionFor

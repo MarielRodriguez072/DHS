@@ -37,6 +37,7 @@ class Optimizacion:
         return mods
 
     # Optimizaciones
+    # elimina asignaciones inutiles donde una variable se asigna a si misma
     def eliminar_asignaciones_triviales(self):
         nueva = []
         cambio = False
@@ -52,6 +53,7 @@ class Optimizacion:
         self.codigo = nueva
         return cambio
 
+    # elimina asignaciones a una variable que son sobrescritas antes de ser usadas
     def eliminar_asignaciones_sobrescritas(self):
         cambio = False
         ultima_def = {}
@@ -78,7 +80,7 @@ class Optimizacion:
         return cambio
 
 
-
+    # reemplaza el uso de variables por sus valores constantes conocidos
     def propagacion_constantes(self):
         const = {}
         cambio = False
@@ -111,7 +113,7 @@ class Optimizacion:
 
         return cambio
 
-
+    # Evalua en tiempo de compilacion expresiones aritmeticas cuyoos operandos son constantes
     def constant_folding(self):
         cambio = False
 
@@ -130,6 +132,10 @@ class Optimizacion:
 
         return cambio
     
+    # simplifica patrones comunes de codigo intermedio
+    #ej t1= a+b
+    #   c = t1
+    #despues c = a + b
     def peephole(self):
         cambio = False
         i = 0
@@ -149,6 +155,8 @@ class Optimizacion:
             i += 1
         return cambio
 
+    # common subexpression elimination 
+    #detecta expresiones identicas ya calculadas y reutiliza el resultado
     def cse_local(self):
         cambio = False
         exprs = {}
@@ -166,6 +174,7 @@ class Optimizacion:
                     exprs[expr] = t
         return cambio
 
+    #elimina temporales que nunca son usados
     def eliminar_codigo_muerto(self):
         usados = set()
 
@@ -194,7 +203,7 @@ class Optimizacion:
         self.codigo = nueva
         return cambio
 
-
+    # elimina labels vacias
     def eliminar_labels_vacias(self):
         cambio = False
         i = 0
@@ -206,6 +215,7 @@ class Optimizacion:
                 i += 1
         return cambio
     
+    # elimina estructuras if-else donde ambas ramas asignan el mismo valor
     def eliminar_if_asignacion_igual(self):
         cambio = False
         i = 0
@@ -232,6 +242,7 @@ class Optimizacion:
     
         return cambio
 
+    #elimina temporales usados solo en condiciones
     def peephole_condiciones(self):
         cambio = False
         for i in range(len(self.codigo) - 1):

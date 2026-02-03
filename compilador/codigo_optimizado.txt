@@ -1,17 +1,8 @@
-a = 0
-b = 5
-c = 3
+x = 0
+i = x
 L0:
-ifFalse 0 < 10 goto L1
-ifFalse 5 > 0 goto L2
-b = 4
-t3 = 7
-c = t3
-goto L3
-L2:
-t4 = 7
-c = t4
-L3:
-a = 1
+ifFalse i < 10 goto L1
+x = x + 1
+i = i + 1
 goto L0
 L1:

@@ -11,187 +11,157 @@ else:
 def serializedATN():
     with StringIO() as buf:
         buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\34")
-        buf.write("\u01a0\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\u0163\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
         buf.write("\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31")
         buf.write("\t\31\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36")
         buf.write("\4\37\t\37\4 \t \4!\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t")
-        buf.write("&\4\'\t\'\3\2\3\2\3\2\3\3\3\3\5\3T\n\3\3\4\3\4\3\4\3\4")
-        buf.write("\5\4Z\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5")
-        buf.write("\3\5\3\5\3\5\3\5\5\5k\n\5\3\6\3\6\3\6\3\6\3\7\3\7\5\7")
-        buf.write("s\n\7\3\b\3\b\3\b\3\b\3\b\3\b\5\b{\n\b\3\t\3\t\3\t\3\t")
-        buf.write("\3\t\3\t\3\t\3\t\5\t\u0085\n\t\3\n\3\n\3\n\3\n\3\n\3\n")
-        buf.write("\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13")
-        buf.write("\3\13\3\13\5\13\u009a\n\13\3\f\3\f\3\f\3\r\3\r\5\r\u00a1")
-        buf.write("\n\r\3\16\3\16\3\16\3\16\3\16\3\17\3\17\3\17\3\17\3\20")
-        buf.write("\3\20\3\21\3\21\3\21\5\21\u00b1\n\21\3\22\3\22\3\22\3")
-        buf.write("\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22")
-        buf.write("\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22")
-        buf.write("\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22")
-        buf.write("\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22")
-        buf.write("\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22")
-        buf.write("\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\3\22\5\22\u00f6")
-        buf.write("\n\22\3\23\3\23\3\23\3\23\3\23\3\23\3\23\3\24\3\24\3\24")
-        buf.write("\3\24\5\24\u0103\n\24\3\25\3\25\3\25\3\25\3\25\5\25\u010a")
-        buf.write("\n\25\3\26\3\26\3\26\3\27\3\27\3\27\3\27\5\27\u0113\n")
-        buf.write("\27\3\30\3\30\3\30\3\30\3\30\5\30\u011a\n\30\3\31\3\31")
-        buf.write("\3\31\3\31\3\31\3\31\3\31\3\32\3\32\3\32\3\32\3\32\3\33")
+        buf.write("&\3\2\3\2\3\2\3\3\3\3\5\3R\n\3\3\4\3\4\3\4\3\4\5\4X\n")
+        buf.write("\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5")
+        buf.write("\3\5\3\5\5\5i\n\5\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7")
+        buf.write("\3\7\5\7u\n\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\b\177")
+        buf.write("\n\b\3\t\3\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\3")
+        buf.write("\n\3\n\3\n\3\n\3\n\3\n\3\n\5\n\u0094\n\n\3\13\3\13\3\13")
+        buf.write("\3\f\3\f\3\f\5\f\u009c\n\f\3\r\3\r\3\r\3\r\3\r\3\16\3")
+        buf.write("\16\3\16\3\16\3\17\3\17\5\17\u00a9\n\17\3\20\3\20\3\20")
+        buf.write("\3\20\5\20\u00af\n\20\3\21\3\21\3\21\3\21\3\21\3\21\3")
+        buf.write("\21\3\21\3\21\3\21\3\22\3\22\3\22\3\22\3\22\3\22\3\22")
+        buf.write("\3\23\3\23\3\23\3\23\5\23\u00c6\n\23\3\24\3\24\3\24\3")
+        buf.write("\24\3\24\5\24\u00cd\n\24\3\25\3\25\3\25\3\26\3\26\3\26")
+        buf.write("\3\26\5\26\u00d6\n\26\3\27\3\27\3\27\3\27\3\27\5\27\u00dd")
+        buf.write("\n\27\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\31\3\31\3\31")
+        buf.write("\3\31\3\31\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32")
+        buf.write("\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32")
+        buf.write("\3\32\3\32\3\32\3\32\3\32\5\32\u0104\n\32\3\33\3\33\3")
+        buf.write("\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33")
         buf.write("\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33")
-        buf.write("\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33\3\33")
-        buf.write("\3\33\3\33\5\33\u0141\n\33\3\34\3\34\3\34\3\34\3\34\3")
-        buf.write("\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34")
-        buf.write("\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34")
-        buf.write("\5\34\u015e\n\34\3\35\3\35\3\35\5\35\u0163\n\35\3\36\3")
-        buf.write("\36\3\37\3\37\3\37\3\37\3\37\3 \3 \3!\3!\3!\3!\3\"\3\"")
-        buf.write("\3\"\3#\3#\3#\3#\3#\3#\3#\3#\3#\5#\u017e\n#\3$\3$\3$\3")
-        buf.write("%\3%\3%\3%\3%\3%\3%\3%\3%\3%\3%\3%\3%\5%\u0190\n%\3&\3")
-        buf.write("&\3&\3&\3&\3&\3&\3&\5&\u019a\n&\3\'\3\'\5\'\u019e\n\'")
-        buf.write("\3\'\2\2(\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&")
-        buf.write("(*,.\60\62\64\668:<>@BDFHJL\2\4\4\2\22\22\24\25\4\2\22")
-        buf.write("\23\33\33\2\u01ad\2N\3\2\2\2\4S\3\2\2\2\6Y\3\2\2\2\bj")
-        buf.write("\3\2\2\2\nl\3\2\2\2\fr\3\2\2\2\16z\3\2\2\2\20\u0084\3")
-        buf.write("\2\2\2\22\u0086\3\2\2\2\24\u0099\3\2\2\2\26\u009b\3\2")
-        buf.write("\2\2\30\u00a0\3\2\2\2\32\u00a2\3\2\2\2\34\u00a7\3\2\2")
-        buf.write("\2\36\u00ab\3\2\2\2 \u00b0\3\2\2\2\"\u00f5\3\2\2\2$\u00f7")
-        buf.write("\3\2\2\2&\u0102\3\2\2\2(\u0109\3\2\2\2*\u010b\3\2\2\2")
-        buf.write(",\u0112\3\2\2\2.\u0119\3\2\2\2\60\u011b\3\2\2\2\62\u0122")
-        buf.write("\3\2\2\2\64\u0140\3\2\2\2\66\u015d\3\2\2\28\u0162\3\2")
-        buf.write("\2\2:\u0164\3\2\2\2<\u0166\3\2\2\2>\u016b\3\2\2\2@\u016d")
-        buf.write("\3\2\2\2B\u0171\3\2\2\2D\u017d\3\2\2\2F\u017f\3\2\2\2")
-        buf.write("H\u018f\3\2\2\2J\u0199\3\2\2\2L\u019d\3\2\2\2NO\5\4\3")
-        buf.write("\2OP\7\2\2\3P\3\3\2\2\2QT\5\6\4\2RT\3\2\2\2SQ\3\2\2\2")
-        buf.write("SR\3\2\2\2T\5\3\2\2\2UV\5\b\5\2VW\5\6\4\2WZ\3\2\2\2XZ")
-        buf.write("\5\b\5\2YU\3\2\2\2YX\3\2\2\2Z\7\3\2\2\2[k\5<\37\2\\k\5")
-        buf.write("\64\33\2]k\5\24\13\2^k\5\22\n\2_k\5\"\22\2`k\5\n\6\2a")
-        buf.write("k\5$\23\2bk\5\60\31\2ck\5\16\b\2de\5\62\32\2ef\7\7\2\2")
-        buf.write("fk\3\2\2\2gh\5\20\t\2hi\7\7\2\2ik\3\2\2\2j[\3\2\2\2j\\")
-        buf.write("\3\2\2\2j]\3\2\2\2j^\3\2\2\2j_\3\2\2\2j`\3\2\2\2ja\3\2")
-        buf.write("\2\2jb\3\2\2\2jc\3\2\2\2jd\3\2\2\2jg\3\2\2\2k\t\3\2\2")
-        buf.write("\2lm\7\5\2\2mn\5\6\4\2no\7\6\2\2o\13\3\2\2\2ps\5\4\3\2")
-        buf.write("qs\5\n\6\2rp\3\2\2\2rq\3\2\2\2s\r\3\2\2\2tu\7\32\2\2u")
-        buf.write("v\5> \2vw\7\7\2\2w{\3\2\2\2xy\7\32\2\2y{\5\62\32\2zt\3")
-        buf.write("\2\2\2zx\3\2\2\2{\17\3\2\2\2|}\7\20\2\2}\u0085\7\33\2")
-        buf.write("\2~\177\7\33\2\2\177\u0085\7\20\2\2\u0080\u0081\7\21\2")
-        buf.write("\2\u0081\u0085\7\33\2\2\u0082\u0083\7\33\2\2\u0083\u0085")
-        buf.write("\7\21\2\2\u0084|\3\2\2\2\u0084~\3\2\2\2\u0084\u0080\3")
-        buf.write("\2\2\2\u0084\u0082\3\2\2\2\u0085\21\3\2\2\2\u0086\u0087")
-        buf.write("\7\31\2\2\u0087\u0088\7\3\2\2\u0088\u0089\5L\'\2\u0089")
-        buf.write("\u008a\7\4\2\2\u008a\u008b\5\b\5\2\u008b\23\3\2\2\2\u008c")
-        buf.write("\u008d\7\26\2\2\u008d\u008e\7\3\2\2\u008e\u008f\5L\'\2")
-        buf.write("\u008f\u0090\7\4\2\2\u0090\u0091\5\b\5\2\u0091\u009a\3")
-        buf.write("\2\2\2\u0092\u0093\7\26\2\2\u0093\u0094\7\3\2\2\u0094")
-        buf.write("\u0095\5L\'\2\u0095\u0096\7\4\2\2\u0096\u0097\5\b\5\2")
-        buf.write("\u0097\u0098\5\26\f\2\u0098\u009a\3\2\2\2\u0099\u008c")
-        buf.write("\3\2\2\2\u0099\u0092\3\2\2\2\u009a\25\3\2\2\2\u009b\u009c")
-        buf.write("\7\27\2\2\u009c\u009d\5\b\5\2\u009d\27\3\2\2\2\u009e\u00a1")
-        buf.write("\5\34\17\2\u009f\u00a1\5\32\16\2\u00a0\u009e\3\2\2\2\u00a0")
-        buf.write("\u009f\3\2\2\2\u00a1\31\3\2\2\2\u00a2\u00a3\5:\36\2\u00a3")
-        buf.write("\u00a4\7\33\2\2\u00a4\u00a5\7\b\2\2\u00a5\u00a6\5> \2")
-        buf.write("\u00a6\33\3\2\2\2\u00a7\u00a8\7\33\2\2\u00a8\u00a9\7\b")
-        buf.write("\2\2\u00a9\u00aa\5B\"\2\u00aa\35\3\2\2\2\u00ab\u00ac\5")
-        buf.write("L\'\2\u00ac\37\3\2\2\2\u00ad\u00b1\5\20\t\2\u00ae\u00b1")
-        buf.write("\5\34\17\2\u00af\u00b1\5\32\16\2\u00b0\u00ad\3\2\2\2\u00b0")
-        buf.write("\u00ae\3\2\2\2\u00b0\u00af\3\2\2\2\u00b1!\3\2\2\2\u00b2")
-        buf.write("\u00b3\7\30\2\2\u00b3\u00b4\7\3\2\2\u00b4\u00b5\5\30\r")
-        buf.write("\2\u00b5\u00b6\7\7\2\2\u00b6\u00b7\5\36\20\2\u00b7\u00b8")
-        buf.write("\7\7\2\2\u00b8\u00b9\5 \21\2\u00b9\u00ba\7\4\2\2\u00ba")
-        buf.write("\u00bb\5\f\7\2\u00bb\u00f6\3\2\2\2\u00bc\u00bd\7\30\2")
-        buf.write("\2\u00bd\u00be\7\3\2\2\u00be\u00bf\5\30\r\2\u00bf\u00c0")
-        buf.write("\7\7\2\2\u00c0\u00c1\5\36\20\2\u00c1\u00c2\7\7\2\2\u00c2")
-        buf.write("\u00c3\7\4\2\2\u00c3\u00c4\5\f\7\2\u00c4\u00f6\3\2\2\2")
-        buf.write("\u00c5\u00c6\7\30\2\2\u00c6\u00c7\7\3\2\2\u00c7\u00c8")
-        buf.write("\5\30\r\2\u00c8\u00c9\7\7\2\2\u00c9\u00ca\7\7\2\2\u00ca")
-        buf.write("\u00cb\5 \21\2\u00cb\u00cc\7\4\2\2\u00cc\u00cd\5\f\7\2")
-        buf.write("\u00cd\u00f6\3\2\2\2\u00ce\u00cf\7\30\2\2\u00cf\u00d0")
-        buf.write("\7\3\2\2\u00d0\u00d1\5\30\r\2\u00d1\u00d2\7\7\2\2\u00d2")
-        buf.write("\u00d3\7\7\2\2\u00d3\u00d4\7\4\2\2\u00d4\u00d5\5\f\7\2")
-        buf.write("\u00d5\u00f6\3\2\2\2\u00d6\u00d7\7\30\2\2\u00d7\u00d8")
-        buf.write("\7\3\2\2\u00d8\u00d9\7\7\2\2\u00d9\u00da\5\36\20\2\u00da")
-        buf.write("\u00db\7\7\2\2\u00db\u00dc\5 \21\2\u00dc\u00dd\7\4\2\2")
-        buf.write("\u00dd\u00de\5\f\7\2\u00de\u00f6\3\2\2\2\u00df\u00e0\7")
-        buf.write("\30\2\2\u00e0\u00e1\7\3\2\2\u00e1\u00e2\7\7\2\2\u00e2")
-        buf.write("\u00e3\5\36\20\2\u00e3\u00e4\7\7\2\2\u00e4\u00e5\7\4\2")
-        buf.write("\2\u00e5\u00e6\5\f\7\2\u00e6\u00f6\3\2\2\2\u00e7\u00e8")
-        buf.write("\7\30\2\2\u00e8\u00e9\7\3\2\2\u00e9\u00ea\7\7\2\2\u00ea")
-        buf.write("\u00eb\7\7\2\2\u00eb\u00ec\5 \21\2\u00ec\u00ed\7\4\2\2")
-        buf.write("\u00ed\u00ee\5\f\7\2\u00ee\u00f6\3\2\2\2\u00ef\u00f0\7")
-        buf.write("\30\2\2\u00f0\u00f1\7\3\2\2\u00f1\u00f2\7\7\2\2\u00f2")
-        buf.write("\u00f3\7\7\2\2\u00f3\u00f4\7\4\2\2\u00f4\u00f6\5\f\7\2")
-        buf.write("\u00f5\u00b2\3\2\2\2\u00f5\u00bc\3\2\2\2\u00f5\u00c5\3")
-        buf.write("\2\2\2\u00f5\u00ce\3\2\2\2\u00f5\u00d6\3\2\2\2\u00f5\u00df")
-        buf.write("\3\2\2\2\u00f5\u00e7\3\2\2\2\u00f5\u00ef\3\2\2\2\u00f6")
-        buf.write("#\3\2\2\2\u00f7\u00f8\5:\36\2\u00f8\u00f9\7\33\2\2\u00f9")
-        buf.write("\u00fa\7\3\2\2\u00fa\u00fb\5&\24\2\u00fb\u00fc\7\4\2\2")
-        buf.write("\u00fc\u00fd\7\7\2\2\u00fd%\3\2\2\2\u00fe\u00ff\5*\26")
-        buf.write("\2\u00ff\u0100\5(\25\2\u0100\u0103\3\2\2\2\u0101\u0103")
-        buf.write("\3\2\2\2\u0102\u00fe\3\2\2\2\u0102\u0101\3\2\2\2\u0103")
-        buf.write("\'\3\2\2\2\u0104\u0105\7\t\2\2\u0105\u0106\5*\26\2\u0106")
-        buf.write("\u0107\5(\25\2\u0107\u010a\3\2\2\2\u0108\u010a\3\2\2\2")
-        buf.write("\u0109\u0104\3\2\2\2\u0109\u0108\3\2\2\2\u010a)\3\2\2")
-        buf.write("\2\u010b\u010c\5:\36\2\u010c\u010d\7\33\2\2\u010d+\3\2")
-        buf.write("\2\2\u010e\u010f\5> \2\u010f\u0110\5.\30\2\u0110\u0113")
-        buf.write("\3\2\2\2\u0111\u0113\3\2\2\2\u0112\u010e\3\2\2\2\u0112")
-        buf.write("\u0111\3\2\2\2\u0113-\3\2\2\2\u0114\u0115\7\t\2\2\u0115")
-        buf.write("\u0116\5> \2\u0116\u0117\5.\30\2\u0117\u011a\3\2\2\2\u0118")
-        buf.write("\u011a\3\2\2\2\u0119\u0114\3\2\2\2\u0119\u0118\3\2\2\2")
-        buf.write("\u011a/\3\2\2\2\u011b\u011c\5:\36\2\u011c\u011d\7\33\2")
-        buf.write("\2\u011d\u011e\7\3\2\2\u011e\u011f\5&\24\2\u011f\u0120")
-        buf.write("\7\4\2\2\u0120\u0121\5\n\6\2\u0121\61\3\2\2\2\u0122\u0123")
-        buf.write("\7\33\2\2\u0123\u0124\7\3\2\2\u0124\u0125\5,\27\2\u0125")
-        buf.write("\u0126\7\4\2\2\u0126\63\3\2\2\2\u0127\u0128\5:\36\2\u0128")
-        buf.write("\u0129\7\33\2\2\u0129\u012a\5\66\34\2\u012a\u012b\7\7")
-        buf.write("\2\2\u012b\u0141\3\2\2\2\u012c\u012d\5:\36\2\u012d\u012e")
-        buf.write("\7\33\2\2\u012e\u012f\7\b\2\2\u012f\u0130\5> \2\u0130")
-        buf.write("\u0131\5\66\34\2\u0131\u0132\7\7\2\2\u0132\u0141\3\2\2")
-        buf.write("\2\u0133\u0134\5:\36\2\u0134\u0135\7\33\2\2\u0135\u0136")
-        buf.write("\7\b\2\2\u0136\u0137\5B\"\2\u0137\u0138\7\7\2\2\u0138")
-        buf.write("\u0141\3\2\2\2\u0139\u013a\5:\36\2\u013a\u013b\7\33\2")
-        buf.write("\2\u013b\u013c\7\b\2\2\u013c\u013d\5B\"\2\u013d\u013e")
-        buf.write("\5\66\34\2\u013e\u013f\7\7\2\2\u013f\u0141\3\2\2\2\u0140")
-        buf.write("\u0127\3\2\2\2\u0140\u012c\3\2\2\2\u0140\u0133\3\2\2\2")
-        buf.write("\u0140\u0139\3\2\2\2\u0141\65\3\2\2\2\u0142\u0143\7\t")
-        buf.write("\2\2\u0143\u0144\7\33\2\2\u0144\u015e\5\66\34\2\u0145")
-        buf.write("\u0146\7\t\2\2\u0146\u0147\7\33\2\2\u0147\u0148\7\b\2")
-        buf.write("\2\u0148\u0149\5> \2\u0149\u014a\5\66\34\2\u014a\u015e")
-        buf.write("\3\2\2\2\u014b\u014c\7\t\2\2\u014c\u014d\7\33\2\2\u014d")
-        buf.write("\u015e\58\35\2\u014e\u014f\7\t\2\2\u014f\u0150\7\33\2")
-        buf.write("\2\u0150\u0151\7\b\2\2\u0151\u0152\5B\"\2\u0152\u0153")
-        buf.write("\5\66\34\2\u0153\u015e\3\2\2\2\u0154\u0155\7\t\2\2\u0155")
-        buf.write("\u0156\7\33\2\2\u0156\u0157\7\b\2\2\u0157\u015e\5> \2")
-        buf.write("\u0158\u0159\7\t\2\2\u0159\u015a\7\33\2\2\u015a\u015b")
-        buf.write("\7\b\2\2\u015b\u015e\5B\"\2\u015c\u015e\3\2\2\2\u015d")
-        buf.write("\u0142\3\2\2\2\u015d\u0145\3\2\2\2\u015d\u014b\3\2\2\2")
-        buf.write("\u015d\u014e\3\2\2\2\u015d\u0154\3\2\2\2\u015d\u0158\3")
-        buf.write("\2\2\2\u015d\u015c\3\2\2\2\u015e\67\3\2\2\2\u015f\u0160")
-        buf.write("\7\b\2\2\u0160\u0163\5> \2\u0161\u0163\3\2\2\2\u0162\u015f")
-        buf.write("\3\2\2\2\u0162\u0161\3\2\2\2\u01639\3\2\2\2\u0164\u0165")
-        buf.write("\t\2\2\2\u0165;\3\2\2\2\u0166\u0167\7\33\2\2\u0167\u0168")
-        buf.write("\7\b\2\2\u0168\u0169\5B\"\2\u0169\u016a\7\7\2\2\u016a")
-        buf.write("=\3\2\2\2\u016b\u016c\t\3\2\2\u016c?\3\2\2\2\u016d\u016e")
-        buf.write("\7\33\2\2\u016e\u016f\7\n\2\2\u016f\u0170\5> \2\u0170")
-        buf.write("A\3\2\2\2\u0171\u0172\5F$\2\u0172\u0173\5D#\2\u0173C\3")
-        buf.write("\2\2\2\u0174\u0175\7\13\2\2\u0175\u0176\5F$\2\u0176\u0177")
-        buf.write("\5D#\2\u0177\u017e\3\2\2\2\u0178\u0179\7\f\2\2\u0179\u017a")
-        buf.write("\5F$\2\u017a\u017b\5D#\2\u017b\u017e\3\2\2\2\u017c\u017e")
-        buf.write("\3\2\2\2\u017d\u0174\3\2\2\2\u017d\u0178\3\2\2\2\u017d")
-        buf.write("\u017c\3\2\2\2\u017eE\3\2\2\2\u017f\u0180\5J&\2\u0180")
-        buf.write("\u0181\5H%\2\u0181G\3\2\2\2\u0182\u0183\7\r\2\2\u0183")
-        buf.write("\u0184\5J&\2\u0184\u0185\5H%\2\u0185\u0190\3\2\2\2\u0186")
-        buf.write("\u0187\7\16\2\2\u0187\u0188\5J&\2\u0188\u0189\5H%\2\u0189")
-        buf.write("\u0190\3\2\2\2\u018a\u018b\7\17\2\2\u018b\u018c\5J&\2")
-        buf.write("\u018c\u018d\5H%\2\u018d\u0190\3\2\2\2\u018e\u0190\3\2")
-        buf.write("\2\2\u018f\u0182\3\2\2\2\u018f\u0186\3\2\2\2\u018f\u018a")
-        buf.write("\3\2\2\2\u018f\u018e\3\2\2\2\u0190I\3\2\2\2\u0191\u019a")
-        buf.write("\7\23\2\2\u0192\u019a\7\22\2\2\u0193\u019a\7\33\2\2\u0194")
-        buf.write("\u019a\5\62\32\2\u0195\u0196\7\3\2\2\u0196\u0197\5B\"")
-        buf.write("\2\u0197\u0198\7\4\2\2\u0198\u019a\3\2\2\2\u0199\u0191")
-        buf.write("\3\2\2\2\u0199\u0192\3\2\2\2\u0199\u0193\3\2\2\2\u0199")
-        buf.write("\u0194\3\2\2\2\u0199\u0195\3\2\2\2\u019aK\3\2\2\2\u019b")
-        buf.write("\u019e\5@!\2\u019c\u019e\5> \2\u019d\u019b\3\2\2\2\u019d")
-        buf.write("\u019c\3\2\2\2\u019eM\3\2\2\2\27SYjrz\u0084\u0099\u00a0")
-        buf.write("\u00b0\u00f5\u0102\u0109\u0112\u0119\u0140\u015d\u0162")
-        buf.write("\u017d\u018f\u0199\u019d")
+        buf.write("\3\33\3\33\3\33\5\33\u0121\n\33\3\34\3\34\3\34\5\34\u0126")
+        buf.write("\n\34\3\35\3\35\3\36\3\36\3\36\3\36\3\36\3\37\3\37\3 ")
+        buf.write("\3 \3 \3 \3!\3!\3!\3\"\3\"\3\"\3\"\3\"\3\"\3\"\3\"\3\"")
+        buf.write("\5\"\u0141\n\"\3#\3#\3#\3$\3$\3$\3$\3$\3$\3$\3$\3$\3$")
+        buf.write("\3$\3$\3$\5$\u0153\n$\3%\3%\3%\3%\3%\3%\3%\3%\5%\u015d")
+        buf.write("\n%\3&\3&\5&\u0161\n&\3&\2\2\'\2\4\6\b\n\f\16\20\22\24")
+        buf.write("\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJ\2\4\4\2")
+        buf.write("\22\22\24\25\4\2\22\23\33\33\2\u016c\2L\3\2\2\2\4Q\3\2")
+        buf.write("\2\2\6W\3\2\2\2\bh\3\2\2\2\nj\3\2\2\2\ft\3\2\2\2\16~\3")
+        buf.write("\2\2\2\20\u0080\3\2\2\2\22\u0093\3\2\2\2\24\u0095\3\2")
+        buf.write("\2\2\26\u009b\3\2\2\2\30\u009d\3\2\2\2\32\u00a2\3\2\2")
+        buf.write("\2\34\u00a8\3\2\2\2\36\u00ae\3\2\2\2 \u00b0\3\2\2\2\"")
+        buf.write("\u00ba\3\2\2\2$\u00c5\3\2\2\2&\u00cc\3\2\2\2(\u00ce\3")
+        buf.write("\2\2\2*\u00d5\3\2\2\2,\u00dc\3\2\2\2.\u00de\3\2\2\2\60")
+        buf.write("\u00e5\3\2\2\2\62\u0103\3\2\2\2\64\u0120\3\2\2\2\66\u0125")
+        buf.write("\3\2\2\28\u0127\3\2\2\2:\u0129\3\2\2\2<\u012e\3\2\2\2")
+        buf.write(">\u0130\3\2\2\2@\u0134\3\2\2\2B\u0140\3\2\2\2D\u0142\3")
+        buf.write("\2\2\2F\u0152\3\2\2\2H\u015c\3\2\2\2J\u0160\3\2\2\2LM")
+        buf.write("\5\4\3\2MN\7\2\2\3N\3\3\2\2\2OR\5\6\4\2PR\3\2\2\2QO\3")
+        buf.write("\2\2\2QP\3\2\2\2R\5\3\2\2\2ST\5\b\5\2TU\5\6\4\2UX\3\2")
+        buf.write("\2\2VX\5\b\5\2WS\3\2\2\2WV\3\2\2\2X\7\3\2\2\2Yi\5:\36")
+        buf.write("\2Zi\5\62\32\2[i\5\22\n\2\\i\5\20\t\2]i\5 \21\2^i\5\n")
+        buf.write("\6\2_i\5\"\22\2`i\5.\30\2ai\5\f\7\2bc\5\60\31\2cd\7\7")
+        buf.write("\2\2di\3\2\2\2ef\5\16\b\2fg\7\7\2\2gi\3\2\2\2hY\3\2\2")
+        buf.write("\2hZ\3\2\2\2h[\3\2\2\2h\\\3\2\2\2h]\3\2\2\2h^\3\2\2\2")
+        buf.write("h_\3\2\2\2h`\3\2\2\2ha\3\2\2\2hb\3\2\2\2he\3\2\2\2i\t")
+        buf.write("\3\2\2\2jk\7\5\2\2kl\5\6\4\2lm\7\6\2\2m\13\3\2\2\2no\7")
+        buf.write("\32\2\2op\5<\37\2pq\7\7\2\2qu\3\2\2\2rs\7\32\2\2su\5\60")
+        buf.write("\31\2tn\3\2\2\2tr\3\2\2\2u\r\3\2\2\2vw\7\20\2\2w\177\7")
+        buf.write("\33\2\2xy\7\33\2\2y\177\7\20\2\2z{\7\21\2\2{\177\7\33")
+        buf.write("\2\2|}\7\33\2\2}\177\7\21\2\2~v\3\2\2\2~x\3\2\2\2~z\3")
+        buf.write("\2\2\2~|\3\2\2\2\177\17\3\2\2\2\u0080\u0081\7\31\2\2\u0081")
+        buf.write("\u0082\7\3\2\2\u0082\u0083\5J&\2\u0083\u0084\7\4\2\2\u0084")
+        buf.write("\u0085\5\b\5\2\u0085\21\3\2\2\2\u0086\u0087\7\26\2\2\u0087")
+        buf.write("\u0088\7\3\2\2\u0088\u0089\5J&\2\u0089\u008a\7\4\2\2\u008a")
+        buf.write("\u008b\5\b\5\2\u008b\u0094\3\2\2\2\u008c\u008d\7\26\2")
+        buf.write("\2\u008d\u008e\7\3\2\2\u008e\u008f\5J&\2\u008f\u0090\7")
+        buf.write("\4\2\2\u0090\u0091\5\b\5\2\u0091\u0092\5\24\13\2\u0092")
+        buf.write("\u0094\3\2\2\2\u0093\u0086\3\2\2\2\u0093\u008c\3\2\2\2")
+        buf.write("\u0094\23\3\2\2\2\u0095\u0096\7\27\2\2\u0096\u0097\5\b")
+        buf.write("\5\2\u0097\25\3\2\2\2\u0098\u009c\5\32\16\2\u0099\u009c")
+        buf.write("\5\30\r\2\u009a\u009c\3\2\2\2\u009b\u0098\3\2\2\2\u009b")
+        buf.write("\u0099\3\2\2\2\u009b\u009a\3\2\2\2\u009c\27\3\2\2\2\u009d")
+        buf.write("\u009e\58\35\2\u009e\u009f\7\33\2\2\u009f\u00a0\7\b\2")
+        buf.write("\2\u00a0\u00a1\5<\37\2\u00a1\31\3\2\2\2\u00a2\u00a3\7")
+        buf.write("\33\2\2\u00a3\u00a4\7\b\2\2\u00a4\u00a5\5@!\2\u00a5\33")
+        buf.write("\3\2\2\2\u00a6\u00a9\5J&\2\u00a7\u00a9\3\2\2\2\u00a8\u00a6")
+        buf.write("\3\2\2\2\u00a8\u00a7\3\2\2\2\u00a9\35\3\2\2\2\u00aa\u00af")
+        buf.write("\5\16\b\2\u00ab\u00af\5\32\16\2\u00ac\u00af\5\30\r\2\u00ad")
+        buf.write("\u00af\3\2\2\2\u00ae\u00aa\3\2\2\2\u00ae\u00ab\3\2\2\2")
+        buf.write("\u00ae\u00ac\3\2\2\2\u00ae\u00ad\3\2\2\2\u00af\37\3\2")
+        buf.write("\2\2\u00b0\u00b1\7\30\2\2\u00b1\u00b2\7\3\2\2\u00b2\u00b3")
+        buf.write("\5\26\f\2\u00b3\u00b4\7\7\2\2\u00b4\u00b5\5\34\17\2\u00b5")
+        buf.write("\u00b6\7\7\2\2\u00b6\u00b7\5\36\20\2\u00b7\u00b8\7\4\2")
+        buf.write("\2\u00b8\u00b9\5\b\5\2\u00b9!\3\2\2\2\u00ba\u00bb\58\35")
+        buf.write("\2\u00bb\u00bc\7\33\2\2\u00bc\u00bd\7\3\2\2\u00bd\u00be")
+        buf.write("\5$\23\2\u00be\u00bf\7\4\2\2\u00bf\u00c0\7\7\2\2\u00c0")
+        buf.write("#\3\2\2\2\u00c1\u00c2\5(\25\2\u00c2\u00c3\5&\24\2\u00c3")
+        buf.write("\u00c6\3\2\2\2\u00c4\u00c6\3\2\2\2\u00c5\u00c1\3\2\2\2")
+        buf.write("\u00c5\u00c4\3\2\2\2\u00c6%\3\2\2\2\u00c7\u00c8\7\t\2")
+        buf.write("\2\u00c8\u00c9\5(\25\2\u00c9\u00ca\5&\24\2\u00ca\u00cd")
+        buf.write("\3\2\2\2\u00cb\u00cd\3\2\2\2\u00cc\u00c7\3\2\2\2\u00cc")
+        buf.write("\u00cb\3\2\2\2\u00cd\'\3\2\2\2\u00ce\u00cf\58\35\2\u00cf")
+        buf.write("\u00d0\7\33\2\2\u00d0)\3\2\2\2\u00d1\u00d2\5<\37\2\u00d2")
+        buf.write("\u00d3\5,\27\2\u00d3\u00d6\3\2\2\2\u00d4\u00d6\3\2\2\2")
+        buf.write("\u00d5\u00d1\3\2\2\2\u00d5\u00d4\3\2\2\2\u00d6+\3\2\2")
+        buf.write("\2\u00d7\u00d8\7\t\2\2\u00d8\u00d9\5<\37\2\u00d9\u00da")
+        buf.write("\5,\27\2\u00da\u00dd\3\2\2\2\u00db\u00dd\3\2\2\2\u00dc")
+        buf.write("\u00d7\3\2\2\2\u00dc\u00db\3\2\2\2\u00dd-\3\2\2\2\u00de")
+        buf.write("\u00df\58\35\2\u00df\u00e0\7\33\2\2\u00e0\u00e1\7\3\2")
+        buf.write("\2\u00e1\u00e2\5$\23\2\u00e2\u00e3\7\4\2\2\u00e3\u00e4")
+        buf.write("\5\n\6\2\u00e4/\3\2\2\2\u00e5\u00e6\7\33\2\2\u00e6\u00e7")
+        buf.write("\7\3\2\2\u00e7\u00e8\5*\26\2\u00e8\u00e9\7\4\2\2\u00e9")
+        buf.write("\61\3\2\2\2\u00ea\u00eb\58\35\2\u00eb\u00ec\7\33\2\2\u00ec")
+        buf.write("\u00ed\5\64\33\2\u00ed\u00ee\7\7\2\2\u00ee\u0104\3\2\2")
+        buf.write("\2\u00ef\u00f0\58\35\2\u00f0\u00f1\7\33\2\2\u00f1\u00f2")
+        buf.write("\7\b\2\2\u00f2\u00f3\5<\37\2\u00f3\u00f4\5\64\33\2\u00f4")
+        buf.write("\u00f5\7\7\2\2\u00f5\u0104\3\2\2\2\u00f6\u00f7\58\35\2")
+        buf.write("\u00f7\u00f8\7\33\2\2\u00f8\u00f9\7\b\2\2\u00f9\u00fa")
+        buf.write("\5@!\2\u00fa\u00fb\7\7\2\2\u00fb\u0104\3\2\2\2\u00fc\u00fd")
+        buf.write("\58\35\2\u00fd\u00fe\7\33\2\2\u00fe\u00ff\7\b\2\2\u00ff")
+        buf.write("\u0100\5@!\2\u0100\u0101\5\64\33\2\u0101\u0102\7\7\2\2")
+        buf.write("\u0102\u0104\3\2\2\2\u0103\u00ea\3\2\2\2\u0103\u00ef\3")
+        buf.write("\2\2\2\u0103\u00f6\3\2\2\2\u0103\u00fc\3\2\2\2\u0104\63")
+        buf.write("\3\2\2\2\u0105\u0106\7\t\2\2\u0106\u0107\7\33\2\2\u0107")
+        buf.write("\u0121\5\64\33\2\u0108\u0109\7\t\2\2\u0109\u010a\7\33")
+        buf.write("\2\2\u010a\u010b\7\b\2\2\u010b\u010c\5<\37\2\u010c\u010d")
+        buf.write("\5\64\33\2\u010d\u0121\3\2\2\2\u010e\u010f\7\t\2\2\u010f")
+        buf.write("\u0110\7\33\2\2\u0110\u0121\5\66\34\2\u0111\u0112\7\t")
+        buf.write("\2\2\u0112\u0113\7\33\2\2\u0113\u0114\7\b\2\2\u0114\u0115")
+        buf.write("\5@!\2\u0115\u0116\5\64\33\2\u0116\u0121\3\2\2\2\u0117")
+        buf.write("\u0118\7\t\2\2\u0118\u0119\7\33\2\2\u0119\u011a\7\b\2")
+        buf.write("\2\u011a\u0121\5<\37\2\u011b\u011c\7\t\2\2\u011c\u011d")
+        buf.write("\7\33\2\2\u011d\u011e\7\b\2\2\u011e\u0121\5@!\2\u011f")
+        buf.write("\u0121\3\2\2\2\u0120\u0105\3\2\2\2\u0120\u0108\3\2\2\2")
+        buf.write("\u0120\u010e\3\2\2\2\u0120\u0111\3\2\2\2\u0120\u0117\3")
+        buf.write("\2\2\2\u0120\u011b\3\2\2\2\u0120\u011f\3\2\2\2\u0121\65")
+        buf.write("\3\2\2\2\u0122\u0123\7\b\2\2\u0123\u0126\5<\37\2\u0124")
+        buf.write("\u0126\3\2\2\2\u0125\u0122\3\2\2\2\u0125\u0124\3\2\2\2")
+        buf.write("\u0126\67\3\2\2\2\u0127\u0128\t\2\2\2\u01289\3\2\2\2\u0129")
+        buf.write("\u012a\7\33\2\2\u012a\u012b\7\b\2\2\u012b\u012c\5@!\2")
+        buf.write("\u012c\u012d\7\7\2\2\u012d;\3\2\2\2\u012e\u012f\t\3\2")
+        buf.write("\2\u012f=\3\2\2\2\u0130\u0131\7\33\2\2\u0131\u0132\7\n")
+        buf.write("\2\2\u0132\u0133\5<\37\2\u0133?\3\2\2\2\u0134\u0135\5")
+        buf.write("D#\2\u0135\u0136\5B\"\2\u0136A\3\2\2\2\u0137\u0138\7\13")
+        buf.write("\2\2\u0138\u0139\5D#\2\u0139\u013a\5B\"\2\u013a\u0141")
+        buf.write("\3\2\2\2\u013b\u013c\7\f\2\2\u013c\u013d\5D#\2\u013d\u013e")
+        buf.write("\5B\"\2\u013e\u0141\3\2\2\2\u013f\u0141\3\2\2\2\u0140")
+        buf.write("\u0137\3\2\2\2\u0140\u013b\3\2\2\2\u0140\u013f\3\2\2\2")
+        buf.write("\u0141C\3\2\2\2\u0142\u0143\5H%\2\u0143\u0144\5F$\2\u0144")
+        buf.write("E\3\2\2\2\u0145\u0146\7\r\2\2\u0146\u0147\5H%\2\u0147")
+        buf.write("\u0148\5F$\2\u0148\u0153\3\2\2\2\u0149\u014a\7\16\2\2")
+        buf.write("\u014a\u014b\5H%\2\u014b\u014c\5F$\2\u014c\u0153\3\2\2")
+        buf.write("\2\u014d\u014e\7\17\2\2\u014e\u014f\5H%\2\u014f\u0150")
+        buf.write("\5F$\2\u0150\u0153\3\2\2\2\u0151\u0153\3\2\2\2\u0152\u0145")
+        buf.write("\3\2\2\2\u0152\u0149\3\2\2\2\u0152\u014d\3\2\2\2\u0152")
+        buf.write("\u0151\3\2\2\2\u0153G\3\2\2\2\u0154\u015d\7\23\2\2\u0155")
+        buf.write("\u015d\7\22\2\2\u0156\u015d\7\33\2\2\u0157\u015d\5\60")
+        buf.write("\31\2\u0158\u0159\7\3\2\2\u0159\u015a\5@!\2\u015a\u015b")
+        buf.write("\7\4\2\2\u015b\u015d\3\2\2\2\u015c\u0154\3\2\2\2\u015c")
+        buf.write("\u0155\3\2\2\2\u015c\u0156\3\2\2\2\u015c\u0157\3\2\2\2")
+        buf.write("\u015c\u0158\3\2\2\2\u015dI\3\2\2\2\u015e\u0161\5> \2")
+        buf.write("\u015f\u0161\5<\37\2\u0160\u015e\3\2\2\2\u0160\u015f\3")
+        buf.write("\2\2\2\u0161K\3\2\2\2\26QWht~\u0093\u009b\u00a8\u00ae")
+        buf.write("\u00c5\u00cc\u00d5\u00dc\u0103\u0120\u0125\u0140\u0152")
+        buf.write("\u015c\u0160")
         return buf.getvalue()
 
 
@@ -221,48 +191,47 @@ class compiladorParser ( Parser ):
     RULE_instrucciones = 2
     RULE_instruccion = 3
     RULE_bloque = 4
-    RULE_cuerpo = 5
-    RULE_ireturn = 6
-    RULE_incdec = 7
-    RULE_iwhile = 8
-    RULE_iif = 9
-    RULE_ielse = 10
-    RULE_incioFor = 11
-    RULE_declaracionFor = 12
-    RULE_asignacionFor = 13
-    RULE_condicionFor = 14
-    RULE_incrementoFor = 15
-    RULE_ifor = 16
-    RULE_prototipo = 17
-    RULE_argumentos = 18
-    RULE_masParametros = 19
-    RULE_parametro = 20
-    RULE_argLlamada = 21
-    RULE_masArgLlamada = 22
-    RULE_funcion = 23
-    RULE_llamada = 24
-    RULE_declaracion = 25
-    RULE_listavar = 26
-    RULE_inic = 27
-    RULE_tipo = 28
-    RULE_asignacion = 29
-    RULE_opal = 30
-    RULE_comp = 31
-    RULE_exp = 32
-    RULE_e = 33
-    RULE_term = 34
-    RULE_t = 35
-    RULE_factor = 36
-    RULE_condicion = 37
+    RULE_ireturn = 5
+    RULE_incdec = 6
+    RULE_iwhile = 7
+    RULE_iif = 8
+    RULE_ielse = 9
+    RULE_incioFor = 10
+    RULE_declaracionFor = 11
+    RULE_asignacionFor = 12
+    RULE_condicionFor = 13
+    RULE_incrementoFor = 14
+    RULE_ifor = 15
+    RULE_prototipo = 16
+    RULE_argumentos = 17
+    RULE_masParametros = 18
+    RULE_parametro = 19
+    RULE_argLlamada = 20
+    RULE_masArgLlamada = 21
+    RULE_funcion = 22
+    RULE_llamada = 23
+    RULE_declaracion = 24
+    RULE_listavar = 25
+    RULE_inic = 26
+    RULE_tipo = 27
+    RULE_asignacion = 28
+    RULE_opal = 29
+    RULE_comp = 30
+    RULE_exp = 31
+    RULE_e = 32
+    RULE_term = 33
+    RULE_t = 34
+    RULE_factor = 35
+    RULE_condicion = 36
 
     ruleNames =  [ "programa", "instruccionesOpt", "instrucciones", "instruccion", 
-                   "bloque", "cuerpo", "ireturn", "incdec", "iwhile", "iif", 
-                   "ielse", "incioFor", "declaracionFor", "asignacionFor", 
-                   "condicionFor", "incrementoFor", "ifor", "prototipo", 
-                   "argumentos", "masParametros", "parametro", "argLlamada", 
-                   "masArgLlamada", "funcion", "llamada", "declaracion", 
-                   "listavar", "inic", "tipo", "asignacion", "opal", "comp", 
-                   "exp", "e", "term", "t", "factor", "condicion" ]
+                   "bloque", "ireturn", "incdec", "iwhile", "iif", "ielse", 
+                   "incioFor", "declaracionFor", "asignacionFor", "condicionFor", 
+                   "incrementoFor", "ifor", "prototipo", "argumentos", "masParametros", 
+                   "parametro", "argLlamada", "masArgLlamada", "funcion", 
+                   "llamada", "declaracion", "listavar", "inic", "tipo", 
+                   "asignacion", "opal", "comp", "exp", "e", "term", "t", 
+                   "factor", "condicion" ]
 
     EOF = Token.EOF
     PA=1
@@ -340,9 +309,9 @@ class compiladorParser ( Parser ):
         self.enterRule(localctx, 0, self.RULE_programa)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 76
+            self.state = 74
             self.instruccionesOpt()
-            self.state = 77
+            self.state = 75
             self.match(compiladorParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
@@ -388,20 +357,20 @@ class compiladorParser ( Parser ):
         localctx = compiladorParser.InstruccionesOptContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_instruccionesOpt)
         try:
-            self.state = 81
+            self.state = 79
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,0,self._ctx)
-            if la_ == 1:
+            token = self._input.LA(1)
+            if token in [compiladorParser.LLA, compiladorParser.INC, compiladorParser.DEC, compiladorParser.FLOTANTE, compiladorParser.INT, compiladorParser.DOUBLE, compiladorParser.IF, compiladorParser.FOR, compiladorParser.WHILE, compiladorParser.RETURN, compiladorParser.ID]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 79
+                self.state = 77
                 self.instrucciones()
                 pass
-
-            elif la_ == 2:
+            elif token in [compiladorParser.EOF]:
                 self.enterOuterAlt(localctx, 2)
 
                 pass
-
+            else:
+                raise NoViableAltException(self)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -451,20 +420,20 @@ class compiladorParser ( Parser ):
         localctx = compiladorParser.InstruccionesContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_instrucciones)
         try:
-            self.state = 87
+            self.state = 85
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 83
+                self.state = 81
                 self.instruccion()
-                self.state = 84
+                self.state = 82
                 self.instrucciones()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 86
+                self.state = 84
                 self.instruccion()
                 pass
 
@@ -556,76 +525,76 @@ class compiladorParser ( Parser ):
         localctx = compiladorParser.InstruccionContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_instruccion)
         try:
-            self.state = 104
+            self.state = 102
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 89
+                self.state = 87
                 self.asignacion()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 90
+                self.state = 88
                 self.declaracion()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 91
+                self.state = 89
                 self.iif()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 92
+                self.state = 90
                 self.iwhile()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 93
+                self.state = 91
                 self.ifor()
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 94
+                self.state = 92
                 self.bloque()
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 95
+                self.state = 93
                 self.prototipo()
                 pass
 
             elif la_ == 8:
                 self.enterOuterAlt(localctx, 8)
-                self.state = 96
+                self.state = 94
                 self.funcion()
                 pass
 
             elif la_ == 9:
                 self.enterOuterAlt(localctx, 9)
-                self.state = 97
+                self.state = 95
                 self.ireturn()
                 pass
 
             elif la_ == 10:
                 self.enterOuterAlt(localctx, 10)
-                self.state = 98
+                self.state = 96
                 self.llamada()
-                self.state = 99
+                self.state = 97
                 self.match(compiladorParser.PYC)
                 pass
 
             elif la_ == 11:
                 self.enterOuterAlt(localctx, 11)
-                self.state = 101
+                self.state = 99
                 self.incdec()
-                self.state = 102
+                self.state = 100
                 self.match(compiladorParser.PYC)
                 pass
 
@@ -681,76 +650,12 @@ class compiladorParser ( Parser ):
         self.enterRule(localctx, 8, self.RULE_bloque)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 106
+            self.state = 104
             self.match(compiladorParser.LLA)
-            self.state = 107
+            self.state = 105
             self.instrucciones()
-            self.state = 108
+            self.state = 106
             self.match(compiladorParser.LLC)
-        except RecognitionException as re:
-            localctx.exception = re
-            self._errHandler.reportError(self, re)
-            self._errHandler.recover(self, re)
-        finally:
-            self.exitRule()
-        return localctx
-
-    class CuerpoContext(ParserRuleContext):
-        __slots__ = 'parser'
-
-        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
-            super().__init__(parent, invokingState)
-            self.parser = parser
-
-        def instruccionesOpt(self):
-            return self.getTypedRuleContext(compiladorParser.InstruccionesOptContext,0)
-
-
-        def bloque(self):
-            return self.getTypedRuleContext(compiladorParser.BloqueContext,0)
-
-
-        def getRuleIndex(self):
-            return compiladorParser.RULE_cuerpo
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterCuerpo" ):
-                listener.enterCuerpo(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitCuerpo" ):
-                listener.exitCuerpo(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCuerpo" ):
-                return visitor.visitCuerpo(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-
-    def cuerpo(self):
-
-        localctx = compiladorParser.CuerpoContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_cuerpo)
-        try:
-            self.state = 112
-            self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
-            if la_ == 1:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 110
-                self.instruccionesOpt()
-                pass
-
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 111
-                self.bloque()
-                pass
-
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -803,26 +708,26 @@ class compiladorParser ( Parser ):
     def ireturn(self):
 
         localctx = compiladorParser.IreturnContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 12, self.RULE_ireturn)
+        self.enterRule(localctx, 10, self.RULE_ireturn)
         try:
-            self.state = 120
+            self.state = 114
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 114
+                self.state = 108
                 self.match(compiladorParser.RETURN)
-                self.state = 115
+                self.state = 109
                 self.opal()
-                self.state = 116
+                self.state = 110
                 self.match(compiladorParser.PYC)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 118
+                self.state = 112
                 self.match(compiladorParser.RETURN)
-                self.state = 119
+                self.state = 113
                 self.llamada()
                 pass
 
@@ -874,40 +779,40 @@ class compiladorParser ( Parser ):
     def incdec(self):
 
         localctx = compiladorParser.IncdecContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 14, self.RULE_incdec)
+        self.enterRule(localctx, 12, self.RULE_incdec)
         try:
-            self.state = 130
+            self.state = 124
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 122
+                self.state = 116
                 self.match(compiladorParser.INC)
-                self.state = 123
+                self.state = 117
                 self.match(compiladorParser.ID)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 124
+                self.state = 118
                 self.match(compiladorParser.ID)
-                self.state = 125
+                self.state = 119
                 self.match(compiladorParser.INC)
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 126
+                self.state = 120
                 self.match(compiladorParser.DEC)
-                self.state = 127
+                self.state = 121
                 self.match(compiladorParser.ID)
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 128
+                self.state = 122
                 self.match(compiladorParser.ID)
-                self.state = 129
+                self.state = 123
                 self.match(compiladorParser.DEC)
                 pass
 
@@ -967,18 +872,18 @@ class compiladorParser ( Parser ):
     def iwhile(self):
 
         localctx = compiladorParser.IwhileContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_iwhile)
+        self.enterRule(localctx, 14, self.RULE_iwhile)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 132
+            self.state = 126
             self.match(compiladorParser.WHILE)
-            self.state = 133
+            self.state = 127
             self.match(compiladorParser.PA)
-            self.state = 134
+            self.state = 128
             self.condicion()
-            self.state = 135
+            self.state = 129
             self.match(compiladorParser.PC)
-            self.state = 136
+            self.state = 130
             self.instruccion()
         except RecognitionException as re:
             localctx.exception = re
@@ -1039,13 +944,27 @@ class compiladorParser ( Parser ):
     def iif(self):
 
         localctx = compiladorParser.IifContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_iif)
+        self.enterRule(localctx, 16, self.RULE_iif)
         try:
-            self.state = 151
+            self.state = 145
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
+                self.state = 132
+                self.match(compiladorParser.IF)
+                self.state = 133
+                self.match(compiladorParser.PA)
+                self.state = 134
+                self.condicion()
+                self.state = 135
+                self.match(compiladorParser.PC)
+                self.state = 136
+                self.instruccion()
+                pass
+
+            elif la_ == 2:
+                self.enterOuterAlt(localctx, 2)
                 self.state = 138
                 self.match(compiladorParser.IF)
                 self.state = 139
@@ -1056,21 +975,7 @@ class compiladorParser ( Parser ):
                 self.match(compiladorParser.PC)
                 self.state = 142
                 self.instruccion()
-                pass
-
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 144
-                self.match(compiladorParser.IF)
-                self.state = 145
-                self.match(compiladorParser.PA)
-                self.state = 146
-                self.condicion()
-                self.state = 147
-                self.match(compiladorParser.PC)
-                self.state = 148
-                self.instruccion()
-                self.state = 149
+                self.state = 143
                 self.ielse()
                 pass
 
@@ -1120,12 +1025,12 @@ class compiladorParser ( Parser ):
     def ielse(self):
 
         localctx = compiladorParser.IelseContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 20, self.RULE_ielse)
+        self.enterRule(localctx, 18, self.RULE_ielse)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 153
+            self.state = 147
             self.match(compiladorParser.ELSE)
-            self.state = 154
+            self.state = 148
             self.instruccion()
         except RecognitionException as re:
             localctx.exception = re
@@ -1173,20 +1078,24 @@ class compiladorParser ( Parser ):
     def incioFor(self):
 
         localctx = compiladorParser.IncioForContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 22, self.RULE_incioFor)
+        self.enterRule(localctx, 20, self.RULE_incioFor)
         try:
-            self.state = 158
+            self.state = 153
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [compiladorParser.ID]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 156
+                self.state = 150
                 self.asignacionFor()
                 pass
             elif token in [compiladorParser.FLOTANTE, compiladorParser.INT, compiladorParser.DOUBLE]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 157
+                self.state = 151
                 self.declaracionFor()
+                pass
+            elif token in [compiladorParser.PYC]:
+                self.enterOuterAlt(localctx, 3)
+
                 pass
             else:
                 raise NoViableAltException(self)
@@ -1243,16 +1152,16 @@ class compiladorParser ( Parser ):
     def declaracionFor(self):
 
         localctx = compiladorParser.DeclaracionForContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_declaracionFor)
+        self.enterRule(localctx, 22, self.RULE_declaracionFor)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 160
+            self.state = 155
             self.tipo()
-            self.state = 161
+            self.state = 156
             self.match(compiladorParser.ID)
-            self.state = 162
+            self.state = 157
             self.match(compiladorParser.ASIG)
-            self.state = 163
+            self.state = 158
             self.opal()
         except RecognitionException as re:
             localctx.exception = re
@@ -1302,14 +1211,14 @@ class compiladorParser ( Parser ):
     def asignacionFor(self):
 
         localctx = compiladorParser.AsignacionForContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_asignacionFor)
+        self.enterRule(localctx, 24, self.RULE_asignacionFor)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 165
+            self.state = 160
             self.match(compiladorParser.ID)
-            self.state = 166
+            self.state = 161
             self.match(compiladorParser.ASIG)
-            self.state = 167
+            self.state = 162
             self.exp()
         except RecognitionException as re:
             localctx.exception = re
@@ -1353,11 +1262,23 @@ class compiladorParser ( Parser ):
     def condicionFor(self):
 
         localctx = compiladorParser.CondicionForContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_condicionFor)
+        self.enterRule(localctx, 26, self.RULE_condicionFor)
         try:
-            self.enterOuterAlt(localctx, 1)
-            self.state = 169
-            self.condicion()
+            self.state = 166
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [compiladorParser.FLOTANTE, compiladorParser.NUMERO, compiladorParser.ID]:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 164
+                self.condicion()
+                pass
+            elif token in [compiladorParser.PYC]:
+                self.enterOuterAlt(localctx, 2)
+
+                pass
+            else:
+                raise NoViableAltException(self)
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1408,27 +1329,32 @@ class compiladorParser ( Parser ):
     def incrementoFor(self):
 
         localctx = compiladorParser.IncrementoForContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 30, self.RULE_incrementoFor)
+        self.enterRule(localctx, 28, self.RULE_incrementoFor)
         try:
-            self.state = 174
+            self.state = 172
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 171
+                self.state = 168
                 self.incdec()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 172
+                self.state = 169
                 self.asignacionFor()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 173
+                self.state = 170
                 self.declaracionFor()
+                pass
+
+            elif la_ == 4:
+                self.enterOuterAlt(localctx, 4)
+
                 pass
 
 
@@ -1474,8 +1400,8 @@ class compiladorParser ( Parser ):
         def PC(self):
             return self.getToken(compiladorParser.PC, 0)
 
-        def cuerpo(self):
-            return self.getTypedRuleContext(compiladorParser.CuerpoContext,0)
+        def instruccion(self):
+            return self.getTypedRuleContext(compiladorParser.InstruccionContext,0)
 
 
         def getRuleIndex(self):
@@ -1501,164 +1427,27 @@ class compiladorParser ( Parser ):
     def ifor(self):
 
         localctx = compiladorParser.IforContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 32, self.RULE_ifor)
+        self.enterRule(localctx, 30, self.RULE_ifor)
         try:
-            self.state = 243
-            self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,9,self._ctx)
-            if la_ == 1:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 176
-                self.match(compiladorParser.FOR)
-                self.state = 177
-                self.match(compiladorParser.PA)
-                self.state = 178
-                self.incioFor()
-                self.state = 179
-                self.match(compiladorParser.PYC)
-                self.state = 180
-                self.condicionFor()
-                self.state = 181
-                self.match(compiladorParser.PYC)
-                self.state = 182
-                self.incrementoFor()
-                self.state = 183
-                self.match(compiladorParser.PC)
-                self.state = 184
-                self.cuerpo()
-                pass
-
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 186
-                self.match(compiladorParser.FOR)
-                self.state = 187
-                self.match(compiladorParser.PA)
-                self.state = 188
-                self.incioFor()
-                self.state = 189
-                self.match(compiladorParser.PYC)
-                self.state = 190
-                self.condicionFor()
-                self.state = 191
-                self.match(compiladorParser.PYC)
-                self.state = 192
-                self.match(compiladorParser.PC)
-                self.state = 193
-                self.cuerpo()
-                pass
-
-            elif la_ == 3:
-                self.enterOuterAlt(localctx, 3)
-                self.state = 195
-                self.match(compiladorParser.FOR)
-                self.state = 196
-                self.match(compiladorParser.PA)
-                self.state = 197
-                self.incioFor()
-                self.state = 198
-                self.match(compiladorParser.PYC)
-                self.state = 199
-                self.match(compiladorParser.PYC)
-                self.state = 200
-                self.incrementoFor()
-                self.state = 201
-                self.match(compiladorParser.PC)
-                self.state = 202
-                self.cuerpo()
-                pass
-
-            elif la_ == 4:
-                self.enterOuterAlt(localctx, 4)
-                self.state = 204
-                self.match(compiladorParser.FOR)
-                self.state = 205
-                self.match(compiladorParser.PA)
-                self.state = 206
-                self.incioFor()
-                self.state = 207
-                self.match(compiladorParser.PYC)
-                self.state = 208
-                self.match(compiladorParser.PYC)
-                self.state = 209
-                self.match(compiladorParser.PC)
-                self.state = 210
-                self.cuerpo()
-                pass
-
-            elif la_ == 5:
-                self.enterOuterAlt(localctx, 5)
-                self.state = 212
-                self.match(compiladorParser.FOR)
-                self.state = 213
-                self.match(compiladorParser.PA)
-                self.state = 214
-                self.match(compiladorParser.PYC)
-                self.state = 215
-                self.condicionFor()
-                self.state = 216
-                self.match(compiladorParser.PYC)
-                self.state = 217
-                self.incrementoFor()
-                self.state = 218
-                self.match(compiladorParser.PC)
-                self.state = 219
-                self.cuerpo()
-                pass
-
-            elif la_ == 6:
-                self.enterOuterAlt(localctx, 6)
-                self.state = 221
-                self.match(compiladorParser.FOR)
-                self.state = 222
-                self.match(compiladorParser.PA)
-                self.state = 223
-                self.match(compiladorParser.PYC)
-                self.state = 224
-                self.condicionFor()
-                self.state = 225
-                self.match(compiladorParser.PYC)
-                self.state = 226
-                self.match(compiladorParser.PC)
-                self.state = 227
-                self.cuerpo()
-                pass
-
-            elif la_ == 7:
-                self.enterOuterAlt(localctx, 7)
-                self.state = 229
-                self.match(compiladorParser.FOR)
-                self.state = 230
-                self.match(compiladorParser.PA)
-                self.state = 231
-                self.match(compiladorParser.PYC)
-                self.state = 232
-                self.match(compiladorParser.PYC)
-                self.state = 233
-                self.incrementoFor()
-                self.state = 234
-                self.match(compiladorParser.PC)
-                self.state = 235
-                self.cuerpo()
-                pass
-
-            elif la_ == 8:
-                self.enterOuterAlt(localctx, 8)
-                self.state = 237
-                self.match(compiladorParser.FOR)
-                self.state = 238
-                self.match(compiladorParser.PA)
-                self.state = 239
-                self.match(compiladorParser.PYC)
-                self.state = 240
-                self.match(compiladorParser.PYC)
-                self.state = 241
-                self.match(compiladorParser.PC)
-                self.state = 242
-                self.cuerpo()
-                pass
-
-
+            self.enterOuterAlt(localctx, 1)
+            self.state = 174
+            self.match(compiladorParser.FOR)
+            self.state = 175
+            self.match(compiladorParser.PA)
+            self.state = 176
+            self.incioFor()
+            self.state = 177
+            self.match(compiladorParser.PYC)
+            self.state = 178
+            self.condicionFor()
+            self.state = 179
+            self.match(compiladorParser.PYC)
+            self.state = 180
+            self.incrementoFor()
+            self.state = 181
+            self.match(compiladorParser.PC)
+            self.state = 182
+            self.instruccion()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1717,20 +1506,20 @@ class compiladorParser ( Parser ):
     def prototipo(self):
 
         localctx = compiladorParser.PrototipoContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 34, self.RULE_prototipo)
+        self.enterRule(localctx, 32, self.RULE_prototipo)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 245
+            self.state = 184
             self.tipo()
-            self.state = 246
+            self.state = 185
             self.match(compiladorParser.ID)
-            self.state = 247
+            self.state = 186
             self.match(compiladorParser.PA)
-            self.state = 248
+            self.state = 187
             self.argumentos()
-            self.state = 249
+            self.state = 188
             self.match(compiladorParser.PC)
-            self.state = 250
+            self.state = 189
             self.match(compiladorParser.PYC)
         except RecognitionException as re:
             localctx.exception = re
@@ -1778,16 +1567,16 @@ class compiladorParser ( Parser ):
     def argumentos(self):
 
         localctx = compiladorParser.ArgumentosContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 36, self.RULE_argumentos)
+        self.enterRule(localctx, 34, self.RULE_argumentos)
         try:
-            self.state = 256
+            self.state = 195
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [compiladorParser.FLOTANTE, compiladorParser.INT, compiladorParser.DOUBLE]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 252
+                self.state = 191
                 self.parametro()
-                self.state = 253
+                self.state = 192
                 self.masParametros()
                 pass
             elif token in [compiladorParser.PC]:
@@ -1846,18 +1635,18 @@ class compiladorParser ( Parser ):
     def masParametros(self):
 
         localctx = compiladorParser.MasParametrosContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 38, self.RULE_masParametros)
+        self.enterRule(localctx, 36, self.RULE_masParametros)
         try:
-            self.state = 263
+            self.state = 202
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [compiladorParser.COMA]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 258
+                self.state = 197
                 self.match(compiladorParser.COMA)
-                self.state = 259
+                self.state = 198
                 self.parametro()
-                self.state = 260
+                self.state = 199
                 self.masParametros()
                 pass
             elif token in [compiladorParser.PC]:
@@ -1912,12 +1701,12 @@ class compiladorParser ( Parser ):
     def parametro(self):
 
         localctx = compiladorParser.ParametroContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 40, self.RULE_parametro)
+        self.enterRule(localctx, 38, self.RULE_parametro)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 265
+            self.state = 204
             self.tipo()
-            self.state = 266
+            self.state = 205
             self.match(compiladorParser.ID)
         except RecognitionException as re:
             localctx.exception = re
@@ -1965,16 +1754,16 @@ class compiladorParser ( Parser ):
     def argLlamada(self):
 
         localctx = compiladorParser.ArgLlamadaContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 42, self.RULE_argLlamada)
+        self.enterRule(localctx, 40, self.RULE_argLlamada)
         try:
-            self.state = 272
+            self.state = 211
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [compiladorParser.FLOTANTE, compiladorParser.NUMERO, compiladorParser.ID]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 268
+                self.state = 207
                 self.opal()
-                self.state = 269
+                self.state = 208
                 self.masArgLlamada()
                 pass
             elif token in [compiladorParser.PC]:
@@ -2033,18 +1822,18 @@ class compiladorParser ( Parser ):
     def masArgLlamada(self):
 
         localctx = compiladorParser.MasArgLlamadaContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 44, self.RULE_masArgLlamada)
+        self.enterRule(localctx, 42, self.RULE_masArgLlamada)
         try:
-            self.state = 279
+            self.state = 218
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [compiladorParser.COMA]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 274
+                self.state = 213
                 self.match(compiladorParser.COMA)
-                self.state = 275
+                self.state = 214
                 self.opal()
-                self.state = 276
+                self.state = 215
                 self.masArgLlamada()
                 pass
             elif token in [compiladorParser.PC]:
@@ -2113,20 +1902,20 @@ class compiladorParser ( Parser ):
     def funcion(self):
 
         localctx = compiladorParser.FuncionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 46, self.RULE_funcion)
+        self.enterRule(localctx, 44, self.RULE_funcion)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 281
+            self.state = 220
             self.tipo()
-            self.state = 282
+            self.state = 221
             self.match(compiladorParser.ID)
-            self.state = 283
+            self.state = 222
             self.match(compiladorParser.PA)
-            self.state = 284
+            self.state = 223
             self.argumentos()
-            self.state = 285
+            self.state = 224
             self.match(compiladorParser.PC)
-            self.state = 286
+            self.state = 225
             self.bloque()
         except RecognitionException as re:
             localctx.exception = re
@@ -2179,16 +1968,16 @@ class compiladorParser ( Parser ):
     def llamada(self):
 
         localctx = compiladorParser.LlamadaContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 48, self.RULE_llamada)
+        self.enterRule(localctx, 46, self.RULE_llamada)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 288
+            self.state = 227
             self.match(compiladorParser.ID)
-            self.state = 289
+            self.state = 228
             self.match(compiladorParser.PA)
-            self.state = 290
+            self.state = 229
             self.argLlamada()
-            self.state = 291
+            self.state = 230
             self.match(compiladorParser.PC)
         except RecognitionException as re:
             localctx.exception = re
@@ -2253,66 +2042,66 @@ class compiladorParser ( Parser ):
     def declaracion(self):
 
         localctx = compiladorParser.DeclaracionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 50, self.RULE_declaracion)
+        self.enterRule(localctx, 48, self.RULE_declaracion)
         try:
-            self.state = 318
+            self.state = 257
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,13,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 293
+                self.state = 232
                 self.tipo()
-                self.state = 294
+                self.state = 233
                 self.match(compiladorParser.ID)
-                self.state = 295
+                self.state = 234
                 self.listavar()
-                self.state = 296
+                self.state = 235
                 self.match(compiladorParser.PYC)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 298
+                self.state = 237
                 self.tipo()
-                self.state = 299
+                self.state = 238
                 self.match(compiladorParser.ID)
-                self.state = 300
+                self.state = 239
                 self.match(compiladorParser.ASIG)
-                self.state = 301
+                self.state = 240
                 self.opal()
-                self.state = 302
+                self.state = 241
                 self.listavar()
-                self.state = 303
+                self.state = 242
                 self.match(compiladorParser.PYC)
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 305
+                self.state = 244
                 self.tipo()
-                self.state = 306
+                self.state = 245
                 self.match(compiladorParser.ID)
-                self.state = 307
+                self.state = 246
                 self.match(compiladorParser.ASIG)
-                self.state = 308
+                self.state = 247
                 self.exp()
-                self.state = 309
+                self.state = 248
                 self.match(compiladorParser.PYC)
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 311
+                self.state = 250
                 self.tipo()
-                self.state = 312
+                self.state = 251
                 self.match(compiladorParser.ID)
-                self.state = 313
+                self.state = 252
                 self.match(compiladorParser.ASIG)
-                self.state = 314
+                self.state = 253
                 self.exp()
-                self.state = 315
+                self.state = 254
                 self.listavar()
-                self.state = 316
+                self.state = 255
                 self.match(compiladorParser.PYC)
                 pass
 
@@ -2380,80 +2169,80 @@ class compiladorParser ( Parser ):
     def listavar(self):
 
         localctx = compiladorParser.ListavarContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 52, self.RULE_listavar)
+        self.enterRule(localctx, 50, self.RULE_listavar)
         try:
-            self.state = 347
+            self.state = 286
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,15,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 320
+                self.state = 259
                 self.match(compiladorParser.COMA)
-                self.state = 321
+                self.state = 260
                 self.match(compiladorParser.ID)
-                self.state = 322
+                self.state = 261
                 self.listavar()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 323
+                self.state = 262
                 self.match(compiladorParser.COMA)
-                self.state = 324
+                self.state = 263
                 self.match(compiladorParser.ID)
-                self.state = 325
+                self.state = 264
                 self.match(compiladorParser.ASIG)
-                self.state = 326
+                self.state = 265
                 self.opal()
-                self.state = 327
+                self.state = 266
                 self.listavar()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 329
+                self.state = 268
                 self.match(compiladorParser.COMA)
-                self.state = 330
+                self.state = 269
                 self.match(compiladorParser.ID)
-                self.state = 331
+                self.state = 270
                 self.inic()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 332
+                self.state = 271
                 self.match(compiladorParser.COMA)
-                self.state = 333
+                self.state = 272
                 self.match(compiladorParser.ID)
-                self.state = 334
+                self.state = 273
                 self.match(compiladorParser.ASIG)
-                self.state = 335
+                self.state = 274
                 self.exp()
-                self.state = 336
+                self.state = 275
                 self.listavar()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 338
+                self.state = 277
                 self.match(compiladorParser.COMA)
-                self.state = 339
+                self.state = 278
                 self.match(compiladorParser.ID)
-                self.state = 340
+                self.state = 279
                 self.match(compiladorParser.ASIG)
-                self.state = 341
+                self.state = 280
                 self.opal()
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 342
+                self.state = 281
                 self.match(compiladorParser.COMA)
-                self.state = 343
+                self.state = 282
                 self.match(compiladorParser.ID)
-                self.state = 344
+                self.state = 283
                 self.match(compiladorParser.ASIG)
-                self.state = 345
+                self.state = 284
                 self.exp()
                 pass
 
@@ -2508,16 +2297,16 @@ class compiladorParser ( Parser ):
     def inic(self):
 
         localctx = compiladorParser.InicContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 54, self.RULE_inic)
+        self.enterRule(localctx, 52, self.RULE_inic)
         try:
-            self.state = 352
+            self.state = 291
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [compiladorParser.ASIG]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 349
+                self.state = 288
                 self.match(compiladorParser.ASIG)
-                self.state = 350
+                self.state = 289
                 self.opal()
                 pass
             elif token in [compiladorParser.PYC]:
@@ -2574,11 +2363,11 @@ class compiladorParser ( Parser ):
     def tipo(self):
 
         localctx = compiladorParser.TipoContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 56, self.RULE_tipo)
+        self.enterRule(localctx, 54, self.RULE_tipo)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 354
+            self.state = 293
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << compiladorParser.FLOTANTE) | (1 << compiladorParser.INT) | (1 << compiladorParser.DOUBLE))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -2636,16 +2425,16 @@ class compiladorParser ( Parser ):
     def asignacion(self):
 
         localctx = compiladorParser.AsignacionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 58, self.RULE_asignacion)
+        self.enterRule(localctx, 56, self.RULE_asignacion)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 356
+            self.state = 295
             self.match(compiladorParser.ID)
-            self.state = 357
+            self.state = 296
             self.match(compiladorParser.ASIG)
-            self.state = 358
+            self.state = 297
             self.exp()
-            self.state = 359
+            self.state = 298
             self.match(compiladorParser.PYC)
         except RecognitionException as re:
             localctx.exception = re
@@ -2694,11 +2483,11 @@ class compiladorParser ( Parser ):
     def opal(self):
 
         localctx = compiladorParser.OpalContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 60, self.RULE_opal)
+        self.enterRule(localctx, 58, self.RULE_opal)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 361
+            self.state = 300
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << compiladorParser.FLOTANTE) | (1 << compiladorParser.NUMERO) | (1 << compiladorParser.ID))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -2753,14 +2542,14 @@ class compiladorParser ( Parser ):
     def comp(self):
 
         localctx = compiladorParser.CompContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 62, self.RULE_comp)
+        self.enterRule(localctx, 60, self.RULE_comp)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 363
+            self.state = 302
             self.match(compiladorParser.ID)
-            self.state = 364
+            self.state = 303
             self.match(compiladorParser.OPERADORES)
-            self.state = 365
+            self.state = 304
             self.opal()
         except RecognitionException as re:
             localctx.exception = re
@@ -2808,12 +2597,12 @@ class compiladorParser ( Parser ):
     def exp(self):
 
         localctx = compiladorParser.ExpContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 64, self.RULE_exp)
+        self.enterRule(localctx, 62, self.RULE_exp)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 367
+            self.state = 306
             self.term()
-            self.state = 368
+            self.state = 307
             self.e()
         except RecognitionException as re:
             localctx.exception = re
@@ -2867,27 +2656,27 @@ class compiladorParser ( Parser ):
     def e(self):
 
         localctx = compiladorParser.EContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 66, self.RULE_e)
+        self.enterRule(localctx, 64, self.RULE_e)
         try:
-            self.state = 379
+            self.state = 318
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [compiladorParser.SUMA]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 370
+                self.state = 309
                 self.match(compiladorParser.SUMA)
-                self.state = 371
+                self.state = 310
                 self.term()
-                self.state = 372
+                self.state = 311
                 self.e()
                 pass
             elif token in [compiladorParser.RESTA]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 374
+                self.state = 313
                 self.match(compiladorParser.RESTA)
-                self.state = 375
+                self.state = 314
                 self.term()
-                self.state = 376
+                self.state = 315
                 self.e()
                 pass
             elif token in [compiladorParser.PC, compiladorParser.PYC, compiladorParser.COMA]:
@@ -2943,12 +2732,12 @@ class compiladorParser ( Parser ):
     def term(self):
 
         localctx = compiladorParser.TermContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 68, self.RULE_term)
+        self.enterRule(localctx, 66, self.RULE_term)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 381
+            self.state = 320
             self.factor()
-            self.state = 382
+            self.state = 321
             self.t()
         except RecognitionException as re:
             localctx.exception = re
@@ -3005,36 +2794,36 @@ class compiladorParser ( Parser ):
     def t(self):
 
         localctx = compiladorParser.TContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 70, self.RULE_t)
+        self.enterRule(localctx, 68, self.RULE_t)
         try:
-            self.state = 397
+            self.state = 336
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [compiladorParser.MULT]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 384
+                self.state = 323
                 self.match(compiladorParser.MULT)
-                self.state = 385
+                self.state = 324
                 self.factor()
-                self.state = 386
+                self.state = 325
                 self.t()
                 pass
             elif token in [compiladorParser.DIV]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 388
+                self.state = 327
                 self.match(compiladorParser.DIV)
-                self.state = 389
+                self.state = 328
                 self.factor()
-                self.state = 390
+                self.state = 329
                 self.t()
                 pass
             elif token in [compiladorParser.MOD]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 392
+                self.state = 331
                 self.match(compiladorParser.MOD)
-                self.state = 393
+                self.state = 332
                 self.factor()
-                self.state = 394
+                self.state = 333
                 self.t()
                 pass
             elif token in [compiladorParser.PC, compiladorParser.PYC, compiladorParser.COMA, compiladorParser.SUMA, compiladorParser.RESTA]:
@@ -3105,42 +2894,42 @@ class compiladorParser ( Parser ):
     def factor(self):
 
         localctx = compiladorParser.FactorContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 72, self.RULE_factor)
+        self.enterRule(localctx, 70, self.RULE_factor)
         try:
-            self.state = 407
+            self.state = 346
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 399
+                self.state = 338
                 self.match(compiladorParser.NUMERO)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 400
+                self.state = 339
                 self.match(compiladorParser.FLOTANTE)
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 401
+                self.state = 340
                 self.match(compiladorParser.ID)
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 402
+                self.state = 341
                 self.llamada()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 403
+                self.state = 342
                 self.match(compiladorParser.PA)
-                self.state = 404
+                self.state = 343
                 self.exp()
-                self.state = 405
+                self.state = 344
                 self.match(compiladorParser.PC)
                 pass
 
@@ -3191,20 +2980,20 @@ class compiladorParser ( Parser ):
     def condicion(self):
 
         localctx = compiladorParser.CondicionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 74, self.RULE_condicion)
+        self.enterRule(localctx, 72, self.RULE_condicion)
         try:
-            self.state = 411
+            self.state = 350
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 409
+                self.state = 348
                 self.comp()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 410
+                self.state = 349
                 self.opal()
                 pass
 

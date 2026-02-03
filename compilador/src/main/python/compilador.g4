@@ -63,10 +63,6 @@ instruccion : asignacion
 
 bloque : LLA instrucciones LLC ;
 
-cuerpo : instruccionesOpt
-       | bloque
-       ;
-
 ireturn : RETURN opal PYC 
         | RETURN llamada
         ;
@@ -89,6 +85,7 @@ ielse: ELSE instruccion
 
 incioFor: asignacionFor
          | declaracionFor
+         |
          ;
 
 declaracionFor: tipo ID ASIG opal
@@ -98,21 +95,16 @@ asignacionFor: ID ASIG exp
                ;
 
 condicionFor: condicion
+            |
             ;
 
 incrementoFor: incdec
                | asignacionFor
                | declaracionFor
+               |
                ;
 
-ifor: FOR PA incioFor PYC condicionFor PYC incrementoFor PC cuerpo
-    | FOR PA incioFor PYC condicionFor PYC PC cuerpo
-    | FOR PA incioFor PYC PYC incrementoFor PC cuerpo
-    | FOR PA incioFor PYC PYC PC cuerpo
-    | FOR PA PYC condicionFor PYC incrementoFor PC cuerpo
-    | FOR PA PYC condicionFor PYC PC cuerpo
-    | FOR PA PYC PYC incrementoFor PC cuerpo
-    | FOR PA PYC PYC PC cuerpo
+ifor: FOR PA incioFor PYC condicionFor PYC incrementoFor PC instruccion
     ;
 
 prototipo: tipo ID PA argumentos PC PYC;

@@ -53,15 +53,6 @@ class compiladorListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by compiladorParser#cuerpo.
-    def enterCuerpo(self, ctx:compiladorParser.CuerpoContext):
-        pass
-
-    # Exit a parse tree produced by compiladorParser#cuerpo.
-    def exitCuerpo(self, ctx:compiladorParser.CuerpoContext):
-        pass
-
-
     # Enter a parse tree produced by compiladorParser#ireturn.
     def enterIreturn(self, ctx:compiladorParser.IreturnContext):
         pass

@@ -97,7 +97,7 @@ class Caminante (compiladorVisitor) :
             self.c3d.agregar_instruccion(f"ifFalse {cond_temp} goto {L1}")
 
         # 3. cuerpo
-        cuerpo = ctx.cuerpo()
+        cuerpo = ctx.instruccion()
         if cuerpo:
             self.visit(cuerpo)
 

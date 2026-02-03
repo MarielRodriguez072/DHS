@@ -34,11 +34,6 @@ class compiladorVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by compiladorParser#cuerpo.
-    def visitCuerpo(self, ctx:compiladorParser.CuerpoContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by compiladorParser#ireturn.
     def visitIreturn(self, ctx:compiladorParser.IreturnContext):
         return self.visitChildren(ctx)

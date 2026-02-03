@@ -258,6 +258,31 @@ class Optimizacion:
 
         self.codigo = [l for l in self.codigo if l is not None]
         return cambio
+    
+    # elimina codigo despues de un return o goto hasta la siguiente etiqueta
+    def eliminar_codigo_inalcanzable(self):
+        cambio = False
+        nueva = []
+        muerto = False
+
+        for l in self.codigo:
+            if self.es_label(l):
+                muerto = False
+                nueva.append(l)
+                continue
+
+            if muerto:
+                cambio = True
+                continue
+
+            nueva.append(l)
+
+            if l.startswith("return") or l.startswith("goto"):
+                muerto = True
+
+        self.codigo = nueva
+        return cambio
+
 
     # Pipeline
     def optimizar(self):
@@ -281,5 +306,6 @@ class Optimizacion:
             cambio |= self.cse_local()
         
             cambio |= self.eliminar_if_asignacion_igual()
+            cambio |= self.eliminar_codigo_inalcanzable()
             cambio |= self.eliminar_codigo_muerto()
             cambio |= self.eliminar_labels_vacias()

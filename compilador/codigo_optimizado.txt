@@ -1,8 +1,26 @@
-x = 0
-i = x
-L0:
-ifFalse i < 10 goto L1
-x = x + 1
-i = i + 1
-goto L0
-L1:
+foo:
+z = x + y
+return z
+main:
+a = 1
+b = 2
+c = 7
+param a
+param b
+d = call foo, 2
+ifFalse a > 0 goto L0
+c = 10
+L2:
+ifFalse a < 3 goto L3
+i = 0
+L4:
+ifFalse i < 2 goto L5
+c = i + 1
+i = c
+goto L4
+L5:
+a = a + 1
+goto L2
+L3:
+x = 200
+return c

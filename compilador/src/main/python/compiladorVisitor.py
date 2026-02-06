@@ -194,5 +194,30 @@ class compiladorVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by compiladorParser#cond_or.
+    def visitCond_or(self, ctx:compiladorParser.Cond_orContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladorParser#cond_or_p.
+    def visitCond_or_p(self, ctx:compiladorParser.Cond_or_pContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladorParser#cond_and.
+    def visitCond_and(self, ctx:compiladorParser.Cond_andContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladorParser#cond_and_p.
+    def visitCond_and_p(self, ctx:compiladorParser.Cond_and_pContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladorParser#cond_atom.
+    def visitCond_atom(self, ctx:compiladorParser.Cond_atomContext):
+        return self.visitChildren(ctx)
+
+
 
 del compiladorParser

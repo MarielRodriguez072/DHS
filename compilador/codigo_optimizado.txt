@@ -1,6 +1,132 @@
-main:
 a = 1
-b = 2
-mariel = a + b
-c = mariel
-return c
+b = 0
+c = 3
+d = 4
+x = b
+ifFalse a < 5 goto L2
+L3:
+ifFalse b != 0 goto L2
+L4:
+goto L0
+L2:
+goto L1
+L0:
+x = 1
+L1:
+ifFalse a < 0 goto L7
+L8:
+goto L5
+L7:
+ifFalse c != 0 goto L6
+L9:
+goto L5
+L5:
+x = 2
+L6:
+ifFalse a < 5 goto L12
+L13:
+ifFalse c != 0 goto L12
+L14:
+ifFalse d < 10 goto L12
+L15:
+goto L10
+L12:
+goto L11
+L10:
+x = 3
+L11:
+ifFalse a < 0 goto L18
+L19:
+goto L16
+L18:
+ifFalse b != 0 goto L17
+L20:
+goto L16
+L16:
+x = 4
+L17:
+ifFalse a < 5 goto L23
+L24:
+ifFalse b != 0 goto L23
+L25:
+goto L21
+L23:
+ifFalse c < 10 goto L22
+L26:
+goto L21
+L21:
+x = 5
+L22:
+ifFalse a < 5 goto L29
+L30:
+ifFalse b != 0 goto L32
+L33:
+goto L31
+L32:
+ifFalse c < 10 goto L29
+L34:
+goto L31
+L31:
+goto L27
+L29:
+goto L28
+L27:
+x = 6
+L28:
+ifFalse a < 5 goto L39
+L40:
+ifFalse b != 0 goto L39
+L41:
+goto L38
+L39:
+goto L37
+L38:
+goto L35
+L37:
+ifFalse c < 10 goto L43
+L44:
+ifFalse d != 0 goto L43
+L45:
+goto L42
+L43:
+goto L36
+L42:
+goto L35
+L35:
+x = 7
+L36:
+ifFalse a != 0 goto L48
+L49:
+ifFalse b != 1 goto L48
+L50:
+goto L46
+L48:
+goto L47
+L46:
+x = 8
+L51:
+ifFalse a < 5 goto L54
+L55:
+ifFalse c != 0 goto L54
+L56:
+goto L52
+L54:
+goto L53
+L52:
+a = a + 1
+goto L51
+L53:
+a = 0
+L57:
+ifFalse a < 3 goto L60
+L61:
+goto L58
+L60:
+ifFalse b != 0 goto L59
+L62:
+goto L58
+L58:
+x = x + 1
+a = a + 1
+goto L57
+L59:

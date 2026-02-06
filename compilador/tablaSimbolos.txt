@@ -920,3 +920,319 @@ CONTEXTO 1:
 CONTEXTO 0:
   - main: función int
 
+Tabla de Simbolos generada el 2026-02-06 16:18:08.333934
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+
+
+CONTEXTO 0:
+  - main: función int
+
+Tabla de Simbolos generada el 2026-02-06 16:27:18.626936
+
+CONTEXTO 0:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-02-06 16:27:50.722151
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+
+Tabla de Simbolos generada el 2026-02-06 16:28:51.517094
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+
+Tabla de Simbolos generada el 2026-02-06 16:42:32.924246
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+
+Tabla de Simbolos generada el 2026-02-06 16:42:59.173711
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 16:57:48.517876
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 16:58:14.443120
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 17:04:07.090989
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 17:12:42.795170
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 17:20:30.661154
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 17:25:04.416562
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 17:28:01.885841
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 17:30:23.726820
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 17:33:08.754025
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 17:33:20.910980
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 17:37:39.104200
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 17:41:08.919214
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 17:41:21.495647
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 17:45:40.881078
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 17:45:50.879835
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 19:18:12.033571
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 19:24:11.114159
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 19:29:24.124810
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+  - suma: función int
+     parametros: int a, int b
+
+Tabla de Simbolos generada el 2026-02-06 19:30:32.317448
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 19:42:12.820891
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - x: variable int
+
+Tabla de Simbolos generada el 2026-02-06 19:46:13.344170
+
+CONTEXTO 1:
+  (vacío)
+
+
+CONTEXTO 2:
+  (vacío)
+
+
+CONTEXTO 3:
+  (vacío)
+
+
+CONTEXTO 4:
+  (vacío)
+
+
+CONTEXTO 5:
+  (vacío)
+
+
+CONTEXTO 6:
+  (vacío)
+
+
+CONTEXTO 7:
+  (vacío)
+
+
+CONTEXTO 8:
+  (vacío)
+
+
+CONTEXTO 9:
+  (vacío)
+
+
+CONTEXTO 10:
+  (vacío)
+
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - d: variable int
+  - x: variable int
+

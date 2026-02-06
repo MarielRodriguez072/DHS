@@ -341,5 +341,50 @@ class compiladorListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by compiladorParser#cond_or.
+    def enterCond_or(self, ctx:compiladorParser.Cond_orContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#cond_or.
+    def exitCond_or(self, ctx:compiladorParser.Cond_orContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladorParser#cond_or_p.
+    def enterCond_or_p(self, ctx:compiladorParser.Cond_or_pContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#cond_or_p.
+    def exitCond_or_p(self, ctx:compiladorParser.Cond_or_pContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladorParser#cond_and.
+    def enterCond_and(self, ctx:compiladorParser.Cond_andContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#cond_and.
+    def exitCond_and(self, ctx:compiladorParser.Cond_andContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladorParser#cond_and_p.
+    def enterCond_and_p(self, ctx:compiladorParser.Cond_and_pContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#cond_and_p.
+    def exitCond_and_p(self, ctx:compiladorParser.Cond_and_pContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladorParser#cond_atom.
+    def enterCond_atom(self, ctx:compiladorParser.Cond_atomContext):
+        pass
+
+    # Exit a parse tree produced by compiladorParser#cond_atom.
+    def exitCond_atom(self, ctx:compiladorParser.Cond_atomContext):
+        pass
+
+
 
 del compiladorParser

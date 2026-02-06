@@ -11,7 +11,10 @@ LLC : '}' ;
 PYC : ';' ;
 ASIG : '=' ;
 COMA : ',' ;
-OPERADORES : ('>'|'<'|'=='|'<='|'>='|'!='|'&&'|'||');
+OPERADORES : ('>'|'<'|'=='|'<='|'>=');
+AND : '&&';
+OR : '||';
+NEQ : '!=';
 SUMA : '+';
 RESTA : '-';
 MULT : '*' ;
@@ -163,7 +166,9 @@ opal : NUMERO
      | ID
      ;
      
-comp : ID OPERADORES opal;
+comp : ID OPERADORES opal
+     | ID NEQ opal
+     ;
 
 exp : term e;
 
@@ -187,6 +192,29 @@ factor : NUMERO
        | PA exp PC
        ;
 
-condicion: comp
-           | opal
-           ;
+condicion : cond_or
+          ;
+
+cond_or
+    : cond_and cond_or_p
+    ;
+
+cond_or_p
+    : OR cond_and cond_or_p
+    |
+    ;
+
+cond_and
+    : cond_atom cond_and_p
+    ;
+
+cond_and_p
+    : AND cond_atom cond_and_p
+    |
+    ;
+
+cond_atom
+    : comp
+    | opal
+    | PA condicion PC
+    ;

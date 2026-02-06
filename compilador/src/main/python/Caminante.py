@@ -30,30 +30,126 @@ class Caminante (compiladorVisitor) :
         return self.visitChildren(ctx)
     
     def visitIif(self, ctx):
-        cond_temp = self.procesar_condicion(ctx.condicion())
-    
-        L_else = self.c3d.nuevo_label()
+        L_true = self.c3d.nuevo_label()
         L_fin  = self.c3d.nuevo_label()
     
-        # ifFalse → else
-        self.c3d.agregar_instruccion(
-            f"ifFalse {cond_temp} goto {L_else}"
-        )
-    
-        # cuerpo del IF
-        self.visit(ctx.instruccion())
-        self.c3d.agregar_instruccion(f"goto {L_fin}")
-    
-        # ELSE
-        self.c3d.agregar_instruccion(f"{L_else}:")
         if ctx.ielse():
+            # IF CON ELSE
+            L_else = self.c3d.nuevo_label()
+    
+            self.generar_condicion(ctx.condicion(), L_true, L_else)
+    
+            self.c3d.agregar_instruccion(f"{L_true}:")
+            self.visit(ctx.instruccion())
+            self.c3d.agregar_instruccion(f"goto {L_fin}")
+    
+            self.c3d.agregar_instruccion(f"{L_else}:")
             self.visit(ctx.ielse().instruccion())
     
-        # FIN
-        self.c3d.agregar_instruccion(f"{L_fin}:")
+            self.c3d.agregar_instruccion(f"{L_fin}:")
+        else:
+            # IF SIN ELSE
+            self.generar_condicion(ctx.condicion(), L_true, L_fin)
+    
+            self.c3d.agregar_instruccion(f"{L_true}:")
+            self.visit(ctx.instruccion())
+    
+            self.c3d.agregar_instruccion(f"{L_fin}:")
 
 
 
+    def gen_and(self, ctx, L_true, L_false):
+        L_next = self.c3d.nuevo_label()
+
+        self.gen_atom(ctx.cond_atom(), L_next, L_false)
+        self.c3d.agregar_instruccion(f"{L_next}:")
+
+        if ctx.cond_and_p():
+            self.gen_and_p(ctx.cond_and_p(), L_true, L_false)
+        else:
+            self.c3d.agregar_instruccion(f"goto {L_true}")
+
+
+    def gen_and_p(self, ctx, L_true, L_false):
+
+        if ctx is None or ctx.getChildCount() == 0:
+            self.c3d.agregar_instruccion(f"goto {L_true}")
+            return
+
+        L_next = self.c3d.nuevo_label()
+        self.gen_atom(ctx.cond_atom(), L_next, L_false)
+        self.c3d.agregar_instruccion(f"{L_next}:")
+
+        self.gen_and_p(ctx.cond_and_p(), L_true, L_false)
+
+
+    def gen_or(self, ctx, L_true, L_false):
+        L_next = self.c3d.nuevo_label()
+
+        self.gen_and(ctx.cond_and(), L_true, L_next)
+        self.c3d.agregar_instruccion(f"{L_next}:")
+
+        self.gen_or_p(ctx.cond_or_p(), L_true, L_false)
+
+
+
+    def gen_or_p(self, ctx, L_true, L_false):
+
+        if ctx is None or ctx.getChildCount() == 0:
+            self.c3d.agregar_instruccion(f"goto {L_false}")
+            return
+
+        self.gen_and(ctx.cond_and(), L_true, L_false)
+
+
+
+    def gen_atom(self, ctx, L_true, L_false):
+
+        if ctx is None:
+            return
+
+        # ( condicion )
+        if ctx.condicion():
+            self.generar_condicion(ctx.condicion(), L_true, L_false)
+            return
+
+        # comparación: ID op opal
+        if ctx.comp():
+            comp = ctx.comp()
+
+            izq = comp.getChild(0).getText() #ID
+            op  = comp.getChild(1).getText() # <,>,!=,==
+            der = comp.getChild(2).getText() # opal
+
+            t = self.c3d.nuevo_temp()
+            self.c3d.agregar_instruccion(f"{t} = {izq} {op} {der}")
+            self.c3d.agregar_instruccion(f"ifFalse {t} goto {L_false}")
+            return
+
+        # valor booleano / expresión simple
+        if ctx.opal():
+            val = ctx.opal().getText()
+            self.c3d.agregar_instruccion(f"ifFalse {val} goto {L_false}")
+            return
+
+        raise Exception(f"cond_atom inválido: {ctx.getText()}")
+
+
+
+    def gen_comp(self, ctx, L_true, L_false):
+        izq = ctx.ID().getText()
+        op  = ctx.OPERADORES().getText()
+        der = self.procesar_opal(ctx.opal())
+
+        t = self.c3d.nuevo_temp()
+        self.c3d.agregar_instruccion(f"{t} = {izq} {op} {der}")
+        self.c3d.agregar_instruccion(f"ifFalse {t} goto {L_false}")
+        self.c3d.agregar_instruccion(f"goto {L_true}")
+
+
+
+    def generar_condicion(self, ctx, L_true, L_false):
+        self.gen_or(ctx.cond_or(), L_true, L_false)
 
 
     def visitPrototipo (self, ctx:compiladorParser.PrototipoContext):
@@ -62,55 +158,54 @@ class Caminante (compiladorVisitor) :
 
     def visitIwhile(self, ctx):
         L_inicio = self.c3d.nuevo_label()
-        L_fin = self.c3d.nuevo_label()
+        L_true   = self.c3d.nuevo_label()
+        L_fin    = self.c3d.nuevo_label()
 
+        # inicio del loop
         self.c3d.agregar_instruccion(f"{L_inicio}:")
 
-        cond_temp = self.procesar_condicion(ctx.condicion())
-        self.c3d.agregar_instruccion(
-            f"ifFalse {cond_temp} goto {L_fin}"
-        )
+        # condición con && || !=
+        self.generar_condicion(ctx.condicion(), L_true, L_fin)
 
+        # cuerpo
+        self.c3d.agregar_instruccion(f"{L_true}:")
         self.visit(ctx.instruccion())
 
+        # volver a evaluar
         self.c3d.agregar_instruccion(f"goto {L_inicio}")
         self.c3d.agregar_instruccion(f"{L_fin}:")
 
-
-
     
-    def visitIfor(self, ctx: compiladorParser.IforContext):
-
-        # 1. inicialización
+    def visitIfor(self, ctx):
+        #inicialización
         if ctx.incioFor():
             self.visit(ctx.incioFor())
 
-        L0 = self.c3d.nuevo_label()
-        L1 = self.c3d.nuevo_label()
+        L_inicio = self.c3d.nuevo_label()
+        L_true   = self.c3d.nuevo_label()
+        L_fin    = self.c3d.nuevo_label()
 
-        # etiqueta inicio
-        self.c3d.agregar_instruccion(f"{L0}:")
+        self.c3d.agregar_instruccion(f"{L_inicio}:")
 
-        # 2. condición
+        #condición
         if ctx.condicionFor():
-            cond_ctx = ctx.condicionFor().getChild(0)
-            cond_temp = self.procesar_condicion(cond_ctx)
-            self.c3d.agregar_instruccion(f"ifFalse {cond_temp} goto {L1}")
+            self.generar_condicion(ctx.condicionFor().getChild(0), L_true, L_fin)
+        else:
+            # for(;;) → siempre verdadero
+            self.c3d.agregar_instruccion(f"goto {L_true}")
 
-        # 3. cuerpo
-        cuerpo = ctx.instruccion()
-        if cuerpo:
-            self.visit(cuerpo)
+        #cuerpo
+        self.c3d.agregar_instruccion(f"{L_true}:")
+        self.visit(ctx.instruccion())
 
-        # 4. incremento
+        # incremento
         if ctx.incrementoFor():
             self.visit(ctx.incrementoFor())
 
-        # 5. volver al inicio
-        self.c3d.agregar_instruccion(f"goto {L0}")
+        #volver
+        self.c3d.agregar_instruccion(f"goto {L_inicio}")
+        self.c3d.agregar_instruccion(f"{L_fin}:")
 
-        # 6. fin
-        self.c3d.agregar_instruccion(f"{L1}:")
 
     def visitIncdec(self, ctx):
         # ++a o a++
@@ -364,4 +459,4 @@ class Caminante (compiladorVisitor) :
             return self.procesar_condicion(ctx.getChild(0))
 
         raise Exception(f"Condición no reconocida: {ctx.getText()}")
-
+    

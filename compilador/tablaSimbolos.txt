@@ -876,3 +876,47 @@ CONTEXTO 1:
 CONTEXTO 0:
   - main: función int
 
+Tabla de Simbolos generada el 2026-02-06 15:53:30.834298
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+
+
+CONTEXTO 0:
+  - main: función int
+
+Tabla de Simbolos generada el 2026-02-06 15:55:42.432107
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+
+
+CONTEXTO 0:
+  - main: función int
+
+Tabla de Simbolos generada el 2026-02-06 15:56:24.480895
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+
+
+CONTEXTO 0:
+  - main: función int
+
+Tabla de Simbolos generada el 2026-02-06 15:56:39.950124
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+
+
+CONTEXTO 0:
+  - main: función int
+

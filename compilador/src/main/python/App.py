@@ -21,10 +21,16 @@ def main(argv):
     parser = compiladorParser(tokens)
 
     escucha = Escucha()
+    
     parser.addParseListener(escucha)
+    
 
     tree = parser.programa()
 
+    if escucha.hay_error:
+            print("Se encontraron errores semanticos. No se puede continuar con la generacion de codigo intermedio.")
+            return
+    
     print(escucha)
 
     caminante = Caminante()

@@ -16,6 +16,7 @@ class Escucha(compiladorListener):
         self.asignacion = 0
         self.tabla = None
         self.ctx = 0
+        self.hay_error = False
 
     def dbg_contexts(self, msg=""):
         print("\n--- CONTEXTOS", msg, "---")
@@ -115,6 +116,7 @@ class Escucha(compiladorListener):
         id_nombre = ctx.getChild(1).getText()
         if tipo not in ('int', 'double'):
             print(f"  -- ERROR SEMANTICO: Tipo de dato |{tipo}| no reconocido")
+            self.hay_error = True
             return
         # extraer parámetros
         argumentos_ctx = ctx.getChild(3)
@@ -125,6 +127,7 @@ class Escucha(compiladorListener):
             print(f"  -- Se declaro prototipo |{id_nombre}| de tipo |{tipo}|")
         except KeyError:
             print(f"  -- ERROR SEMANTICO: El prototipo |{id_nombre}| ya fue declarado anteriormente")
+            self.hay_error = True
 
     def obtener_parametros(self, argumentos_ctx):
         params = []
@@ -172,6 +175,7 @@ class Escucha(compiladorListener):
                 print(f"  -- Parametro declarado |{nombre}| de tipo |{tipo}|")
             except KeyError:
                 print(f"  -- ERROR SEMANTICO: Parametro |{nombre}| ya declarado en la función")
+                self.hay_error = True
 
     def exitFuncion(self, ctx:compiladorParser.FuncionContext):
         #antes de cerrar contexto, copiamos el scope local para adjuntar a la Function
@@ -210,6 +214,7 @@ class Escucha(compiladorListener):
                 print(f"  -- Se completó la definición de la funcion |{nombre}| (prototipo previo actualizado)")
             else:
                 print(f"  -- ERROR SEMANTICO: La funcion |{nombre}| ya fue declarada anteriormente")
+                self.hay_error = True
 
         self.declaracion += 1
 
@@ -222,10 +227,12 @@ class Escucha(compiladorListener):
         id_nombre = ctx.getChild(1).getText()
         if tipo not in ('int', 'double'):
             print(f"  -- ERROR SEMANTICO: Tipo de dato |{tipo}| no reconocido")
+            self.hay_error = True
             return
 
         if self.tabla.exists(id_nombre):
             print(f"  -- ERROR SEMANTICO: La variable |{id_nombre}| ya fue declarada anteriormente")
+            self.hay_error = True
         else:
             variable = Variable(id_nombre, tipo)
             try:
@@ -233,6 +240,7 @@ class Escucha(compiladorListener):
                 print(f"  -- Se declaro la variable |{id_nombre}| de tipo |{tipo}|")
             except KeyError as e:
                 print("  -- ERROR:", e)
+                self.hay_error = True
         self.declaracion += 1
 
         if ctx.listavar():
@@ -251,6 +259,7 @@ class Escucha(compiladorListener):
 
             if self.tabla.exists(id_nombre):
                 print(f"  -- ERROR SEMANTICO: La variable |{id_nombre}| ya fue declarada anteriormente")
+                self.hay_error = True
             else:
                 variable = Variable(id_nombre, tipo)
                 self.tabla.declare_variable(variable)
@@ -276,17 +285,21 @@ class Escucha(compiladorListener):
         if not dato.isdigit():
             if dato.count('.') > 1:
                 print(f"  -- ERROR SEMANTICO: El valor asignado a la variable |{id_nombre}| no es del tipo esperado")
+                self.hay_error = True
 
         symbol = self.tabla.lookup(id_nombre)
         if symbol is None:
             print(f"  -- ERROR SEMANTICO: La variable |{id_nombre}| no fue declarada anteriormente")
+            self.hay_error = True
             return
 
         if symbol.type == 'double' and "." not in dato:
             print(f"  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion a la variable |{id_nombre}|")
+            self.hay_error = True
             return
         if symbol.type == 'int' and "." in dato:
             print(f"  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion a la variable |{id_nombre}|")
+            self.hay_error = True
             return
 
         symbol.used = True
@@ -305,6 +318,7 @@ class Escucha(compiladorListener):
     # ---------- errors & counters ----------
     def visitErrorNode(self, node: ErrorNode):
         print(" ---> ERROR ")
+        self.hay_error = True
 
     def enterEveryRule(self, ctx):
         self.numNodos += 1

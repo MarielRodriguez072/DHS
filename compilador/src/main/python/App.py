@@ -3,7 +3,7 @@ import sys
 from antlr4 import *
 from compiladorLexer  import compiladorLexer
 from compiladorParser import compiladorParser
-#from Escucha import Escucha
+from Escucha import Escucha
 from Caminante import Caminante
 import TablaSimbolos
 from Optimizacion import Optimizacion
@@ -20,7 +20,12 @@ def main(argv):
     tokens = CommonTokenStream(lexer)
     parser = compiladorParser(tokens)
 
+    escucha = Escucha()
+    parser.addParseListener(escucha)
+
     tree = parser.programa()
+
+    print(escucha)
 
     caminante = Caminante()
     caminante.visit(tree)

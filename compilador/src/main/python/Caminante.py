@@ -10,6 +10,7 @@ class Caminante (compiladorVisitor) :
     def __init__(self):
         self.c3d = CodigoTresDirecciones()
         self.temp = 0
+        self.tiene_return = False
 
     def nuevo_temp(self):
         t = f"t{self.temp}"
@@ -213,17 +214,23 @@ class Caminante (compiladorVisitor) :
     def visitFuncion(self, ctx: compiladorParser.FuncionContext):
         nombre = ctx.ID().getText()
 
+        self.tiene_return = False
+
         # etiqueta de la función
         self.c3d.agregar_instruccion(f"{nombre}:")
 
         # cuerpo de la función
         self.visit(ctx.bloque())
 
-        # return implícito
-        self.c3d.agregar_instruccion("return")
+        # return agregado automáticamente si no se encuentra un return explícito
+        if not self.tiene_return:
+            self.c3d.agregar_instruccion("return")
+    
         return None
     
+    
     def visitIreturn(self, ctx):
+        self.tiene_return = True
         if ctx.opal():
             valor = ctx.opal().getText()
             self.c3d.retorno(valor)
@@ -267,7 +274,7 @@ class Caminante (compiladorVisitor) :
     
 
     def procesar_expresion(self, ctx):
-        print(">> procesar_expresion:", type(ctx).__name__, ctx.getText())
+        #print(">> procesar_expresion:", type(ctx).__name__, ctx.getText())
 
         if isinstance(ctx, compiladorParser.FactorContext):
             # llamada a función

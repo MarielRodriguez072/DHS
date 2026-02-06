@@ -668,3 +668,211 @@ CONTEXTO 1:
 CONTEXTO 0:
   (vacío)
 
+Tabla de Simbolos generada el 2026-02-06 08:45:02.663133
+
+CONTEXTO 1:
+  - z: variable int
+
+
+CONTEXTO 2:
+  (vacío)
+
+
+CONTEXTO 3:
+  (vacío)
+
+
+CONTEXTO 4:
+  - t: variable int
+
+
+CONTEXTO 5:
+  - i: variable int
+
+
+CONTEXTO 6:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - d: variable int
+  - x: variable int
+
+
+CONTEXTO 0:
+  - suma: función int
+     parametros: int x, int y
+  - main: función int
+
+Tabla de Simbolos generada el 2026-02-06 10:05:47.732002
+
+CONTEXTO 1:
+  - z: variable int
+
+
+CONTEXTO 2:
+  (vacío)
+
+
+CONTEXTO 3:
+  (vacío)
+
+
+CONTEXTO 4:
+  - t: variable int
+
+
+CONTEXTO 5:
+  - i: variable int
+
+
+CONTEXTO 6:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - d: variable int
+  - x: variable int
+
+
+CONTEXTO 0:
+  - suma: función int
+     parametros: int x, int y
+  - main: función int
+
+Tabla de Simbolos generada el 2026-02-06 10:07:45.681560
+
+CONTEXTO 1:
+  - z: variable int
+
+
+CONTEXTO 2:
+  (vacío)
+
+
+CONTEXTO 3:
+  (vacío)
+
+
+CONTEXTO 4:
+  - t: variable int
+
+
+CONTEXTO 5:
+  - i: variable int
+
+
+CONTEXTO 6:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - d: variable int
+  - x: variable int
+
+
+CONTEXTO 0:
+  - suma: función int
+     parametros: int x, int y
+  - main: función int
+
+Tabla de Simbolos generada el 2026-02-06 10:08:40.493159
+
+CONTEXTO 1:
+  - z: variable int
+
+
+CONTEXTO 2:
+  (vacío)
+
+
+CONTEXTO 3:
+  (vacío)
+
+
+CONTEXTO 4:
+  - t: variable int
+
+
+CONTEXTO 5:
+  - i: variable int
+
+
+CONTEXTO 6:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - d: variable int
+  - x: variable int
+
+
+CONTEXTO 0:
+  - suma: función int
+     parametros: int x, int y
+  - main: función int
+
+Tabla de Simbolos generada el 2026-02-06 10:18:31.840907
+
+CONTEXTO 1:
+  - z: variable int
+
+
+CONTEXTO 2:
+  (vacío)
+
+
+CONTEXTO 3:
+  (vacío)
+
+
+CONTEXTO 4:
+  - t: variable int
+
+
+CONTEXTO 5:
+  - i: variable int
+
+
+CONTEXTO 6:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - d: variable int
+  - x: variable int
+
+
+CONTEXTO 0:
+  - suma: función int
+     parametros: int x, int y
+  - main: función int
+
+Tabla de Simbolos generada el 2026-02-06 10:24:24.538385
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+
+
+CONTEXTO 0:
+  - main: función int
+
+Tabla de Simbolos generada el 2026-02-06 10:26:08.307838
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+
+
+CONTEXTO 0:
+  - main: función int
+
+Tabla de Simbolos generada el 2026-02-06 14:52:38.269738
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+
+
+CONTEXTO 0:
+  - main: función int
+

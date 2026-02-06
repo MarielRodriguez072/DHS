@@ -216,17 +216,18 @@ class Optimizacion:
         return cambio
     
     # elimina estructuras if-else donde ambas ramas asignan el mismo valor
-    def eliminar_if_asignacion_igual(self):
-        cambio = False
-        i = 0
-    
-        while i < len(self.codigo) - 6:
-            # patrón:
+    # patrón:
             # ifFalse t goto Lx
             # c = 7
             # goto Ly
             # Lx:
             # c = 7
+    def eliminar_if_asignacion_igual(self):
+        cambio = False
+        i = 0
+    
+        while i < len(self.codigo) - 6:
+            
             if (self.codigo[i].startswith("ifFalse") and
                 "=" in self.codigo[i+1] and
                 self.codigo[i+2].startswith("goto") and

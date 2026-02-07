@@ -25,8 +25,8 @@ class Escucha(compiladorListener):
         print("-------------------------\n")
 
     def enterPrograma(self, ctx:compiladorParser.ProgramaContext):
-        if self.tabla is None:
-            self.tabla = TablaSimbolos()
+        self.tabla = TablaSimbolos()
+        self.tabla.ts = [dict()]
         print("Comienza el parsing")
         archivo = "prueba.txt"
         tablaFile = os.path.join(os.path.dirname(archivo), "tablaSimbolos.txt")
@@ -53,23 +53,36 @@ class Escucha(compiladorListener):
         print(self)
 
     # ---------- bloques ----------
-    def enterBloque(self, ctx:compiladorParser.BloqueContext):
-        # siempre que entremos a un bloque con { ... } abrimos contexto
-        self.tabla.push_context()
-        print("Nuevo bloque.")
+    def enterBloque(self, ctx):
+        # Si el padre es una función → scope de función
+        if isinstance(ctx.parentCtx, compiladorParser.FuncionContext):
+            print("Bloque de función (declarando parámetros)")
+            self.tabla.push_context()
+
+            argumentos_ctx = ctx.parentCtx.getChild(3)
+            params = self.obtener_parametros(argumentos_ctx)
+
+            for tipo, nombre in params:
+                variable = Variable(nombre, tipo)
+                self.tabla.declare_variable(variable)
+                print(f"  -- Parametro declarado |{nombre}| de tipo |{tipo}|")
+        else:
+            self.tabla.push_context()
+
         self.indent += 1
 
-    def exitBloque(self, ctx:compiladorParser.BloqueContext):
-        self.indent -= 1
-        self.ctx += 1
-        archivo = "prueba.txt"
-        tablaFile = os.path.join(os.path.dirname(archivo), "tablaSimbolos.txt")
-        with open(tablaFile, 'a', encoding='utf-8') as f:
-            self.tabla.exportarTabla(f,self.ctx)
-            f.write(f"\n")
 
+    def exitBloque(self, ctx:compiladorParser.BloqueContext):
+        if isinstance(ctx.parentCtx, compiladorParser.FuncionContext):
+            nombre = ctx.parentCtx.getChild(1).getText()
+            funcion = self.tabla.lookup(nombre)
+
+            if funcion:
+                funcion.scope = dict(self.tabla.ts[-1])  # 👈 CLAVE
+
+        self.indent -= 1
         self.tabla.pop_context()
-        print("Fin de bloque")
+
 
     # ---------- instrucciones ----------
     def enterInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
@@ -141,6 +154,11 @@ class Escucha(compiladorListener):
                 tipo = hijo.getChild(0).getText()
                 nombre = hijo.getChild(1).getText()
                 params.append((tipo, nombre))
+                if tipo not in ('int', 'double'):
+                    print(f"  -- ERROR SEMANTICO: Tipo de parametro |{tipo}| inválido")
+                    self.hay_error = True
+
+
             else:
                 # recorrer hijos internos
                 for j in range(hijo.getChildCount()):
@@ -154,45 +172,17 @@ class Escucha(compiladorListener):
 
     # ---------- funcion (definicion) ----------
     def enterFuncion(self, ctx:compiladorParser.FuncionContext):
-        #abrir contexto local para la función
-        if self.tabla is None:
-            self.tabla = TablaSimbolos()
-        self.tabla.push_context()
-        print("Entrando a funcion")
+        print("  " * self.indent + "Comienza función")
         self.indent += 1
 
-        #extraer parámetros y declararlos como variables en el contexto local
-        #argumentos está en child index 3 (tipo ID PA argumentos PC bloque)
-        try:
-            argumentos_ctx = ctx.getChild(3)
-        except Exception:
-            argumentos_ctx = None
-        params = self.obtener_parametros(argumentos_ctx)
-        for tipo, nombre in params:
-            variable = Variable(nombre, tipo)
-            try:
-                self.tabla.declare_variable(variable)
-                print(f"  -- Parametro declarado |{nombre}| de tipo |{tipo}|")
-            except KeyError:
-                print(f"  -- ERROR SEMANTICO: Parametro |{nombre}| ya declarado en la función")
-                self.hay_error = True
 
     def exitFuncion(self, ctx:compiladorParser.FuncionContext):
-        #antes de cerrar contexto, copiamos el scope local para adjuntar a la Function
-        local_ctx = None
-        if len(self.tabla.ts) >= 1:
-            local_ctx = dict(self.tabla.ts[-1])  # copia del contexto local
-
-        #cerramos contexto local
-        self.indent -= 1
-        self.tabla.pop_context()
-
-        # ahora registramos la función en el global (o actualizamos prototipo exist)
-        # verificamos que ctx tenga hijos válidos
-        if ctx is None or ctx.getChildCount() < 6:
-            print("WARNING: FuncionContext inválido (se ignora)")
+        if ctx.getChildCount() < 4:
+            print(ctx.getChildCount())
+            print("  -- ERROR SEMANTICO: Función mal definida, falta tipo o nombre")
+            self.hay_error = True
             return
-
+        
         tipo = ctx.getChild(0).getText()
         nombre = ctx.getChild(1).getText()
 
@@ -200,23 +190,16 @@ class Escucha(compiladorListener):
         params = self.obtener_parametros(argumentos_ctx)
 
         funcion = Function(nombre, tipo, parameters=params)
-        funcion.scope = local_ctx
 
         try:
             self.tabla.declare_function(funcion)
-            print(f"  -- Se declaro la funcion |{nombre}| de tipo |{tipo}|")
+            print(f"  -- Se declara función |{nombre}|")
         except KeyError:
-            #si ya existía prototipo, actualizamos el objeto
-            existing = self.tabla.lookup(nombre)
-            if existing and getattr(existing, 'varFunc', None) == "function":
-                existing.scope = local_ctx
-                existing.parameters = params or existing.parameters
-                print(f"  -- Se completó la definición de la funcion |{nombre}| (prototipo previo actualizado)")
-            else:
-                print(f"  -- ERROR SEMANTICO: La funcion |{nombre}| ya fue declarada anteriormente")
-                self.hay_error = True
+            print(f"  -- ERROR SEMANTICO: La función |{nombre}| ya fue declarada")
+            self.hay_error = True
 
-        self.declaracion += 1
+
+
 
     # ---------- declaraciones ----------
     def enterDeclaracion(self, ctx:compiladorParser.DeclaracionContext):

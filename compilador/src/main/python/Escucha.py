@@ -40,9 +40,15 @@ class Escucha(compiladorListener):
         tablaFile = os.path.join(os.path.dirname(archivo), "tablaSimbolos.txt")
 
         with open(tablaFile, 'a', encoding='utf-8') as f:
-            for i, contexto in enumerate(self.tabla.ts):
-                f.write(f"CONTEXTO {i}:\n")
+            f.write("CONTEXTO 0 (global):\n")
+            self.tabla.exportar_contexto(f, self.tabla.ts[0])
+            
+            for i, contexto in enumerate(self.tabla.historial):
+                f.write(f"CONTEXTO {i+1}:\n")
                 self.tabla.exportar_contexto(f, contexto)
+            
+            
+    
 
         # mensajes semánticos
         for context in self.tabla.ts:

@@ -118,3 +118,132 @@ CONTEXTO 0:
   - suma: función int
      parametros: int x, int y
 
+Tabla de Simbolos generada el 2026-02-07 11:35:59.442992
+
+CONTEXTO 0:
+  - suma: función int
+     parametros: int x, int y
+  - a: variable int
+  - b: variable int
+  - c: variable int
+
+Tabla de Simbolos generada el 2026-02-07 11:38:18.817234
+
+CONTEXTO 0:
+  - suma: función int
+     parametros: int x, int y
+  - a: variable int
+  - b: variable int
+  - c: variable int
+
+Tabla de Simbolos generada el 2026-02-07 11:59:37.042979
+
+CONTEXTO 0:
+  - suma: función int
+     parametros: int x, int y
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - main: función int
+
+Tabla de Simbolos generada el 2026-02-07 12:01:46.676626
+
+CONTEXTO 0:
+  - suma: función int
+     parametros: int a, int b
+
+Tabla de Simbolos generada el 2026-02-07 12:14:43.090629
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 1:
+  - x: variable int
+
+CONTEXTO 2:
+  - y: variable int
+
+Tabla de Simbolos generada el 2026-02-07 12:16:56.919970
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 1:
+  - x: variable int
+
+CONTEXTO 2:
+  - y: variable int
+
+CONTEXTO 0 (global):
+  - suma: función int
+     parametros: int a, int b
+
+Tabla de Simbolos generada el 2026-02-07 12:17:40.854090
+
+CONTEXTO 0 (global):
+  - suma: función int
+     parametros: int a, int b
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 1:
+  - x: variable int
+
+CONTEXTO 2:
+  - y: variable int
+
+Tabla de Simbolos generada el 2026-02-07 12:18:34.950208
+
+CONTEXTO 0 (global):
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 0:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 1:
+  - x: variable int
+
+CONTEXTO 2:
+  - y: variable int
+
+CONTEXTO 3:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+
+Tabla de Simbolos generada el 2026-02-07 12:19:15.561590
+
+CONTEXTO 0 (global):
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+

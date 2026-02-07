@@ -6,11 +6,14 @@ class TablaSimbolos:
         if cls._instance is None:
             cls._instance = super(TablaSimbolos, cls).__new__(cls)
             cls._instance.ts = [dict()] 
+            cls._instance.historial = []
         return cls._instance
 
     #Context management
     def push_context(self):
-        self.ts.append(dict())
+        ctx = dict()
+        self.ts.append(ctx)
+        self.historial.append(ctx)
 
     def pop_context(self):
         if len(self.ts) > 1:

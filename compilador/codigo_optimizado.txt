@@ -1,4 +1,24 @@
 suma:
-y = 2
-x = x + y
-return x
+r = a + b
+ifFalse r > 0 goto L2
+L3:
+goto L0
+L2:
+goto L1
+L0:
+x = r
+L4:
+ifFalse r > 0 goto L7
+L8:
+goto L5
+L7:
+goto L6
+L5:
+y = r
+r = r - 1
+goto L4
+L6:
+return r
+resta:
+z = x - y
+return z

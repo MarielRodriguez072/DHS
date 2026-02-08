@@ -1,9 +1,18 @@
-x = 6
-ifFalse x <= 3 goto L2
+r = 0
+ifFalse a > b goto L1
+ifFalse b > c goto L1
 goto L0
 L0:
-x = x + 1
-goto L1
-L2:
-x = x + 10
+r = 1
 L1:
+f = 9
+L5:
+ifFalse r > 0 goto L7
+ifFalse a > 0 goto L7
+ifFalse b > 0 goto L7
+goto L6
+L6:
+r = r - 1
+goto L5
+L7:
+return r

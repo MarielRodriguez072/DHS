@@ -276,3 +276,128 @@ CONTEXTO 1:
 CONTEXTO 2:
   (vacío)
 
+Tabla de Simbolos generada el 2026-02-08 18:54:05.262971
+
+CONTEXTO 0 (global):
+  - x: variable int
+
+CONTEXTO 1:
+  (vacío)
+
+CONTEXTO 2:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-02-08 19:51:54.811682
+
+CONTEXTO 0 (global):
+  - escaneo: función int
+     parametros: int a, int b
+  - main: función int
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  (vacío)
+
+CONTEXTO 3:
+  (vacío)
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - resultado: variable int
+
+CONTEXTO 5:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-02-08 19:56:31.604743
+
+CONTEXTO 0 (global):
+  - escaneo: función int
+     parametros: int a, int b, int c
+  - main: función int
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  (vacío)
+
+CONTEXTO 3:
+  (vacío)
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - resultado: variable int
+
+CONTEXTO 5:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-02-08 19:57:26.175635
+
+CONTEXTO 0 (global):
+  - escaneo: función int
+     parametros: int a, int b, int c
+  - main: función int
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  (vacío)
+
+CONTEXTO 3:
+  (vacío)
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - resultado: variable int
+  - f: variable int
+
+CONTEXTO 5:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-02-08 19:57:54.437736
+
+CONTEXTO 0 (global):
+  - escaneo: función int
+     parametros: int a, int b, int c, int f
+  - main: función int
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - f: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  (vacío)
+
+CONTEXTO 3:
+  (vacío)
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - resultado: variable int
+  - f: variable int
+
+CONTEXTO 5:
+  (vacío)
+

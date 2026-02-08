@@ -159,33 +159,22 @@ class Escucha(compiladorListener):
             print(f"  -- ERROR SEMANTICO: El prototipo |{id_nombre}| ya fue declarado anteriormente")
             self.hay_error_semantico = True
 
-    def obtener_parametros(self, argumentos_ctx):
+    def obtener_parametros(self, ctx):
         params = []
-        if argumentos_ctx is None:
+        if ctx is None:
             return params
-
-        for i in range(argumentos_ctx.getChildCount()):
-            hijo = argumentos_ctx.getChild(i)
-
-            if isinstance(hijo, compiladorParser.ParametroContext):
-                tipo = hijo.getChild(0).getText()
-                nombre = hijo.getChild(1).getText()
+    
+        def recorrer(nodo):
+            if isinstance(nodo, compiladorParser.ParametroContext):
+                tipo = nodo.tipo().getText()
+                nombre = nodo.ID().getText()
                 params.append((tipo, nombre))
-                if tipo not in ('int', 'double'):
-                    print(f"  -- ERROR SEMANTICO: Tipo de parametro |{tipo}| inválido")
-                    self.hay_error_semantico = True
-
-
-            else:
-                # recorrer hijos internos
-                for j in range(hijo.getChildCount()):
-                    sub = hijo.getChild(j)
-                    if isinstance(sub, compiladorParser.ParametroContext):
-                        tipo = sub.getChild(0).getText()
-                        nombre = sub.getChild(1).getText()
-                        params.append((tipo, nombre))
-
+            for i in range(nodo.getChildCount()):
+                recorrer(nodo.getChild(i))
+    
+        recorrer(ctx)
         return params
+
 
     # ---------- funcion (definicion) ----------
     def enterFuncion(self, ctx:compiladorParser.FuncionContext):

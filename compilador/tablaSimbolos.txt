@@ -247,3 +247,75 @@ CONTEXTO 4:
   - y: variable int
   - z: variable int
 
+Tabla de Simbolos generada el 2026-02-07 22:27:07.785688
+
+CONTEXTO 0 (global):
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+
+Tabla de Simbolos generada el 2026-02-07 22:30:25.998982
+
+CONTEXTO 0 (global):
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+
+Tabla de Simbolos generada el 2026-02-07 22:30:59.188647
+
+CONTEXTO 0 (global):
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+

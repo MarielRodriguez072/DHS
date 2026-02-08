@@ -1,5 +1,7 @@
+x = 0
+y = 1
 suma:
-r = a + b
+r = x + y
 ifFalse r > 0 goto L2
 L3:
 goto L0

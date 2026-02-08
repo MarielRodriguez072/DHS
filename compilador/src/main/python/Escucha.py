@@ -25,8 +25,11 @@ class Escucha(compiladorListener):
         print("-------------------------\n")
 
     def enterPrograma(self, ctx:compiladorParser.ProgramaContext):
-        self.tabla = TablaSimbolos()
-        self.tabla.ts = [dict()]
+        #self.tabla = TablaSimbolos()
+        #self.tabla.ts = [dict()]
+        if self.tabla is None:
+            self.tabla = TablaSimbolos()
+
         print("Comienza el parsing")
         archivo = "prueba.txt"
         tablaFile = os.path.join(os.path.dirname(archivo), "tablaSimbolos.txt")
@@ -47,9 +50,6 @@ class Escucha(compiladorListener):
                 f.write(f"CONTEXTO {i+1}:\n")
                 self.tabla.exportar_contexto(f, contexto)
             
-            
-    
-
         # mensajes semánticos
         for context in self.tabla.ts:
             for key, value in context.items():
@@ -60,22 +60,33 @@ class Escucha(compiladorListener):
 
     # ---------- bloques ----------
     def enterBloque(self, ctx):
-        # Si el padre es una función → scope de función
-        if isinstance(ctx.parentCtx, compiladorParser.FuncionContext):
-            print("Bloque de función (declarando parámetros)")
-            self.tabla.push_context()
+        self.tabla.push_context()  # contexto de función
 
-            argumentos_ctx = ctx.parentCtx.getChild(3)
+        if isinstance(ctx.parentCtx, compiladorParser.FuncionContext):
+
+            argumentos_ctx = ctx.parentCtx.argumentos()
             params = self.obtener_parametros(argumentos_ctx)
 
             for tipo, nombre in params:
-                variable = Variable(nombre, tipo)
-                self.tabla.declare_variable(variable)
-                print(f"  -- Parametro declarado |{nombre}| de tipo |{tipo}|")
-        else:
-            self.tabla.push_context()
+                self.tabla.declare_variable(Variable(nombre, tipo))
 
-        self.indent += 1
+        
+        # Si el padre es una función → scope de función
+       # if isinstance(ctx.parentCtx, compiladorParser.FuncionContext):
+       #     print("Bloque de función (declarando parámetros)")
+       #     self.tabla.push_context()
+#
+       #     argumentos_ctx = ctx.parentCtx.getChild(3)
+       #     params = self.obtener_parametros(argumentos_ctx)
+#
+       #     for tipo, nombre in params:
+       #         variable = Variable(nombre, tipo)
+       #         self.tabla.declare_variable(variable)
+       #         print(f"  -- Parametro declarado |{nombre}| de tipo |{tipo}|")
+       # else:
+       #     self.tabla.push_context()
+#
+       # self.indent += 1
 
 
     def exitBloque(self, ctx:compiladorParser.BloqueContext):
@@ -240,7 +251,7 @@ class Escucha(compiladorListener):
     def exitFactor(self, ctx: compiladorParser.FactorContext):
         if ctx.ID():
             nombre = ctx.ID().getText()
-    
+
             symbol = self.tabla.lookup(nombre)
             if symbol is None:
                 print(f"  -- ERROR SEMANTICO: La variable |{nombre}| no fue declarada")
@@ -264,7 +275,7 @@ class Escucha(compiladorListener):
             self.hay_error = True
             return
 
-        if self.tabla.exists(id_nombre):
+        if self.tabla.exists_local(id_nombre):
             print(f"  -- ERROR SEMANTICO: La variable |{id_nombre}| ya fue declarada anteriormente")
             self.hay_error = True
         else:
@@ -291,7 +302,7 @@ class Escucha(compiladorListener):
                 inicializado = True
                 dato = ctx.getChild(3).getText()
 
-            if self.tabla.exists(id_nombre):
+            if self.tabla.exists_local(id_nombre):
                 print(f"  -- ERROR SEMANTICO: La variable |{id_nombre}| ya fue declarada anteriormente")
                 self.hay_error = True
             else:
@@ -360,4 +371,7 @@ class Escucha(compiladorListener):
     def __str__(self):
         return "Se hicieron " + str(self.declaracion) + " declaraciones\n" + \
                "Se visitaron " + str(self.numNodos) + " nodos"
+    
+
+
 

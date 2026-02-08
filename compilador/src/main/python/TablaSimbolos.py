@@ -44,6 +44,9 @@ class TablaSimbolos:
 
     def exists(self, name):
         return self.lookup(name) is not None
+    
+    def exists_local(self, name):
+        return name in self.ts[-1]
 
     def exportarTabla(self, archivo, ctx_num):
         contexto = self.ts[-1]

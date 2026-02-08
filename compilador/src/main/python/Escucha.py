@@ -207,25 +207,25 @@ class Escucha(compiladorListener):
 
     def exitLlamada(self, ctx: compiladorParser.LlamadaContext):
         nombre = ctx.ID().getText()
-    
+
         # buscar función SOLO en global
         funcion = self.tabla.ts[0].get(nombre)
-    
+
         if funcion is None:
             print(f"  -- ERROR SEMANTICO: La función |{nombre}| no está declarada")
             self.hay_error = True
             return
-    
+
         args = []
         arg_ctx = ctx.argLlamada()
-    
+
         if arg_ctx:
             args.append(arg_ctx.opal().getText())
             mas = arg_ctx.masArgLlamada()
             while mas and mas.opal():
                 args.append(mas.opal().getText())
                 mas = mas.masArgLlamada()
-    
+
         if len(args) != len(funcion.parameters):
             print(
                 f"  -- ERROR SEMANTICO: La función |{nombre}| espera "
@@ -233,8 +233,20 @@ class Escucha(compiladorListener):
             )
             self.hay_error = True
             return
-    
+
         print(f"  -- Llamada válida a |{nombre}|")
+
+
+    def exitFactor(self, ctx: compiladorParser.FactorContext):
+        if ctx.ID():
+            nombre = ctx.ID().getText()
+    
+            symbol = self.tabla.lookup(nombre)
+            if symbol is None:
+                print(f"  -- ERROR SEMANTICO: La variable |{nombre}| no fue declarada")
+                self.hay_error = True
+            else:
+                symbol.used = True
 
 
 

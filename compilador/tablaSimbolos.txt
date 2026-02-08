@@ -319,3 +319,99 @@ CONTEXTO 4:
   - y: variable int
   - z: variable int
 
+Tabla de Simbolos generada el 2026-02-07 22:32:41.588258
+
+CONTEXTO 0 (global):
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+
+Tabla de Simbolos generada el 2026-02-07 22:33:29.503526
+
+CONTEXTO 0 (global):
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+
+Tabla de Simbolos generada el 2026-02-07 22:40:14.323476
+
+CONTEXTO 0 (global):
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+
+Tabla de Simbolos generada el 2026-02-07 22:40:39.691373
+
+CONTEXTO 0 (global):
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+

@@ -125,3 +125,121 @@ CONTEXTO 4:
   - j: variable int
   - k: variable int
 
+Tabla de Simbolos generada el 2026-02-07 23:30:24.033310
+
+CONTEXTO 0 (global):
+  - x: variable int
+  - y: variable int
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - j: variable int
+  - k: variable int
+
+Tabla de Simbolos generada el 2026-02-07 23:30:58.295872
+
+CONTEXTO 0 (global):
+  - x: variable int
+  - y: variable int
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - j: variable int
+  - k: variable int
+
+Tabla de Simbolos generada el 2026-02-07 23:31:21.357170
+
+CONTEXTO 0 (global):
+  - x: variable int
+  - y: variable int
+
+Tabla de Simbolos generada el 2026-02-07 23:31:48.232726
+
+CONTEXTO 0 (global):
+  - x: variable int
+  - y: variable int
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  (vacío)
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - j: variable int
+  - k: variable int
+
+Tabla de Simbolos generada el 2026-02-07 23:32:08.534201
+
+CONTEXTO 0 (global):
+  - x: variable int
+  - y: variable int
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - j: variable int
+  - k: variable int
+

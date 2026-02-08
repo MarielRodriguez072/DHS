@@ -24,7 +24,7 @@ int suma(int a, int b) {
 int resta(int x, int y){
     int z;
     int j,k;
-    z = suma(j,k);
+    z = suma(j);
     
     return z;
 }

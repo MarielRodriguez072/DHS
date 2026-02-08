@@ -24,7 +24,6 @@ goto L5
 L7:
 goto L6
 L5:
-y = 0
 y = r
 t3 = r - 1
 r = t3

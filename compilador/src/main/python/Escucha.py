@@ -16,7 +16,7 @@ class Escucha(compiladorListener):
         self.asignacion = 0
         self.tabla = None
         self.ctx = 0
-        self.hay_error = False
+        self.hay_error_semantico = False
 
     def dbg_contexts(self, msg=""):
         print("\n--- CONTEXTOS", msg, "---")
@@ -146,7 +146,7 @@ class Escucha(compiladorListener):
         id_nombre = ctx.getChild(1).getText()
         if tipo not in ('int', 'double'):
             print(f"  -- ERROR SEMANTICO: Tipo de dato |{tipo}| no reconocido")
-            self.hay_error = True
+            self.hay_error_semantico = True
             return
         # extraer parámetros
         argumentos_ctx = ctx.getChild(3)
@@ -157,7 +157,7 @@ class Escucha(compiladorListener):
             print(f"  -- Se declaro prototipo |{id_nombre}| de tipo |{tipo}|")
         except KeyError:
             print(f"  -- ERROR SEMANTICO: El prototipo |{id_nombre}| ya fue declarado anteriormente")
-            self.hay_error = True
+            self.hay_error_semantico = True
 
     def obtener_parametros(self, argumentos_ctx):
         params = []
@@ -173,7 +173,7 @@ class Escucha(compiladorListener):
                 params.append((tipo, nombre))
                 if tipo not in ('int', 'double'):
                     print(f"  -- ERROR SEMANTICO: Tipo de parametro |{tipo}| inválido")
-                    self.hay_error = True
+                    self.hay_error_semantico = True
 
 
             else:
@@ -197,7 +197,7 @@ class Escucha(compiladorListener):
         if ctx.getChildCount() < 4:
             print(ctx.getChildCount())
             print("  -- ERROR SEMANTICO: Función mal definida, falta tipo o nombre")
-            self.hay_error = True
+            self.hay_error_semantico = True
             return
         
         tipo = ctx.getChild(0).getText()
@@ -213,7 +213,7 @@ class Escucha(compiladorListener):
             print(f"  -- Se declara función |{nombre}|")
         except KeyError:
             print(f"  -- ERROR SEMANTICO: La función |{nombre}| ya fue declarada")
-            self.hay_error = True
+            self.hay_error_semantico = True
 
 
     def exitLlamada(self, ctx: compiladorParser.LlamadaContext):
@@ -224,7 +224,7 @@ class Escucha(compiladorListener):
 
         if funcion is None:
             print(f"  -- ERROR SEMANTICO: La función |{nombre}| no está declarada")
-            self.hay_error = True
+            self.hay_error_semantico = True
             return
 
         args = []
@@ -242,7 +242,7 @@ class Escucha(compiladorListener):
                 f"  -- ERROR SEMANTICO: La función |{nombre}| espera "
                 f"{len(funcion.parameters)} argumentos y se pasaron {len(args)}"
             )
-            self.hay_error = True
+            self.hay_error_semantico = True
             return
 
         print(f"  -- Llamada válida a |{nombre}|")
@@ -255,21 +255,21 @@ class Escucha(compiladorListener):
             symbol = self.tabla.lookup(nombre)
             if symbol is None:
                 print(f"  -- ERROR SEMANTICO: La variable |{nombre}| no fue declarada")
-                self.hay_error = True
+                self.hay_error_semantico = True
             else:
                 symbol.used = True
 
     def exitOpal(self, ctx: compiladorParser.OpalContext):
         if ctx.ID():
             nombre = ctx.ID().getText()
-    
+
             symbol = self.tabla.lookup(nombre)
             if symbol is None:
                 print(f"  -- ERROR SEMANTICO: La variable |{nombre}| no fue declarada")
-                self.hay_error = True
+                self.hay_error_semantico = True
             else:
                 symbol.used = True
-    
+
 
 
 
@@ -282,12 +282,12 @@ class Escucha(compiladorListener):
         id_nombre = ctx.getChild(1).getText()
         if tipo not in ('int', 'double'):
             print(f"  -- ERROR SEMANTICO: Tipo de dato |{tipo}| no reconocido")
-            self.hay_error = True
+            self.hay_error_semantico = True
             return
 
         if self.tabla.exists_local(id_nombre):
             print(f"  -- ERROR SEMANTICO: La variable |{id_nombre}| ya fue declarada anteriormente")
-            self.hay_error = True
+            self.hay_error_semantico = True
         else:
             variable = Variable(id_nombre, tipo)
             try:
@@ -295,7 +295,7 @@ class Escucha(compiladorListener):
                 print(f"  -- Se declaro la variable |{id_nombre}| de tipo |{tipo}|")
             except KeyError as e:
                 print("  -- ERROR:", e)
-                self.hay_error = True
+                self.hay_error_semantico = True
         self.declaracion += 1
 
         if ctx.listavar():
@@ -314,7 +314,7 @@ class Escucha(compiladorListener):
 
             if self.tabla.exists_local(id_nombre):
                 print(f"  -- ERROR SEMANTICO: La variable |{id_nombre}| ya fue declarada anteriormente")
-                self.hay_error = True
+                self.hay_error_semantico = True
             else:
                 variable = Variable(id_nombre, tipo)
                 self.tabla.declare_variable(variable)
@@ -340,21 +340,21 @@ class Escucha(compiladorListener):
         if not dato.isdigit():
             if dato.count('.') > 1:
                 print(f"  -- ERROR SEMANTICO: El valor asignado a la variable |{id_nombre}| no es del tipo esperado")
-                self.hay_error = True
+                self.hay_error_semantico = True
 
         symbol = self.tabla.lookup(id_nombre)
         if symbol is None:
             print(f"  -- ERROR SEMANTICO: La variable |{id_nombre}| no fue declarada anteriormente")
-            self.hay_error = True
+            self.hay_error_semantico = True
             return
 
         if symbol.type == 'double' and "." not in dato:
             print(f"  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion a la variable |{id_nombre}|")
-            self.hay_error = True
+            self.hay_error_semantico = True
             return
         if symbol.type == 'int' and "." in dato:
             print(f"  -- ERROR SEMANTICO: Tipo de dato incompatible en la asignacion a la variable |{id_nombre}|")
-            self.hay_error = True
+            self.hay_error_semantico = True
             return
 
         symbol.used = True
@@ -373,7 +373,7 @@ class Escucha(compiladorListener):
     # ---------- errors & counters ----------
     def visitErrorNode(self, node: ErrorNode):
         print(" ---> ERROR ")
-        self.hay_error = True
+        self.hay_error_semantico = True
 
     def enterEveryRule(self, ctx):
         self.numNodos += 1

@@ -33,8 +33,10 @@ L6:
 return r
 resta:
 z = 0
-param x
-param y
+j = 0
+k = 0
+param j
+param k
 t4 = call suma, 2
 z = t4
 return z

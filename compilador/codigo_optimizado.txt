@@ -22,7 +22,9 @@ goto L4
 L6:
 return r
 resta:
-param x
-param y
+j = 0
+k = j
+param j
+param k
 z = call suma, 2
 return z

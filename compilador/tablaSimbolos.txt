@@ -45,3 +45,83 @@ CONTEXTO 4:
   - y: variable int
   - z: variable int
 
+Tabla de Simbolos generada el 2026-02-07 23:05:40.446901
+
+CONTEXTO 0 (global):
+  - x: variable int
+  - y: variable int
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+
+Tabla de Simbolos generada el 2026-02-07 23:09:12.912559
+
+CONTEXTO 0 (global):
+  - x: variable int
+  - y: variable int
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+
+Tabla de Simbolos generada el 2026-02-07 23:10:14.322658
+
+CONTEXTO 0 (global):
+  - x: variable int
+  - y: variable int
+  - suma: función int
+     parametros: int a, int b
+  - resta: función int
+     parametros: int x, int y
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  - x: variable int
+
+CONTEXTO 3:
+  - y: variable int
+
+CONTEXTO 4:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - j: variable int
+  - k: variable int
+

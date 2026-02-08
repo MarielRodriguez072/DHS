@@ -23,7 +23,8 @@ int suma(int a, int b) {
 
 int resta(int x, int y){
     int z;
-    z = suma(x,y);
+    int j,k;
+    z = suma(j,k);
     
     return z;
 }

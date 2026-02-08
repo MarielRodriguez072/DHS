@@ -259,7 +259,17 @@ class Escucha(compiladorListener):
             else:
                 symbol.used = True
 
-
+    def exitOpal(self, ctx: compiladorParser.OpalContext):
+        if ctx.ID():
+            nombre = ctx.ID().getText()
+    
+            symbol = self.tabla.lookup(nombre)
+            if symbol is None:
+                print(f"  -- ERROR SEMANTICO: La variable |{nombre}| no fue declarada")
+                self.hay_error = True
+            else:
+                symbol.used = True
+    
 
 
 

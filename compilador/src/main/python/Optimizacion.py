@@ -35,6 +35,26 @@ class Optimizacion:
                 if not var.startswith("t"):
                     mods.add(var)
         return mods
+    
+    def es_inicio_funcion(self, l):
+        return l.endswith(":") and not l.startswith("L")
+    
+    def separar_por_funciones(self):
+        funciones = []
+        actual = []
+
+        for l in self.codigo:
+            if self.es_inicio_funcion(l) and actual:
+                funciones.append(actual)
+                actual = []
+            actual.append(l)
+
+        if actual:
+            funciones.append(actual)
+
+        return funciones
+
+
 
     # Optimizaciones
     # elimina asignaciones inutiles donde una variable se asigna a si misma
@@ -333,9 +353,20 @@ class Optimizacion:
         return cambio
 
 
+    def optimizar(self):
+        funciones = self.separar_por_funciones()
+        codigo_final = []
+
+        for func in funciones:
+            self.codigo = func
+            self.optimizar_funcion()
+            codigo_final.extend(self.codigo)
+
+        self.codigo = codigo_final
+
 
     # Pipeline
-    def optimizar(self):
+    def optimizar_funcion(self):
         cambio = True
         MAX_ITER = 20
         iteraciones = 0

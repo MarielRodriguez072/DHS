@@ -37,6 +37,11 @@ r = t5
 goto L5
 L7:
 return r
+div:
+c = 0
+t6 = a / b
+c = t6
+return c
 main:
 x = 0
 x = 5
@@ -51,19 +56,19 @@ param x
 param y
 param z
 param f
-t6 = call escaneo, 4
-resultado = t6
-t7 = resultado >= 0
-ifFalse t7 goto L16
-L17:
-t8 = resultado <= 10
+t7 = call escaneo, 4
+resultado = t7
+t8 = resultado != 0
 ifFalse t8 goto L16
+L17:
+t9 = resultado <= 10
+ifFalse t9 goto L16
 L18:
 goto L14
 L16:
 goto L15
 L14:
-t9 = resultado + 1
-resultado = t9
+t10 = resultado + 1
+resultado = t10
 L15:
 return 0

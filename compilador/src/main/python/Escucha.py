@@ -95,7 +95,7 @@ class Escucha(compiladorListener):
             funcion = self.tabla.lookup(nombre)
 
             if funcion:
-                funcion.scope = dict(self.tabla.ts[-1])  # 👈 CLAVE
+                funcion.scope = dict(self.tabla.ts[-1])
 
         self.indent -= 1
         self.tabla.pop_context()
@@ -103,16 +103,20 @@ class Escucha(compiladorListener):
 
     # ---------- instrucciones ----------
     def enterInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
-        print("  " * self.indent + "Comienzan las instrucciones")
+        #print("  " * self.indent + "Comienzan las instrucciones")
+        try:
+            txt = ctx.getText()
+        except Exception:
+            txt = ''
 
     def exitInstrucciones(self, ctx:compiladorParser.InstruccionesContext):
-        print("  " * self.indent + "Terminan las instrucciones")
+        #print("  " * self.indent + "Terminan las instrucciones")
         # para depuración: muestra el texto de la subárbol (sin espacios)
         try:
             txt = ctx.getText()
         except Exception:
             txt = ''
-        print("instrucciones EXIT -> |" + txt + "|")
+        #print("instrucciones EXIT -> |" + txt + "|")
 
     def enterIif(self, ctx:compiladorParser.IifContext):
         print("  " * self.indent + "Comienza if")
@@ -163,7 +167,7 @@ class Escucha(compiladorListener):
         params = []
         if ctx is None:
             return params
-    
+
         def recorrer(nodo):
             if isinstance(nodo, compiladorParser.ParametroContext):
                 tipo = nodo.tipo().getText()
@@ -171,7 +175,7 @@ class Escucha(compiladorListener):
                 params.append((tipo, nombre))
             for i in range(nodo.getChildCount()):
                 recorrer(nodo.getChild(i))
-    
+
         recorrer(ctx)
         return params
 
@@ -361,7 +365,7 @@ class Escucha(compiladorListener):
 
     # ---------- errors & counters ----------
     def visitErrorNode(self, node: ErrorNode):
-        print(" ---> ERROR ")
+        #print(" ---> ERROR ")
         self.hay_error_semantico = True
 
     def enterEveryRule(self, ctx):

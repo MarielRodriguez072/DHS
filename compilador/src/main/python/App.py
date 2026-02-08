@@ -38,8 +38,8 @@ def main(argv):
     tree = parser.programa()
 
     if sintactic_listener.hay_error:
-            print("Se encontraron errores sintacticos. No se puede continuar con la generacion de codigo intermedio.")
-            return
+        print("Se encontraron errores sintacticos. No se puede continuar con la generacion de codigo intermedio.")
+        return
     
     if escucha.hay_error_semantico:
         print("Se encontraron errores semanticos. No se puede continuar con la generacion de codigo intermedio.")
@@ -51,6 +51,7 @@ def main(argv):
     caminante.visit(tree)
 
     print("Codigo intermedio generado en codigo_intermedio.txt")
+    print("SUPEREXCELENTE🔪🔪🔪🎯")
 
     opt = Optimizacion("codigo_intermedio.txt", "codigo_optimizado.txt")
 

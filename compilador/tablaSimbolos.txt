@@ -1,381 +1,10 @@
-Tabla de Simbolos generada el 2026-02-07 22:59:11.461568
-
-CONTEXTO 0 (global):
-  - x: variable int
-  - y: variable int
-  - suma: función int
-     parametros: int a, int b
-  - resta: función int
-     parametros: int x, int y
-
-CONTEXTO 1:
-  - a: variable int
-  - b: variable int
-  - r: variable int
-  - x: variable int
-
-CONTEXTO 2:
-  - x: variable int
-  - y: variable int
-  - z: variable int
-
-Tabla de Simbolos generada el 2026-02-07 23:02:04.890875
-
-CONTEXTO 0 (global):
-  - x: variable int
-  - y: variable int
-  - suma: función int
-     parametros: int a, int b
-  - resta: función int
-     parametros: int x, int y
-
-CONTEXTO 1:
-  - a: variable int
-  - b: variable int
-  - r: variable int
-
-CONTEXTO 2:
-  - x: variable int
-
-CONTEXTO 3:
-  - y: variable int
-
-CONTEXTO 4:
-  - x: variable int
-  - y: variable int
-  - z: variable int
-
-Tabla de Simbolos generada el 2026-02-07 23:05:40.446901
-
-CONTEXTO 0 (global):
-  - x: variable int
-  - y: variable int
-  - suma: función int
-     parametros: int a, int b
-  - resta: función int
-     parametros: int x, int y
-
-CONTEXTO 1:
-  - a: variable int
-  - b: variable int
-  - r: variable int
-
-CONTEXTO 2:
-  - x: variable int
-
-CONTEXTO 3:
-  - y: variable int
-
-CONTEXTO 4:
-  - x: variable int
-  - y: variable int
-  - z: variable int
-
-Tabla de Simbolos generada el 2026-02-07 23:09:12.912559
-
-CONTEXTO 0 (global):
-  - x: variable int
-  - y: variable int
-  - suma: función int
-     parametros: int a, int b
-  - resta: función int
-     parametros: int x, int y
-
-CONTEXTO 1:
-  - a: variable int
-  - b: variable int
-  - r: variable int
-
-CONTEXTO 2:
-  - x: variable int
-
-CONTEXTO 3:
-  - y: variable int
-
-CONTEXTO 4:
-  - x: variable int
-  - y: variable int
-  - z: variable int
-
-Tabla de Simbolos generada el 2026-02-07 23:10:14.322658
-
-CONTEXTO 0 (global):
-  - x: variable int
-  - y: variable int
-  - suma: función int
-     parametros: int a, int b
-  - resta: función int
-     parametros: int x, int y
-
-CONTEXTO 1:
-  - a: variable int
-  - b: variable int
-  - r: variable int
-
-CONTEXTO 2:
-  - x: variable int
-
-CONTEXTO 3:
-  - y: variable int
-
-CONTEXTO 4:
-  - x: variable int
-  - y: variable int
-  - z: variable int
-  - j: variable int
-  - k: variable int
-
-Tabla de Simbolos generada el 2026-02-07 23:30:24.033310
-
-CONTEXTO 0 (global):
-  - x: variable int
-  - y: variable int
-  - suma: función int
-     parametros: int a, int b
-  - resta: función int
-     parametros: int x, int y
-
-CONTEXTO 1:
-  - a: variable int
-  - b: variable int
-  - r: variable int
-
-CONTEXTO 2:
-  - x: variable int
-
-CONTEXTO 3:
-  - y: variable int
-
-CONTEXTO 4:
-  - x: variable int
-  - y: variable int
-  - z: variable int
-  - j: variable int
-  - k: variable int
-
-Tabla de Simbolos generada el 2026-02-07 23:30:58.295872
-
-CONTEXTO 0 (global):
-  - x: variable int
-  - y: variable int
-  - suma: función int
-     parametros: int a, int b
-  - resta: función int
-     parametros: int x, int y
-
-CONTEXTO 1:
-  - a: variable int
-  - b: variable int
-  - r: variable int
-
-CONTEXTO 2:
-  - x: variable int
-
-CONTEXTO 3:
-  - y: variable int
-
-CONTEXTO 4:
-  - x: variable int
-  - y: variable int
-  - z: variable int
-  - j: variable int
-  - k: variable int
-
-Tabla de Simbolos generada el 2026-02-07 23:31:21.357170
-
-CONTEXTO 0 (global):
-  - x: variable int
-  - y: variable int
-
-Tabla de Simbolos generada el 2026-02-07 23:31:48.232726
-
-CONTEXTO 0 (global):
-  - x: variable int
-  - y: variable int
-  - suma: función int
-     parametros: int a, int b
-  - resta: función int
-     parametros: int x, int y
-
-CONTEXTO 1:
-  - a: variable int
-  - b: variable int
-  - r: variable int
-
-CONTEXTO 2:
-  - x: variable int
-
-CONTEXTO 3:
-  (vacío)
-
-CONTEXTO 4:
-  - x: variable int
-  - y: variable int
-  - z: variable int
-  - j: variable int
-  - k: variable int
-
-Tabla de Simbolos generada el 2026-02-07 23:32:08.534201
-
-CONTEXTO 0 (global):
-  - x: variable int
-  - y: variable int
-  - suma: función int
-     parametros: int a, int b
-  - resta: función int
-     parametros: int x, int y
-
-CONTEXTO 1:
-  - a: variable int
-  - b: variable int
-  - r: variable int
-
-CONTEXTO 2:
-  - x: variable int
-
-CONTEXTO 3:
-  - y: variable int
-
-CONTEXTO 4:
-  - x: variable int
-  - y: variable int
-  - z: variable int
-  - j: variable int
-  - k: variable int
-
-Tabla de Simbolos generada el 2026-02-08 16:26:56.691912
-
-CONTEXTO 0 (global):
-  - x: variable int
-
-CONTEXTO 1:
-  (vacío)
-
-CONTEXTO 2:
-  (vacío)
-
-Tabla de Simbolos generada el 2026-02-08 16:30:54.245318
-
-CONTEXTO 0 (global):
-  - x: variable int
-
-CONTEXTO 1:
-  (vacío)
-
-CONTEXTO 2:
-  (vacío)
-
-Tabla de Simbolos generada el 2026-02-08 16:39:52.263820
-
-CONTEXTO 0 (global):
-  - x: variable int
-
-CONTEXTO 1:
-  (vacío)
-
-CONTEXTO 2:
-  (vacío)
-
-Tabla de Simbolos generada el 2026-02-08 18:54:05.262971
-
-CONTEXTO 0 (global):
-  - x: variable int
-
-CONTEXTO 1:
-  (vacío)
-
-CONTEXTO 2:
-  (vacío)
-
-Tabla de Simbolos generada el 2026-02-08 19:51:54.811682
-
-CONTEXTO 0 (global):
-  - escaneo: función int
-     parametros: int a, int b
-  - main: función int
-
-CONTEXTO 1:
-  - a: variable int
-  - b: variable int
-  - r: variable int
-
-CONTEXTO 2:
-  (vacío)
-
-CONTEXTO 3:
-  (vacío)
-
-CONTEXTO 4:
-  - x: variable int
-  - y: variable int
-  - z: variable int
-  - resultado: variable int
-
-CONTEXTO 5:
-  (vacío)
-
-Tabla de Simbolos generada el 2026-02-08 19:56:31.604743
-
-CONTEXTO 0 (global):
-  - escaneo: función int
-     parametros: int a, int b, int c
-  - main: función int
-
-CONTEXTO 1:
-  - a: variable int
-  - b: variable int
-  - c: variable int
-  - r: variable int
-
-CONTEXTO 2:
-  (vacío)
-
-CONTEXTO 3:
-  (vacío)
-
-CONTEXTO 4:
-  - x: variable int
-  - y: variable int
-  - z: variable int
-  - resultado: variable int
-
-CONTEXTO 5:
-  (vacío)
-
-Tabla de Simbolos generada el 2026-02-08 19:57:26.175635
-
-CONTEXTO 0 (global):
-  - escaneo: función int
-     parametros: int a, int b, int c
-  - main: función int
-
-CONTEXTO 1:
-  - a: variable int
-  - b: variable int
-  - c: variable int
-  - r: variable int
-
-CONTEXTO 2:
-  (vacío)
-
-CONTEXTO 3:
-  (vacío)
-
-CONTEXTO 4:
-  - x: variable int
-  - y: variable int
-  - z: variable int
-  - resultado: variable int
-  - f: variable int
-
-CONTEXTO 5:
-  (vacío)
-
-Tabla de Simbolos generada el 2026-02-08 19:57:54.437736
+Tabla de Simbolos generada el 2026-02-08 20:35:53.211854
 
 CONTEXTO 0 (global):
   - escaneo: función int
      parametros: int a, int b, int c, int f
+  - div: función double
+     parametros: double a, double b
   - main: función int
 
 CONTEXTO 1:
@@ -392,12 +21,135 @@ CONTEXTO 3:
   (vacío)
 
 CONTEXTO 4:
+  - a: variable double
+  - b: variable double
+  - c: variable double
+
+CONTEXTO 5:
   - x: variable int
   - y: variable int
   - z: variable int
   - resultado: variable int
   - f: variable int
 
+CONTEXTO 6:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-02-08 20:37:50.002275
+
+CONTEXTO 0 (global):
+  - div: función double
+     parametros: double a, double b
+  - main: función int
+
+CONTEXTO 1:
+  - a: variable double
+  - b: variable double
+  - c: variable double
+
+CONTEXTO 2:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - resultado: variable int
+  - f: variable int
+
+CONTEXTO 3:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-02-08 20:38:08.489484
+
+CONTEXTO 0 (global):
+  - div: función double
+     parametros: double a, double b
+  - main: función int
+
+CONTEXTO 1:
+  - a: variable double
+  - b: variable double
+  - c: variable double
+
+CONTEXTO 2:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - resultado: variable int
+  - f: variable int
+
+CONTEXTO 3:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-02-08 20:38:51.052196
+
+CONTEXTO 0 (global):
+  - escaneo: función int
+     parametros: int a, int b, int c, int f
+  - div: función double
+     parametros: double a, double b
+  - main: función int
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - f: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  (vacío)
+
+CONTEXTO 3:
+  (vacío)
+
+CONTEXTO 4:
+  - a: variable double
+  - b: variable double
+  - c: variable double
+
 CONTEXTO 5:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - resultado: variable int
+  - f: variable int
+
+CONTEXTO 6:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-02-08 20:49:29.083699
+
+CONTEXTO 0 (global):
+  - escaneo: función int
+     parametros: int a, int b, int c, int f
+  - div: función double
+     parametros: double a, double b
+  - main: función int
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - f: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  (vacío)
+
+CONTEXTO 3:
+  (vacío)
+
+CONTEXTO 4:
+  - a: variable double
+  - b: variable double
+  - c: variable double
+
+CONTEXTO 5:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - resultado: variable int
+  - f: variable int
+
+CONTEXTO 6:
   (vacío)
 

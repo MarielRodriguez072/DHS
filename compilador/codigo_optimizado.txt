@@ -1,30 +1,9 @@
-x = 0
-y = 1
-suma:
-r = x + y
-ifFalse r > 0 goto L2
-L3:
+x = 6
+ifFalse x <= 3 goto L2
 goto L0
-L2:
-goto L1
 L0:
-x = r
-L4:
-ifFalse r > 0 goto L7
-L8:
-goto L5
-L7:
-goto L6
-L5:
-y = r
-r = r - 1
-goto L4
-L6:
-return r
-resta:
-j = 0
-k = j
-param j
-param k
-z = call suma, 2
-return z
+x = x + 1
+goto L1
+L2:
+x = x + 10
+L1:

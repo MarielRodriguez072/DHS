@@ -243,3 +243,36 @@ CONTEXTO 4:
   - j: variable int
   - k: variable int
 
+Tabla de Simbolos generada el 2026-02-08 16:26:56.691912
+
+CONTEXTO 0 (global):
+  - x: variable int
+
+CONTEXTO 1:
+  (vacío)
+
+CONTEXTO 2:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-02-08 16:30:54.245318
+
+CONTEXTO 0 (global):
+  - x: variable int
+
+CONTEXTO 1:
+  (vacío)
+
+CONTEXTO 2:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-02-08 16:39:52.263820
+
+CONTEXTO 0 (global):
+  - x: variable int
+
+CONTEXTO 1:
+  (vacío)
+
+CONTEXTO 2:
+  (vacío)
+

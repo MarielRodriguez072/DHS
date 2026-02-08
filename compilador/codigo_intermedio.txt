@@ -1,41 +1,16 @@
 x = 0
-y = 0
-x = 0
-y = 1
-suma:
-r = 0
-t0 = x + y
-r = t0
-t1 = r > 0
-ifFalse t1 goto L2
-L3:
-goto L0
-L2:
-goto L1
-L0:
-x = 0
-x = r
-L1:
+x = 6
+t0 = x <= 3
+ifFalse t0 goto L3
 L4:
-t2 = r > 0
-ifFalse t2 goto L7
-L8:
-goto L5
-L7:
-goto L6
-L5:
-y = r
-t3 = r - 1
-r = t3
-goto L4
-L6:
-return r
-resta:
-z = 0
-j = 0
-k = 0
-param j
-param k
-t4 = call suma, 2
-z = t4
-return z
+goto L0
+L3:
+goto L2
+L0:
+t1 = x + 1
+x = t1
+goto L1
+L2:
+t2 = x + 10
+x = t2
+L1:

@@ -283,6 +283,55 @@ class Optimizacion:
 
         self.codigo = nueva
         return cambio
+    
+    #detecta labels que son usados
+    def labels_usados(self):
+        usados = set()
+        for l in self.codigo:
+            if l.startswith("goto"):
+                usados.add(l.split()[-1])
+            elif l.startswith("if"):
+                usados.add(l.split()[-1])
+        return usados
+
+    #elimina labels que no son usados
+    def eliminar_labels_no_usados(self):
+        usados = self.labels_usados()
+        nueva = []
+        cambio = False
+
+        for l in self.codigo:
+            if self.es_label(l):
+                nombre = l[:-1]
+                if nombre not in usados:
+                    cambio = True
+                    continue
+            nueva.append(l)
+
+        self.codigo = nueva
+        return cambio
+    
+    #redirecciona saltos a labels puente eliminando el salto intermedio
+    def redireccionar_saltos(self):
+        cambio = False
+        redir = {}
+
+        # detectar labels puente
+        for i in range(len(self.codigo) - 1):
+            if self.es_label(self.codigo[i]) and self.codigo[i+1].startswith("goto"):
+                label = self.codigo[i][:-1]
+                destino = self.codigo[i+1].split()[-1]
+                redir[label] = destino
+
+        # aplicar redirecciones
+        for i, l in enumerate(self.codigo):
+            for k, v in redir.items():
+                if f"goto {k}" in l:
+                    self.codigo[i] = l.replace(k, v)
+                    cambio = True
+
+        return cambio
+
 
 
     # Pipeline
@@ -310,3 +359,7 @@ class Optimizacion:
             cambio |= self.eliminar_codigo_inalcanzable()
             cambio |= self.eliminar_codigo_muerto()
             cambio |= self.eliminar_labels_vacias()
+
+            cambio |= self.redireccionar_saltos()
+            cambio |= self.eliminar_labels_no_usados()
+

@@ -153,3 +153,123 @@ CONTEXTO 5:
 CONTEXTO 6:
   (vacío)
 
+Tabla de Simbolos generada el 2026-02-08 20:54:24.579554
+
+CONTEXTO 0 (global):
+  - escaneo: función int
+     parametros: int a, int b, int c, int f
+  - div: función double
+     parametros: double a, double b
+  - main: función int
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - f: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  (vacío)
+
+CONTEXTO 3:
+  (vacío)
+
+CONTEXTO 4:
+  (vacío)
+
+CONTEXTO 5:
+  - a: variable double
+  - b: variable double
+  - c: variable double
+
+CONTEXTO 6:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - resultado: variable int
+  - f: variable int
+
+CONTEXTO 7:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-02-08 20:54:57.162783
+
+CONTEXTO 0 (global):
+  - escaneo: función int
+     parametros: int a, int b, int c, int f
+  - div: función double
+     parametros: double a, double b
+  - main: función int
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - f: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  (vacío)
+
+CONTEXTO 3:
+  (vacío)
+
+CONTEXTO 4:
+  (vacío)
+
+CONTEXTO 5:
+  - a: variable double
+  - b: variable double
+  - c: variable double
+
+CONTEXTO 6:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - resultado: variable int
+  - f: variable int
+
+CONTEXTO 7:
+  (vacío)
+
+Tabla de Simbolos generada el 2026-02-08 20:55:19.107849
+
+CONTEXTO 0 (global):
+  - escaneo: función int
+     parametros: int a, int b, int c, int f
+  - div: función double
+     parametros: double a, double b
+  - main: función int
+
+CONTEXTO 1:
+  - a: variable int
+  - b: variable int
+  - c: variable int
+  - f: variable int
+  - r: variable int
+
+CONTEXTO 2:
+  (vacío)
+
+CONTEXTO 3:
+  (vacío)
+
+CONTEXTO 4:
+  (vacío)
+
+CONTEXTO 5:
+  - a: variable double
+  - b: variable double
+  - c: variable double
+
+CONTEXTO 6:
+  - x: variable int
+  - y: variable int
+  - z: variable int
+  - resultado: variable int
+  - f: variable int
+
+CONTEXTO 7:
+  (vacío)
+

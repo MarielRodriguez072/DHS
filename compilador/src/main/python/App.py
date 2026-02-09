@@ -51,7 +51,6 @@ def main(argv):
     caminante.visit(tree)
 
     print("Codigo intermedio generado en codigo_intermedio.txt")
-    print("SUPEREXCELENTE🔪🔪🔪🎯")
 
     opt = Optimizacion("codigo_intermedio.txt", "codigo_optimizado.txt")
 

@@ -5,9 +5,12 @@ int  escaneo (int a, int b, int c, int f) {
 
     if (a > b && b > c) {
         r = 1;
+    }else{
+        r = 2;
     }
 
-    f = 9;
+    f=9;
+    
 
     while (r > 0 && (a > 0 && b > 0)) {
         r = r - 1;
